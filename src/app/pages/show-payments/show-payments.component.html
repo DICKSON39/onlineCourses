@@ -1,0 +1,37 @@
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Search by user, email, course or status..."
+    [(ngModel)]="searchTerm"
+    class="search-input"
+  />
+</div>
+
+<div class="table-container">
+  <table class="admin-payment-table">
+    <thead>
+      <tr>
+        <th>Payment ID</th>
+        <th>User</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of filteredPayments">
+        <td>{{ payment.paymentId }}</td>
+        <td>{{ payment.userName }}</td>
+        <td>{{ payment.userEmail }}</td>
+        <td>{{ payment.courseTitle }}</td>
+        <td>{{ payment.amount | currency }}</td>
+        <td>{{ payment.paymentDate | date }}</td>
+        <td><span class="status" [ngClass]="payment.status.toLowerCase()">{{ payment.status }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

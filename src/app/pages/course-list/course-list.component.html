@@ -1,0 +1,75 @@
+<body>
+  <div class="page-container">
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+    <div class="content-area">
+      <section class="featured-course">
+        <h2>✨ Featured Course</h2>
+        <div class="featured-card">
+          <div class="featured-details">
+            <h3>Mastering Web Development</h3>
+            <p>
+              Learn full-stack development using HTML, CSS, JavaScript, and
+              modern frameworks.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- 
+      <section class="introduction-section">
+        <h2>Welcome to Our Learning Platform</h2>
+        <p>At [Your Platform Name], we believe in the power of knowledge and the transformative impact of education...</p>
+        <p>Our courses are developed and taught by experienced instructors who are passionate about their fields...</p>
+      </section> -->
+
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search courses..."
+          [(ngModel)]="searchTerm"
+          class="search-input"
+        />
+      </div>
+      
+
+      <section class="course-grid">
+        <div *ngFor="let course of filteredCourses" class="course-card">
+          <h3>{{ course.title }}</h3>
+          <img
+            [src]="course.imageFullUrl"
+            alt="{{ course.title }}"
+            *ngIf="course.imageFullUrl"
+          />
+          <p class="description">
+            {{ course.description | slice : 0 : 100 }}...
+          </p>
+          <p class="teacher">Teacher: {{ course.teacher }}</p>
+          <div class="course-actions">
+            <button
+              class="info-button"
+              (click)="navigateToCourseDetails(course.id)"
+            >
+              Course Info
+            </button>
+            <button class="apply-button">Apply Course</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-section">
+        <div class="stat">
+          <h3>20K+</h3>
+          <p>Learners Worldwide</p>
+        </div>
+        <div class="stat">
+          <h3>150+</h3>
+          <p>Expert Instructors</p>
+        </div>
+        <div class="stat">
+          <h3>500+</h3>
+          <p>Courses Available</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>

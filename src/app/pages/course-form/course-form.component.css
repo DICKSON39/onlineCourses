@@ -1,0 +1,57 @@
+/* Course form container */
+.course-form {
+    background: rgba(30, 41, 59, 0.7);
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: auto;
+    color: #f0f8ff;
+  }
+  
+  /* Form label */
+  .course-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #a2d2ff;
+  }
+  
+  /* Form input, select, file */
+  .course-form input,
+  .course-form select {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1.5em;
+    background: #0d1a36;
+    color: #f0f8ff;
+    border: 1px solid #60a5fa;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    box-sizing: border-box;
+  }
+  
+  /* File input (no change in appearance in some browsers) */
+  .course-form input[type="file"] {
+    background: transparent;
+    border: none;
+  }
+  
+  /* Submit button */
+  .course-form button[type="submit"] {
+    background: linear-gradient(135deg, #4aed88, #2dd4bf);
+    color: #080f29;
+    border: none;
+    padding: 0.75em 2em;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  /* Button hover */
+  .course-form button[type="submit"]:hover {
+    background: linear-gradient(135deg, #60f9a6, #4dddc7);
+  }
+  

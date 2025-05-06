@@ -1,0 +1,18 @@
+<h2>All Your Payments</h2>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<ul *ngIf="allPayments.length > 0; else noPayments">
+  <li *ngFor="let payment of allPayments">
+    <strong>{{ payment.courseTitle }}</strong> – 
+    Ksh {{ payment.amount }} –
+    {{ payment.paymentDate | date:'medium' }} –
+    <span [ngClass]="{ 'paid': payment.status === 'paid', 'pending': payment.status !== 'paid' }">
+      {{ payment.status }}
+    </span>
+  </li>
+</ul>
+
+<ng-template #noPayments>
+  <p>You have not made any payments yet.</p>
+</ng-template>

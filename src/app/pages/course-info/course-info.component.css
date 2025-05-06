@@ -1,0 +1,181 @@
+/* Course details container */
+.course-details-container {
+    background: rgba(30, 41, 59, 0.7);
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 2em auto; /* Added margin for spacing */
+    color: #f0f8ff;
+    font-family: 'Space Mono', monospace; /* Added font-family for consistency */
+  }
+  
+  /* Course title */
+  .course-details-container h2 {
+    color: #a2d2ff;
+    margin-bottom: 0.75em;
+    font-size: 1.75em;
+  }
+  
+  /* Course description, price, teacher */
+  .course-details-container p {
+    margin-bottom: 1em;
+    color: #f0f8ff;
+  }
+  
+  /* Price text */
+  .course-details-container .price {
+    font-weight: bold;
+    color: #4aed88;
+  }
+  
+  /* Image styling */
+  .course-details-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1em;
+  }
+  
+  /* Enroll button container */
+  .enroll-button-container {
+    text-align: center;
+    margin-top: 1.5em;
+  }
+  
+  /* Enroll button */
+  .enroll-button-container .enroll-button {
+    background: linear-gradient(135deg, #4aed88, #2dd4bf);
+    color: #080f29;
+    border: none;
+    padding: 0.75em 2em;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: 'Space Mono', monospace; /* Added font-family for consistency */
+  }
+  
+  /* Enroll button hover */
+  .enroll-button-container .enroll-button:hover {
+    background: linear-gradient(135deg, #60f9a6, #4dddc7);
+  }
+  
+  /* Loading/Error container */
+  .loading-error-container {
+    background: rgba(30, 41, 59, 0.7);
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 2em auto; /* Added margin for spacing */
+    color: #f0f8ff;
+    text-align: center;
+    font-family: 'Space Mono', monospace; /* Added font-family for consistency */
+  }
+  
+  /* Error text */
+  .loading-error-container .error {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+  }
+  
+
+  .loading-error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .error {
+    color: red;
+    background-color: #ffe0e0;
+    border: 1px solid #ffb3b3;
+  }
+  
+  .loading-error-container p {
+    margin: 0;
+  }
+  
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px; /* Limit the width for better readability */
+  }
+  
+  li {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border: 1px solid #eee;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out the content */
+    align-items: center; /* Vertically center items */
+    word-wrap: break-word; /* prevent long words from overflowing */
+  }
+  
+  li:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last item */
+  }
+  
+  li:nth-child(odd) {
+    background-color: #f1f1f1; /* Slightly different background for odd items */
+  }
+  
+  .no-payments {
+    text-align: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 1rem auto;
+    max-width: 600px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style for payment status */
+  li span {
+    font-weight: bold; /* Make the status bold */
+    margin-left: 1rem; /* Add some space to the left of the status */
+  }
+  li span.paid {
+    color: green;
+  }
+  li span.pending{
+    color: orange;
+  }
+  li span.failed {
+    color: red;
+  }

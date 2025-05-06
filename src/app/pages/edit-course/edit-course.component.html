@@ -1,0 +1,25 @@
+<h2 style="text-align: center; margin-bottom: 1rem;">Edit Course</h2>
+
+<form  [formGroup]="courseForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <label for="title">
+    Title:
+    <input id="title" type="text" formControlName="title" placeholder="Enter course title" />
+  </label>
+
+  <label for="description">
+    Description:
+    <textarea id="description" formControlName="description" placeholder="Enter course description"></textarea>
+  </label>
+
+  <label for="price">
+    Price:
+    <input id="price" type="number" formControlName="price" placeholder="Enter course price" />
+  </label>
+
+  <label for="image">
+    Upload New Image (optional):
+    <input id="image" type="file" (change)="onFileChange($event)" />
+  </label>
+
+  <button type="submit">Update Course</button>
+</form>

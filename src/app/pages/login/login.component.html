@@ -1,0 +1,56 @@
+<div class="login-page">
+    <div class="login-form-section">
+      <h2>Log in</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="email" placeholder="Email" />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+          Enter a valid email.
+        </div>
+        <input type="password" formControlName="password" placeholder="Password" />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password must be at least 6 characters.
+        </div>
+  
+        <a href="#" class="forgot-password">Forgot your <strong>password?</strong></a>
+  
+        <button type="submit" [disabled]="loginForm.invalid">Log in</button>
+  
+        <p class="signup-text">
+          Don't have any account? <a (click)="navigateToSignUp()" >Sign Up</a>
+        </p>
+      </form>
+      <!-- Success Modal -->
+<div class="modal-overlay" [class.active]="showSuccessModal">
+  <div class="modal-content">
+    <h3>Login Successful!</h3>
+    <p>Welcome back.</p>
+    <button (click)="closeSuccessModal()">OK</button>
+  </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal-overlay" [class.active]="showErrorModal">
+  <div class="modal-content">
+    <h3>Login Failed</h3>
+    <p>{{ errorMessage }}</p>
+    <button (click)="closeErrorModal()">Try Again</button>
+  </div>
+</div>
+
+    </div>
+  
+    <div class="bubbles">
+        <span style="--i:11;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+      </div>
+    
+  </div>
+  

@@ -1,0 +1,25 @@
+<section class="course-grid">
+    <div *ngFor="let course of courses" class="course-card">
+      <h3>{{ course.title }}</h3>
+      <img
+        [src]="course.imageFullUrl"
+        alt="{{ course.title }}"
+        *ngIf="course.imageFullUrl"
+      />
+      <p class="description">
+        {{ course.description | slice : 0 : 100 }}...
+      </p>
+      <p class="teacher">Teacher's name: {{ course.teacher }}</p>
+     
+      <div class="course-actions">
+        <button class="info-button" (click)="editCourse(course)">
+            Edit
+          </button>
+          
+        <button class="apply-button" (click)="deleteCourse(course.id)">
+          Delete
+        </button>
+      </div>
+      
+    </div>
+  </section>

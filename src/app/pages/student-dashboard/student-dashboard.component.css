@@ -1,0 +1,161 @@
+body {
+    font-family: 'Space Mono', monospace;
+    margin: 0; /* Explicitly reset body margin */
+    padding: 0;
+    background: linear-gradient(180deg, #0d1a36, #080f29);
+    color: #f0f8ff;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background: rgba(30, 41, 59, 0.8); /* Dark, translucent background */
+    backdrop-filter: blur(15px); /* Enhanced frosted glass */
+    color: #a2d2ff; /* Electric blue primary text */
+    width: 250px; /* Adjust width to match screenshot */
+    padding: 1em; /* Adjust padding to match screenshot */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(162, 210, 255, 0.2); /* Subtle electric blue border */
+}
+
+/* Sidebar Toggle Button (hamburger) */
+.sidebar-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    position: fixed; /* Fix to top */
+    top: 20px; /* Adjust distance from the top */
+    right: 20px; /* Move the icon to the far right */
+    z-index: 9999; /* Ensure it stays above other content */
+}
+
+.sidebar h2 {
+    color: #a2d2ff; /* Electric blue heading */
+    margin-top: 0;
+    margin-bottom: 1em; /* Adjust margin */
+    padding-bottom: 0.5em; /* Adjust padding */
+    border-bottom: 1px solid rgba(162, 210, 255, 0.3); /* Electric blue border */
+    font-size: 1.5em; /* Adjust font size */
+    font-weight: bold;
+}
+
+.sidebar a {
+    color: #d1cfe2; /* Light gray link text */
+    text-decoration: none;
+    padding: 0.75em 1em; /* Adjust padding */
+    margin-bottom: 0.25em; /* Adjust margin */
+    border-radius: 8px;
+    display: block;
+    transition: background 0.3s ease, color 0.3s;
+}
+
+.sidebar a:hover {
+    background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic green-teal gradient */
+    color: #080f29; /* Dark text on hover */
+}
+
+.sidebar .separator {
+    border-top: 1px solid rgba(162, 210, 255, 0.3); /* Electric blue */
+    margin: 1em 0; /* Adjust margin */
+}
+
+.sidebar .group-title {
+    color: #60a5fa; /* Blue group title */
+    padding: 0.5em 1em; /* Adjust padding */
+    font-size: 0.85em; /* Adjust font size */
+    text-transform: uppercase;
+    margin-bottom: 0.5em; /* Adjust margin */
+}
+
+/* Main content styles */
+.main-content {
+    flex: 1;
+    padding: 2em; /* Adjust padding */
+    background: #080f29; /* Dark background for content */
+    color: #f0f8ff; /* Light text */
+    box-sizing: border-box;
+    margin: 1em 0 1em 0; /* Adjust margins */
+}
+
+.main-content h1 {
+    color: #a2d2ff; /* Electric blue heading */
+    margin-top: 0;
+    margin-bottom: 1em; /* Adjust margin */
+    font-size: 2em; /* Adjust font size */
+}
+
+.section {
+    background: rgba(30, 41, 59, 0.7); /* Darker, translucent section background */
+    border-radius: 10px; /* Add some rounded corners */
+    padding: 1.5em; /* Adjust padding */
+    margin-bottom: 1.5em; /* Adjust margin */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Darker shadow */
+    border-left: 5px solid #4aed88; /* Green accent border */
+}
+
+.section h2 {
+    color: #a2d2ff; /* Electric blue heading */
+    border-bottom: 2px solid #60a5fa; /* Blue border */
+    padding-bottom: 0.5em; /* Adjust padding */
+    margin-top: 0;
+    font-size: 1.6em; /* Adjust font size */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    /* Show the hamburger icon */
+    .sidebar-toggle {
+        display: block; /* Make it visible on mobile */
+        top: 10px; /* Adjust the top spacing to avoid overlap with the header */
+        right: 20px; /* Align the icon to the far right */
+    }
+
+    .sidebar {
+        position: fixed; /* Fix the sidebar to the left */
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 250px;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin-right: 0.5em; /* Adjust margin */
+        margin-bottom: 0;
+        padding: 0.8em 1em; /* Adjust padding */
+        border-radius: 12px;
+    }
+
+    .sidebar .separator,
+    .sidebar .group-title {
+        display: none;
+    }
+
+    .main-content {
+        margin: 0;
+        padding: 1em; /* Adjust padding */
+        border-radius: 0;
+    }
+
+    .main-content h1 {
+        font-size: 1.8em; /* Adjust font size */
+    }
+
+    .section h2 {
+        font-size: 1.4em; /* Adjust font size */
+    }
+}

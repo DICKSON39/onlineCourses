@@ -1,0 +1,27 @@
+<div class="modal">
+    <div class="modal-content">
+      <h2>Create Class</h2>
+      <form [formGroup]="classForm" (ngSubmit)="onSubmit()">
+        <label>Start Time:</label>
+        <input type="datetime-local" formControlName="startTime" />
+  
+        <label>End Time:</label>
+        <input type="datetime-local" formControlName="endTime" />
+  
+        <label>Meeting Link:</label>
+        <input type="url" formControlName="meetingLink" />
+  
+        <label>
+          <input type="checkbox" formControlName="isLive" />
+          Is Live?
+        </label>
+  
+        <label>Video Path (optional):</label>
+        <input type="text" formControlName="videoPath" />
+  
+        <button type="submit" [disabled]="classForm.invalid">Create</button>
+        <button type="button" (click)="onClose()">Cancel</button>
+      </form>
+    </div>
+  </div>
+  

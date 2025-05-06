@@ -1,0 +1,86 @@
+.teacher-courses {
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.teacher-courses h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.course-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.course-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.course-info {
+  padding: 1rem;
+}
+
+.course-info h3 {
+  margin-top: 0;
+  color: #34495e;
+  font-size: 1.2rem;
+}
+
+.course-info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.price {
+  font-weight: bold;
+  color: #2ecc71;
+  transition: transform 0.2s ease-in-out, text-shadow 0.2s ease-in-out; /* Added transitions */
+}
+
+.course-card:hover .price {
+  transform: scale(1.1); /* Slightly scale up the price on card hover */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15); /* Add a subtle shadow */
+}
+
+.create-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #3498db, #2c82c9);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.create-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #256ea3);
+}
+
+.no-courses-msg {
+  text-align: center;
+  color: #888;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+

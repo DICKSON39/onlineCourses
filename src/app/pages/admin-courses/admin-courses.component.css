@@ -1,0 +1,84 @@
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Spacing between course cards */
+    padding: 20px; /* Overall padding for the grid */
+  }
+  
+  .course-card {
+    background-color: #f9f9f9; /* Light background for each card */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    display: flex;
+    flex-direction: column; /* Arrange content vertically */
+  }
+  
+  .course-card h3 {
+    margin-top: 0; /* Remove default top margin for the heading */
+    margin-bottom: 10px;
+    color: #333; /* Dark heading text */
+  }
+  
+  .course-card img {
+    width: 100%; /* Make the image fill the card width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Slightly round image corners */
+    margin-bottom: 10px;
+    display: block; /* Prevent extra space below inline images */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+    aspect-ratio: 16 / 9; /* Optional: Maintain a specific aspect ratio */
+  }
+  
+  .course-card .description {
+    color: #555; /* Gray description text */
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Allow description to take up remaining vertical space */
+  }
+  
+  .course-card .teacher {
+    color: #777; /* Light gray teacher text */
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+  
+  .course-card .course-actions {
+    display: flex;
+    gap: 10px; /* Spacing between buttons */
+  }
+  
+  .course-card .info-button,
+  .course-card .apply-button {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .course-card .info-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .course-card .apply-button {
+    background-color: #dc3545; /* Red color for delete */
+  }
+  
+  .course-card .apply-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 600px) {
+    .course-grid {
+      grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+    .course-card {
+      margin-bottom: 15px; /* Add more space between stacked cards */
+    }
+  }

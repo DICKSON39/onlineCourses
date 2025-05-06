@@ -1,0 +1,18 @@
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .paid {
+    color: green;
+  }
+  
+  .pending {
+    color: orange;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  

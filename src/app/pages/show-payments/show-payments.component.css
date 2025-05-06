@@ -1,0 +1,79 @@
+/* Admin Payment Details Table */
+.admin-payment-table {
+  width: 90%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background: rgba(30, 41, 59, 0.85);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  font-family: 'Space Mono', monospace;
+  color: #f0f8ff;
+}
+
+.admin-payment-table th, .admin-payment-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-payment-table th {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.admin-payment-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.admin-payment-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Status colors in table */
+.admin-payment-table .status.paid {
+  color: #4aed88;
+  font-weight: bold;
+}
+
+.admin-payment-table .status.pending {
+  color: #facc15;
+  font-weight: bold;
+}
+
+.admin-payment-table .status.failed {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+/* Optional: Responsive table container */
+.table-container {
+  overflow-x: auto;
+  margin: 2rem;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  background: rgba(30, 41, 59, 0.7);
+  color: #f0f8ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(30, 41, 59, 0.9);
+}

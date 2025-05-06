@@ -1,0 +1,49 @@
+<div class="section update-user-form">
+  <h2>Update User</h2>
+  <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+    </div>
+
+    <div class="form-group">
+      <label for="roleId">Role:</label>
+      <select id="roleId" formControlName="roleId">
+        <option [ngValue]="1">Admin</option>
+        <option [ngValue]="2">Teacher</option>
+        <option [ngValue]="3">Student</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="password">New Password (optional):</label>
+      <input id="password" formControlName="password" type="password" />
+    </div>
+
+    <!-- Update button (changed to type="submit") -->
+    <button type="submit" [disabled]="!userForm.valid" class="btn-update">
+      Update User
+    </button>
+  </form>
+
+  <!-- Back to Users List -->
+  <a routerLink="/admin/users" class="btn-back">← Back to User List</a>
+
+  <!-- Modal for confirmation -->
+  <app-modal
+    [message]="'Are you sure you want to update this user?'"
+    [visible]="showModal"
+    (confirm)="confirmUpdate()"
+    (cancel)="showModal = false">
+  </app-modal>
+</div>

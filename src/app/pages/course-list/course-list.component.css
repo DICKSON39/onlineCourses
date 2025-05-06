@@ -1,0 +1,548 @@
+/* ... your existing CSS ... */
+
+body {
+    font-family: 'Space Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #0d1a36, #080f29); /* Deep space gradient background */
+    color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden; /* Prevent horizontal scroll for star animations */
+}
+
+.page-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Hero Section */
+.hero-section {
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 12px;
+    padding: 3em;
+    margin-bottom: 2em;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section h1 {
+    color: #a2d2ff;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.hero-section .hero-subtitle {
+    color: #d1cfe2;
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.hero-section .call-to-action {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.hero-section .call-to-action button {
+    padding: 1em 2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-section .call-to-action .browse-button {
+    background-color: #60a5fa;
+    color: #080f29;
+}
+
+.hero-section .call-to-action .browse-button:hover {
+    background-color: #82bfff;
+}
+
+.hero-section .call-to-action .featured-button {
+    background-color: #4aed88;
+    color: #080f29;
+}
+
+.hero-section .call-to-action .featured-button:hover {
+    background-color: #6bf7a3;
+}
+
+/* Featured Course Section */
+.featured-course {
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 12px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #f0f8ff;
+    text-align: center;
+}
+
+.featured-course h2 {
+    color: #a2d2ff;
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #60a5fa;
+    padding-bottom: 0.5em;
+    font-size: 1.8em;
+}
+
+.featured-card {
+    background: #080f29;
+    border-radius: 8px;
+    padding: 2em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.featured-card img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1.5em;
+}
+
+.featured-card .featured-details {
+    text-align: center;
+}
+
+.featured-card .featured-details h3 {
+    color: #a2d2ff;
+    font-size: 1.6em;
+    margin-bottom: 0.5em;
+}
+
+.featured-card .featured-details p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.featured-card .featured-details .apply-button {
+    padding: 1em 2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 1em;
+    background-color: #4aed88;
+    color: #080f29;
+    transition: background-color 0.3s ease;
+}
+
+.featured-card .featured-details .apply-button:hover {
+    background-color: #6bf7a3;
+}
+
+/* Introduction Section */
+.introduction-section {
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 12px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #f0f8ff;
+}
+
+.introduction-section h2 {
+    color: #a2d2ff;
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #60a5fa;
+    padding-bottom: 0.5em;
+    font-size: 1.8em;
+}
+
+.introduction-section p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* Course Grid Section */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 2em;
+}
+
+.course-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 12px;
+    padding: 1.5em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #f0f8ff;
+    border: 1px solid rgba(162, 210, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card h3 {
+    color: #a2d2ff;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #60a5fa;
+    padding-bottom: 0.3em;
+}
+
+.course-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.course-card .description {
+    flex-grow: 1;
+    margin-bottom: 0.75em;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.course-card .teacher {
+    font-size: 0.85em;
+    color: #d1cfe2;
+    margin-bottom: 0.5em;
+}
+
+.course-card .course-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 1em;
+}
+
+.course-card .course-actions button {
+    padding: 0.75em 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.course-card .course-actions .info-button {
+    background-color: #60a5fa;
+    color: #080f29;
+}
+
+.course-card .course-actions .info-button:hover {
+    background-color: #82bfff;
+}
+
+.course-card .course-actions .apply-button {
+    background-color: #4aed88;
+    color: #080f29;
+}
+
+.course-card .course-actions .apply-button:hover {
+    background-color: #6bf7a3;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 12px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #f0f8ff;
+    text-align: center;
+}
+
+.testimonials-section h2 {
+    color: #a2d2ff;
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #60a5fa;
+    padding-bottom: 0.5em;
+    font-size: 1.8em;
+}
+
+.testimonials-section .testimonial {
+    margin-bottom: 1.5em;
+    padding: 1.5em;
+    border-left: 5px solid #4aed88;
+    font-style: italic;
+    text-align: left;
+    background: rgba(8, 15, 41, 0.5); /* Slightly darker testimonial background */
+    border-radius: 8px;
+}
+
+/* Stats Section */
+.stats-section {
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 12px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #f0f8ff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.stats-section .stat {
+    padding: 1em;
+}
+
+.stats-section .stat h3 {
+    color: #4aed88; /* Green for the numbers */
+    font-size: 2em;
+    margin-bottom: 0.25em;
+}
+
+.stats-section .stat p {
+    font-size: 0.9em;
+    color: #d1cfe2;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 12px;
+    padding: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #f0f8ff;
+    text-align: center;
+}
+
+.newsletter-section h2 {
+    color: #a2d2ff;
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #60a5fa;
+    padding-bottom: 0.5em;
+    font-size: 1.8em;
+}
+
+.newsletter-section p {
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+.newsletter-section form {
+    display: flex;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.newsletter-section form input[type="email"] {
+    flex-grow: 1;
+    padding: 0.75em;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(8, 15, 41, 0.7);
+    color: #f0f8ff;
+    font-family: 'Space Mono', monospace;
+}
+
+.newsletter-section form button {
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 8px;
+    background-color: #60a5fa;
+    color: #080f29;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-section form button:hover {
+    background-color: #82bfff;
+}
+
+
+/* Footer */
+.site-footer {
+    background: rgba(30, 41, 59, 0.8);
+    color: #d1cfe2;
+    padding: 1.5em 0;
+    text-align: center;
+    margin-top: 2em;
+    border-top: 1px solid rgba(162, 210, 255, 0.2);
+    width: 100%;
+}
+
+.site-footer p {
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+}
+
+.site-footer .footer-links a {
+    color: #60a5fa;
+    text-decoration: none;
+    margin: 0 0.75em;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.site-footer .footer-links a:hover {
+    color: #82bfff;
+}
+
+/* Responsive Adjustments (extended) */
+@media (max-width: 768px) {
+    .page-container {
+        width: 95%;
+    }
+
+    .hero-section {
+        padding: 2em;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+    }
+
+    .hero-section .call-to-action {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .featured-course {
+        padding: 1.5em;
+    }
+
+    .featured-card {
+        align-items: stretch;
+    }
+
+    .featured-card img {
+        max-width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .featured-card .featured-details {
+        text-align: left;
+    }
+
+    .introduction-section {
+        padding: 1.5em;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .stats-section {
+        flex-direction: column;
+        gap: 1em;
+        padding: 1.5em;
+    }
+
+    .newsletter-section {
+        padding: 1.5em;
+    }
+
+    .newsletter-section form {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+}
+
+/* ... your previous CSS ... */
+
+@media (max-width: 600px) {
+    .hero-section h1 {
+        font-size: 1.75em;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .course-card {
+        padding: 1em;
+    }
+
+    .course-card .course-actions {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .course-card .course-actions button {
+        width: 100%;
+        font-size: 0.9em;
+    }
+
+    .stats-section {
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+    }
+
+    .newsletter-section h2 {
+        font-size: 1.5em;
+    }
+
+    .newsletter-section form {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .newsletter-section form button {
+        width: 100%;
+    }
+
+    .site-footer {
+        padding: 1em 0;
+    }
+
+    .site-footer p {
+        font-size: 0.8em;
+    }
+
+    .site-footer .footer-links a {
+        font-size: 0.8em;
+        margin: 0 0.5em;
+    }
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    background: rgba(30, 41, 59, 0.7);
+    color: #f0f8ff;
+    font-family: 'Space Mono', monospace;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+  }
+  
+  .search-input::placeholder {
+    color: #cbd5e1;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    background: rgba(30, 41, 59, 0.9);
+  }
+  

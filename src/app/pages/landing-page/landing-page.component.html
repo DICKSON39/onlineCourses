@@ -1,0 +1,128 @@
+<header class="site-header">
+  <div class="container">
+    <div class="logo">Elearning</div>
+    <nav class="main-navigation">
+      <ul>
+        <li><a routerLink="/" class="nav-link">Home</a></li>
+        <li><a routerLink="/about" class="nav-link">About Us</a></li>
+        <li><a routerLink="/courses" class="nav-link">Explore the Cosmos!</a></li>
+        <li><a routerLink="/contact" class="nav-link">Contact</a></li>
+        <button routerLink="/courses/register">Get Started</button>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="animate__animated animate__lightSpeedIn">✨ Dive into a Universe of Knowledge!</h1>
+      <p class="animate__animated animate__fadeIn" style="animation-delay: 0.8s;">Unlock your potential with captivating courses led by industry titans. Your learning adventure starts now!</p>
+      </div>
+  </div>
+  <div class="hero-background"></div>
+</section>
+
+<section class="why-choose">
+  <div class="container">
+    <h2 class="section-title animate__animated animate__flip">Why Choose Our Galaxy of Learning?</h2>
+    <div class="features">
+      <div class="feature animate__animated animate__rotateInDownLeft" style="animation-delay: 0.3s;"><span class="icon-feature">📜</span> Officially Recognized Certificates</div>
+      <div class="feature animate__animated animate__rotateInDownLeft" style="animation-delay: 0.5s;"><span class="icon-feature">🧑‍🏫</span> World-Class Mentors at Your Fingertips</div>
+      <div class="feature animate__animated animate__rotateInDownLeft" style="animation-delay: 0.7s;"><span class="icon-feature"> flexible</span> Learn at Your Own Celestial Pace</div>
+      <div class="feature animate__animated animate__rotateInDownLeft" style="animation-delay: 0.9s;"><span class="icon-feature">🤝</span> Connect with a Global Network of Learners</div>
+    </div>
+  </div>
+</section>
+
+<section class="courses">
+  <div class="container">
+    <h2 class="section-title animate__animated animate__rollIn">🚀 Blast Off with Our Featured Courses</h2>
+    <div class="course-grid">
+      <div class="course-card animate__animated animate__slideInUp" *ngFor="let course of featuredCourses; let i = index" [style.animation-delay]="(i * 0.2) + 's'">
+        <div class="course-image-wrapper">
+          <img [src]="course.image" [alt]="course.title">
+          <div class="overlay">
+            <a routerLink="/courses" class="view-button">Embark on Course</a>
+          </div>
+        </div>
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+        <a routerLink="/courses" class="enroll-button">Enroll Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works">
+  <div class="container">
+    <h2 class="section-title animate__animated animate__jackInTheBox">⚙️ How It All Works in 3 Simple Orbits</h2>
+    <div class="steps">
+      <div class="step animate__animated animate__zoomIn" *ngFor="let step of steps; let i = index" [style.animation-delay]="(i * 0.5) + 's'">
+        <div class="icon">{{ step.icon }}</div>
+        <p>{{ step.title }}</p>
+        <div class="step-counter">{{ i + 1 }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <h2 class="section-title animate__animated animate__zoomIn">By The Numbers</h2>
+    <div class="stats">
+      <div class="stat animate__animated animate__fadeInUp">
+        <h3>20K+</h3>
+        <p>Learners Worldwide</p>
+      </div>
+      <div class="stat animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+        <h3>150+</h3>
+        <p>Expert Instructors</p>
+      </div>
+      <div class="stat animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+        <h3>500+</h3>
+        <p>Courses Available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title animate__animated animate__pulse">🗣️ Hear from Your Fellow Voyagers</h2>
+    <div class="testimonial animate__animated animate__fadeInUp">
+      <div class="testimonial-header">
+        
+        <div class="testimonial-info">
+          <p class="author">- Annelese, Aspiring Astronaut</p>
+          <div class="star-rating">🌟🌟🌟🌟🌟</div>
+        </div>
+      </div>
+      <blockquote>
+        "This platform has been a game-changer! The courses are out of this world, and the support is stellar. I feel truly empowered to reach for the stars!"
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter-section">
+  <div class="container">
+    <h2 class="section-title animate__animated animate__lightSpeedIn">📬 Stay Updated</h2>
+    <p>Subscribe to get the latest courses and updates straight to your inbox.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Elearning. All rights reserved.</p>
+    <div class="footer-links">
+      <a routerLink="/policy">Privacy Policy</a>
+      <a routerLink="/terms">Terms of Use</a>
+      <a routerLink="/contact">Contact Us</a>
+    </div>
+  </div>
+</footer>
