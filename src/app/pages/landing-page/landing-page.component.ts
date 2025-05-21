@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, Directive } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-
-
-
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent {
+  isMobileMenuOpen: boolean = false; // New property for mobile menu state
 
-  constructor(private router:Router) {}
+  constructor(private router: Router) {}
+
   featuredCourses = [
     {
       title: 'Data Science',
@@ -31,8 +30,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1617695744007-68ef55752789?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fEdyYXBoaWMlMjBEZXNpZ258ZW58MHx8MHx8fDA%3Dg'
     }
   ];
-  
-  
 
   steps = [
     { icon: '📝', title: 'Sign Up' },
@@ -40,13 +37,18 @@ export class LandingPageComponent {
     { icon: '🎯', title: 'Start Learning' }
   ];
 
-
-
-  onclick(){
-    this.router.navigate(['courses/register'])
+  // Method to toggle mobile menu visibility
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
+  // Method to close mobile menu after navigation
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
 
-
-
+  onclick() {
+    this.router.navigate(['courses/register']);
+    this.closeMobileMenu(); // Close menu after navigation
+  }
 }

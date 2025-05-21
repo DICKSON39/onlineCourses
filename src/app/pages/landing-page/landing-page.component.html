@@ -1,13 +1,18 @@
 <header class="site-header">
   <div class="container">
     <div class="logo">Elearning</div>
-    <nav class="main-navigation">
+    <div class="hamburger-menu" (click)="toggleMobileMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="main-navigation" [ngClass]="{'open': isMobileMenuOpen}">
       <ul>
-        <li><a routerLink="/" class="nav-link">Home</a></li>
-        <li><a routerLink="/about" class="nav-link">About Us</a></li>
-        <li><a routerLink="/courses" class="nav-link">Explore the Cosmos!</a></li>
-        <li><a routerLink="/contact" class="nav-link">Contact</a></li>
-        <button routerLink="/courses/register">Get Started</button>
+        <li><a routerLink="/" class="nav-link" (click)="closeMobileMenu()">Home</a></li>
+        <li><a routerLink="/about" class="nav-link" (click)="closeMobileMenu()">About Us</a></li>
+        <li><a routerLink="/courses" class="nav-link" (click)="closeMobileMenu()">Explore the Cosmos!</a></li>
+        <li><a routerLink="/contact" class="nav-link" (click)="closeMobileMenu()">Contact</a></li>
+        <li><button routerLink="/courses/register" (click)="onclick()">Get Started</button></li>
       </ul>
     </nav>
   </div>
@@ -18,7 +23,7 @@
     <div class="hero-content">
       <h1 class="animate__animated animate__lightSpeedIn">✨ Dive into a Universe of Knowledge!</h1>
       <p class="animate__animated animate__fadeIn" style="animation-delay: 0.8s;">Unlock your potential with captivating courses led by industry titans. Your learning adventure starts now!</p>
-      </div>
+    </div>
   </div>
   <div class="hero-background"></div>
 </section>
@@ -43,12 +48,11 @@
         <div class="course-image-wrapper">
           <img [src]="course.image" [alt]="course.title">
           <div class="overlay">
-            <a routerLink="/courses" class="view-button">Embark on Course</a>
+            <a routerLink="/courses" class="view-button" (click)="closeMobileMenu()">Embark on Course</a>
           </div>
         </div>
         <h3>{{ course.title }}</h3>
         <p>{{ course.description }}</p>
-        <!-- <a routerLink="/courses" class="enroll-button">Enroll Now</a> -->
       </div>
     </div>
   </div>
@@ -92,7 +96,7 @@
     <h2 class="section-title animate__animated animate__pulse">🗣️ Hear from Your Fellow Voyagers</h2>
     <div class="testimonial animate__animated animate__fadeInUp">
       <div class="testimonial-header">
-        
+
         <div class="testimonial-info">
           <p class="author">- Annelese, Aspiring Astronaut</p>
           <div class="star-rating">🌟🌟🌟🌟🌟</div>
@@ -120,9 +124,9 @@
   <div class="container">
     <p>&copy; 2025 Elearning. All rights reserved.</p>
     <div class="footer-links">
-      <a routerLink="/policy">Privacy Policy</a>
-      <a routerLink="/terms">Terms of Use</a>
-      <a routerLink="/contact">Contact Us</a>
+      <a routerLink="/policy" (click)="closeMobileMenu()">Privacy Policy</a>
+      <a routerLink="/terms" (click)="closeMobileMenu()">Terms of Use</a>
+      <a routerLink="/contact" (click)="closeMobileMenu()">Contact Us</a>
     </div>
   </div>
 </footer>
