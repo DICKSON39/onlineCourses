@@ -1,46 +1,65 @@
+// src/app/components/user-list/user.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../services/user.service';
+import { UserService, PaginatedUsers, User } from '../../services/user.service'; // Import PaginatedUsers
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 import { FormsModule } from '@angular/forms';
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  phoneNumber: string;
-  roleId: number;
-  roleName?: string; // This will hold the readable name
-}
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators'; // For search optimization
+import { Subject } from 'rxjs'; // For search optimization
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user.component.html',
-  imports: [CommonModule, RouterLink,ModalComponent,FormsModule],
+  // You might want to add MatPaginatorModule here if using Angular Material pagination
+  imports: [CommonModule, RouterLink, ModalComponent, FormsModule],
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
   users: User[] = [];
   showModal: boolean = false;
   selectedUserId!: number;
-  userSearchTerm: string = '';
 
-  constructor(private http: HttpClient, private userService: UserService, private snackBar: MatSnackBar, private route: ActivatedRoute) {}
+  // Pagination properties
+  currentPage: number = 1;
+  pageSize: number = 10; // Number of items per page
+  totalItems: number = 0;
+  totalPages: number = 0;
+
+  userSearchTerm: string = '';
+  private searchSubject = new Subject<string>(); // Subject for debounced search
+
+  constructor(
+    private http: HttpClient,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.fetchUsers();
+
+    // Set up debounced search
+    this.searchSubject.pipe(
+      debounceTime(300), // Wait for 300ms after the last keystroke
+      distinctUntilChanged() // Only emit if the current value is different from the last
+    ).subscribe(() => {
+      this.currentPage = 1; // Reset to first page on new search
+      this.fetchUsers();
+    });
   }
 
   fetchUsers(): void {
-    this.userService.getUsers() // adjust URL if needed
-      .subscribe((users) => {
-        this.users = users.map(user => ({
+    this.userService.getUsers(this.currentPage, this.pageSize, this.userSearchTerm)
+      .subscribe((paginatedData: PaginatedUsers) => {
+        this.users = paginatedData.items.map(user => ({
           ...user,
           roleName: this.getRoleName(user.roleId)
         }));
+        this.totalItems = paginatedData.totalItems;
+        this.totalPages = paginatedData.totalPages;
       });
   }
 
@@ -66,7 +85,11 @@ export class UserComponent implements OnInit {
             duration: 3000,
             panelClass: ['snackbar-success'],
           });
-          this.fetchUsers(); // Refresh the user list after deletion
+          // After deletion, re-fetch users, possibly adjusting current page if the last item on a page was deleted
+          if (this.users.length === 1 && this.currentPage > 1) {
+            this.currentPage--; // Go to previous page if the last item on current page was deleted
+          }
+          this.fetchUsers();
         },
         error: () => {
           this.snackBar.open('❌ Failed to delete user', 'Close', {
@@ -83,13 +106,36 @@ export class UserComponent implements OnInit {
     this.showModal = false;
   }
 
-  get filteredUsers() {
-    const term = this.userSearchTerm.toLowerCase();
-    return this.users.filter(user =>
-      user.name?.toLowerCase().includes(term) ||
-      user.email?.toLowerCase().includes(term) ||
-      user.phoneNumber?.toLowerCase().includes(term) ||
-      user.roleName?.toLowerCase().includes(term)
-    );
-  }  
+  // --- Pagination Methods ---
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
+      this.currentPage = page;
+      this.fetchUsers();
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.fetchUsers();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.fetchUsers();
+    }
+  }
+
+  onPageSizeChange(event: Event): void {
+    this.pageSize = +(event.target as HTMLSelectElement).value;
+    this.currentPage = 1; // Reset to first page when page size changes
+    this.fetchUsers();
+  }
+
+  onSearchTermChange(event: Event): void {
+    this.userSearchTerm = (event.target as HTMLInputElement).value;
+    this.searchSubject.next(this.userSearchTerm); // Emit search term to the subject
+  }
 }
