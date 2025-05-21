@@ -41,9 +41,13 @@ export class CourseListComponent implements OnInit {
           title: course.title,
           description: course.description,
           teacher: `${course.teacherName} (${course.roleName})`,
-          imageFullUrl: `${this.backendBaseUrl}${course.imageUrl}`
+          imageFullUrl: this.backendBaseUrl + course.imageUrl,
+
+
           // Construct the full URL here
         }));
+
+
       },
       error: (error) => {
         this.errorMessage = 'Failed to load courses.';
