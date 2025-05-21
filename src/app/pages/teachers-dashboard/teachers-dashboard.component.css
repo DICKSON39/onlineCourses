@@ -1,132 +1,173 @@
 body {
-    font-family: 'Space Mono', monospace; /* Consistent font */
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(180deg, #0d1a36, #080f29); /* Deep space gradient */
-    color: #f0f8ff; /* Light, ethereal text */
-    display: flex;
-    min-height: 100vh;
-   }
-  
-   /* Sidebar styles */
-   .sidebar {
-    background: rgba(30, 41, 59, 0.8); /* Dark, translucent background */
-    backdrop-filter: blur(12px); /* Enhanced frosted glass */
-    color: #a2d2ff; /* Electric blue primary text */
-    width: 250px;
-    padding: 1em;
-    display: flex;
+  font-family: 'Space Mono', monospace; /* Consistent font */
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #0d1a36, #080f29); /* Deep space gradient */
+  color: #f0f8ff; /* Light, ethereal text */
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: rgba(30, 41, 59, 0.8); /* Dark, translucent background */
+  backdrop-filter: blur(12px); /* Enhanced frosted glass */
+  color: #a2d2ff; /* Electric blue primary text */
+  width: 250px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(162, 210, 255, 0.2); /* Subtle electric blue border */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for sidebar */
+}
+
+.sidebar h2 {
+  color: #a2d2ff; /* Electric blue heading */
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid rgba(162, 210, 255, 0.3); /* Electric blue border */
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.sidebar a {
+  color: #d1cfe2; /* Light gray link text */
+  text-decoration: none;
+  padding: 0.75em 1em;
+  margin-bottom: 0.25em;
+  border-radius: 8px;
+  display: block;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic green-teal gradient */
+  color: #080f29; /* Dark text on hover */
+}
+
+.sidebar .separator {
+  border-top: 1px solid rgba(162, 210, 255, 0.3); /* Electric blue */
+  margin: 1em 0;
+}
+
+.sidebar .group-title {
+  color: #60a5fa; /* Blue group title */
+  padding: 0.5em 1em;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+
+/* Main content styles */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #080f29; /* Dark background for content */
+  color: #f0f8ff; /* Light text */
+  box-sizing: border-box;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin: 1em 0;
+  position: relative; /* Needed for hamburger positioning */
+}
+
+.main-content h1 {
+  color: #a2d2ff; /* Electric blue heading */
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.section {
+  background: rgba(30, 41, 59, 0.7); /* Darker, translucent section background */
+  border-radius: 12px;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+.section h2 {
+  color: #a2d2ff; /* Electric blue heading */
+  border-bottom: 2px solid #60a5fa; /* Blue border */
+  padding-bottom: 0.5em;
+  margin-top: 0;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none; /* Hidden by default on larger screens */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1001; /* Ensure it's above other content */
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger-menu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #a2d2ff; /* Electric blue bars */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
     flex-direction: column;
-    overflow-y: auto;
-    box-sizing: border-box;
-    border-right: 1px solid rgba(162, 210, 255, 0.2); /* Subtle electric blue border */
-   }
-  
-   .sidebar h2 {
-    color: #a2d2ff; /* Electric blue heading */
-    margin-top: 0;
-    margin-bottom: 1em;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid rgba(162, 210, 255, 0.3); /* Electric blue border */
-    font-size: 1.5em;
-    font-weight: bold;
-   }
-  
-   .sidebar a {
-    color: #d1cfe2; /* Light gray link text */
-    text-decoration: none;
-    padding: 0.75em 1em;
-    margin-bottom: 0.25em;
-    border-radius: 8px;
-    display: block;
-    transition: background 0.3s ease, color 0.3s ease;
-   }
-  
-   .sidebar a:hover {
-    background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic green-teal gradient */
-    color: #080f29; /* Dark text on hover */
-   }
-  
-   .sidebar .separator {
-    border-top: 1px solid rgba(162, 210, 255, 0.3); /* Electric blue */
-    margin: 1em 0;
-   }
-  
-   .sidebar .group-title {
-    color: #60a5fa; /* Blue group title */
-    padding: 0.5em 1em;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    margin-bottom: 0.5em;
-   }
-  
-   /* Main content styles */
-   .main-content {
-    flex: 1;
-    padding: 20px;
-    background: #080f29; /* Dark background for content */
-    color: #f0f8ff; /* Light text */
-    box-sizing: border-box;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    margin: 1em 0 1em 0;
-   }
-  
-   .main-content h1 {
-    color: #a2d2ff; /* Electric blue heading */
-    margin-top: 0;
-    margin-bottom: 1em;
-   }
-  
-   .section {
-    background: rgba(30, 41, 59, 0.7); /* Darker, translucent section background */
-    border-radius: 12px;
-    padding: 1.5em;
-    margin-bottom: 1.5em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow */
-   }
-  
-   .section h2 {
-    color: #a2d2ff; /* Electric blue heading */
-    border-bottom: 2px solid #60a5fa; /* Blue border */
-    padding-bottom: 0.5em;
-    margin-top: 0;
-   }
-  
-   /* Responsive design */
-   @media (max-width: 768px) {
-    body {
-     flex-direction: column;
-    }
-  
-    .sidebar {
-     width: 100%;
-     flex-direction: row;
-     overflow-x: auto;
-     padding: 0.5em;
-     white-space: nowrap;
-     border-right: none;
-     border-bottom: 1px solid rgba(162, 210, 255, 0.2); /* Electric blue */
-    }
-  
-    .sidebar h2 {
-     display: none;
-    }
-  
-    .sidebar a {
-     display: inline-block;
-     margin-right: 0.5em;
-     margin-bottom: 0;
-    }
-  
-    .sidebar .separator,
-    .sidebar .group-title {
-     display: none;
-    }
-  
-    .main-content {
-     margin-left: 0;
-     padding: 10px;
-     border-radius: 0;
-    }
-   }
+  }
+
+  .hamburger-menu {
+    display: flex; /* Show hamburger on small screens */
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%); /* Hide sidebar by default */
+    z-index: 1000;
+    padding-top: 60px; /* Space for hamburger */
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Show sidebar when 'open' class is applied */
+  }
+
+  .sidebar h2 {
+    display: block; /* Show heading in mobile sidebar */
+    text-align: center;
+  }
+
+  .sidebar a {
+    display: block; /* Stack links vertically */
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .sidebar .separator,
+  .sidebar .group-title {
+    display: block; /* Show separators and group titles */
+    text-align: center;
+  }
+
+  .main-content {
+    margin: 0;
+    padding: 10px;
+    border-radius: 0;
+    padding-top: 60px; /* Adjust content padding to not be under hamburger */
+  }
+}
