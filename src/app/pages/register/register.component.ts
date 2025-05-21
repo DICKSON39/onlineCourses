@@ -15,7 +15,7 @@ export class RegisterComponent {
    errorMessage: string = '';
    showSuccessModal: boolean = false;
 
-  
+
 
    constructor(private fb: FormBuilder, private router:Router,private authService:AuthServicesService) {
     this.registerForm = this.fb.group({
@@ -24,7 +24,7 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      roleId: [2],
+      roleId: [3],
       agreeTerms: [false, Validators.requiredTrue]
     }, { validator: this.passwordMatchValidator });
    }
@@ -34,7 +34,7 @@ export class RegisterComponent {
       ? null : { mismatch: true };
   }
 
-  
+
 
   navigateToLogin() {
     this.router.navigate(['/courses/login'])
@@ -42,13 +42,13 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-     
+
       // Prepare the data in the required format
       const registrationData = {
         name: this.registerForm.get('name')?.value,
         email: this.registerForm.get('email')?.value,
         password: this.registerForm.get('password')?.value,
-        phoneNumber: this.registerForm.get('phoneNumber')?.value, 
+        phoneNumber: this.registerForm.get('phoneNumber')?.value,
         roleId: this.registerForm.get('roleId')?.value,
       };
 
@@ -56,7 +56,7 @@ export class RegisterComponent {
         next: (response) => {
           console.log('Registration successful', response);
           this.showSuccessModal = true;
-          // 
+          //
           this.registerForm.reset();
         },
         error: (error) => {
@@ -65,7 +65,7 @@ export class RegisterComponent {
           console.error('Registration error', error);
         },
       });
-    } 
+    }
   }
 
   closeModal() {
