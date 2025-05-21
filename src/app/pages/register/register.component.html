@@ -43,8 +43,11 @@
         </div>
       </div>
 
-      <!-- Role selection dropdown -->
-
+      <!-- Invite Code input -->
+      <div class="form-group">
+        <label for="inviteCode">Invite Code (optional)</label>
+        <input id="inviteCode" formControlName="inviteCode" type="text" placeholder="Enter invite code if you have one" />
+      </div>
 
       <div class="form-group terms">
         <input id="agreeTerms" formControlName="agreeTerms" type="checkbox" />
@@ -65,20 +68,17 @@
     </form>
 
     <!-- Success Modal -->
-<div class="modal-overlay" [class.active]="showSuccessModal">
-  <div class="modal-content">
-    <h3>Registration Successful!</h3>
-    <p>Your account has been created successfully.</p>
-    <button (click)="closeModal()">OK</button>
-  </div>
-</div>
-
+    <div class="modal-overlay" [class.active]="showSuccessModal">
+      <div class="modal-content">
+        <h3>Registration Successful!</h3>
+        <p>Your account has been created successfully.</p>
+        <button (click)="closeModal()">OK</button>
+      </div>
+    </div>
   </div>
 
   <!-- Right side: Welcome Message and Bubbles -->
   <div class="welcome-section">
-
-
     <div class="bubbles">
       <span style="--i:11;"></span>
       <span style="--i:17;"></span>

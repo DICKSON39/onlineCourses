@@ -1,4 +1,4 @@
-/* Full page split into two halves */
+
 .register-page {
   display: flex;
   flex-direction: row;
@@ -10,7 +10,7 @@
   overflow: hidden;
  }
 
- /* Left side: Form */
+
  .login-form-section {
   background: rgba(30, 41, 59, 0.8); /* Darker, translucent background */
   padding: 50px 40px;
@@ -282,7 +282,7 @@
   .bubbles {
     display: none; /* or reduce bubble count / animation speed */
   }
-  
+
   .welcome-section {
    display: none;
   }

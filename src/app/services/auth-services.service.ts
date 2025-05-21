@@ -17,7 +17,13 @@ interface User {
   roleId: number;
   // Add any other properties specific to your user
 }
-
+interface inviteCode{
+  name: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  roleId: number;
+}
 
 interface LoginResponse {
   message: string;
