@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:3000/api/v1/users';
+  private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/users';
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders():HttpHeaders {
@@ -19,13 +19,13 @@ export class UserService {
 
   getUsers(): Observable<any[]> {
     const token = localStorage.getItem('access_token');
-    return this.http.get<any[]>(`http://localhost:3000/api/v1/users/users`, {
+    return this.http.get<any[]>(`https://elearning-f7yg.onrender.com/api/v1/users/users`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
   }
-  
+
 
   getUserById(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/users/${userId}`,{
@@ -38,7 +38,7 @@ export class UserService {
   }
 
   deleteUser(userId: number): Observable<any> {
-    return this.http.delete(`http://localhost:3000/api/v1/users/users/${userId}`,{
+    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/users/users/${userId}`,{
       headers:this.getAuthHeaders()});
   }
 

@@ -14,7 +14,7 @@ interface User {
   username: string;
   roleName: string; // "Admin", "Teacher", or "Student"
   email: string;
-  roleId: number; 
+  roleId: number;
   // Add any other properties specific to your user
 }
 
@@ -29,7 +29,7 @@ interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthServicesService {
-  private apiUrl = `http://localhost:3000/api/v1/auth`;
+  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/auth`;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -38,12 +38,12 @@ export class AuthServicesService {
       .pipe(
         tap((response) => {
           this.storeToken(response.accessToken);
-          this.storeUser(response.user); 
+          this.storeUser(response.user);
           // console.log('Stored user:', response.user); // Log stored user
         })
       );
   }
-  
+
 
   register(userData: any): Observable<RegistrationResponse> {
     return this.http
@@ -56,7 +56,7 @@ export class AuthServicesService {
 
 
   logout(): void {
-    this.http.post(`${this.apiUrl}/logout`, {}, { 
+    this.http.post(`${this.apiUrl}/logout`, {}, {
       headers: {
         Authorization: `Bearer ${this.getToken()}` // Attach the token for the backend to invalidate
       }
@@ -75,8 +75,8 @@ export class AuthServicesService {
       }
     });
   }
-  
-  
+
+
 
   getUser(): User | null {
     const userString = localStorage.getItem('user');
@@ -92,7 +92,7 @@ export class AuthServicesService {
   }
 
   // Removed duplicate implementation of isTokenExpired
-  
+
 
   private storeToken(token: string): void {
     localStorage.setItem('access_token', token);
@@ -106,7 +106,7 @@ export class AuthServicesService {
   public isTokenExpired(): boolean {
     const token = this.getToken();
     if (!token) return true;
-  
+
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
       const expiry = payload.exp * 1000; // Convert to milliseconds
@@ -116,5 +116,5 @@ export class AuthServicesService {
       return true; // Assume expired if parsing fails
     }
   }
-  
+
 }

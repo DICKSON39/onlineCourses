@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 interface Class {
   id: number;
-  course: any; 
+  course: any;
   startTime: string;
   endTime: string;
   meetingLink?: string;
@@ -29,7 +29,7 @@ interface CreateClassResponse {
   providedIn: 'root'
 })
 export class ClassService {
-  private apiUrl = `http://localhost:3000/api/v1/class`
+  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/class`
 
   constructor(private http:HttpClient) { }
 
@@ -43,21 +43,21 @@ export class ClassService {
   }
 
   getClassesByTeacher(teacherId: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:3000/api/v1/class/teacher/${teacherId}`, { headers: this.getAuthHeaders() });
+    return this.http.get<any[]>(`https://elearning-f7yg.onrender.com/api/v1/class/teacher/${teacherId}`, { headers: this.getAuthHeaders() });
   }
 
   deleteClass(id:number) {
-    return this.http.delete(`http://localhost:3000/api/v1/class/${id}`,{headers:this.getAuthHeaders()})
+    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/class/${id}`,{headers:this.getAuthHeaders()})
   }
 
   updateClass(classId: number, data: any) {
     return this.http.put(
-      `http://localhost:3000/api/v1/class/${classId}`, 
+      `https://elearning-f7yg.onrender.com/api/v1/class/${classId}`,
       data, // Send the data as the body of the request
       { headers: this.getAuthHeaders() } // Attach headers with the token
     );
   }
-  
+
 
 
 }

@@ -10,7 +10,7 @@ interface CourseViewModel {
   description: string;
   teacher: string;
   imageFullUrl: string;
-  
+
 }
 @Component({
   selector: 'app-course-list',
@@ -21,7 +21,7 @@ interface CourseViewModel {
 export class CourseListComponent implements OnInit {
   courses: CourseViewModel[] = [];
   errorMessage: string = '';
-  backendBaseUrl: string = 'http://localhost:3000'; 
+  backendBaseUrl: string = 'https://elearning-f7yg.onrender.com';
   searchTerm: string = '';
 
 
@@ -55,7 +55,7 @@ export class CourseListComponent implements OnInit {
     this.router.navigate(['/courses', courseId]);
   }
 
-  
+
 get filteredCourses() {
   if (!this.searchTerm) return this.courses;
 

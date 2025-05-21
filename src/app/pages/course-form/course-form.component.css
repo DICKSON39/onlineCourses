@@ -1,57 +1,79 @@
 /* Course form container */
 .course-form {
-    background: rgba(30, 41, 59, 0.7);
-    padding: 2em;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    margin: auto;
-    color: #f0f8ff;
-  }
-  
-  /* Form label */
-  .course-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-    color: #a2d2ff;
-  }
-  
-  /* Form input, select, file */
-  .course-form input,
-  .course-form select {
-    width: 100%;
-    padding: 0.75em;
-    margin-bottom: 1.5em;
-    background: #0d1a36;
-    color: #f0f8ff;
-    border: 1px solid #60a5fa;
-    border-radius: 8px;
-    font-family: 'Space Mono', monospace;
-    box-sizing: border-box;
-  }
-  
-  /* File input (no change in appearance in some browsers) */
-  .course-form input[type="file"] {
-    background: transparent;
-    border: none;
-  }
-  
-  /* Submit button */
-  .course-form button[type="submit"] {
-    background: linear-gradient(135deg, #4aed88, #2dd4bf);
-    color: #080f29;
-    border: none;
-    padding: 0.75em 2em;
-    border-radius: 8px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  /* Button hover */
-  .course-form button[type="submit"]:hover {
-    background: linear-gradient(135deg, #60f9a6, #4dddc7);
-  }
-  
+  background: rgba(25, 20, 40, 0.8); /* Darker, more purple background */
+  padding: 2.5em; /* Slightly increased padding */
+  border-radius: 18px; /* More rounded corners */
+  box-shadow: 0 8px 20px rgba(150, 0, 255, 0.3); /* Neon purple shadow */
+  max-width: 600px;
+  margin: auto;
+  color: #ffdb58; /* Gold text */
+  border: 2px solid #ff79c6; /* Hot pink border */
+}
+
+/* Form label */
+.course-form label {
+  display: block;
+  margin-bottom: 0.8em; /* Increased margin */
+  font-weight: bold;
+  color: #ffb86c; /* Orange-gold label */
+  text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5); /* Pink text shadow */
+}
+
+/* Form input, select, file */
+.course-form input,
+.course-form select {
+  width: 100%;
+  padding: 0.8em; /* Slightly increased padding */
+  margin-bottom: 1.8em; /* Increased margin */
+  background: rgba(0, 0, 0, 0.5); /* Translucent black background */
+  color: #fff59d; /* Light yellow input text */
+  border: 1px solid #ff79c6; /* Hot pink border */
+  border-radius: 10px; /* More rounded corners */
+  font-family: 'Space Mono', monospace;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+}
+
+.course-form input:focus,
+.course-form select:focus {
+  outline: none;
+  border-color: #42e6a4; /* Neon green focus border */
+  box-shadow: 0 0 5px rgba(66, 230, 164, 0.5); /* Neon green focus shadow */
+}
+
+
+/* File input (no change in appearance in some browsers) */
+.course-form input[type="file"] {
+  background: transparent;
+  border: none;
+  margin-top: 0.5em; /* Add a little margin */
+}
+
+/* Submit button */
+.course-form button[type="submit"] {
+  background: linear-gradient(to right, #ff006e, #560bad); /* Gradient: Pink to Purple */
+  color: #ffffff;
+  border: none;
+  padding: 0.8em 2.2em; /* Slightly increased padding */
+  border-radius: 12px; /* More rounded */
+  font-size: 1.1em; /* Larger font size */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(255, 0, 110, 0.3); /* Pink shadow */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Button hover */
+.course-form button[type="submit"]:hover {
+  background: linear-gradient(to right, #ff4585, #7e57c2); /* Slightly lighter gradient */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(255, 0, 110, 0.4);
+}
+
+/* Button active */
+.course-form button[type="submit"]:active {
+  background: linear-gradient(to right, #e6005c, #43057c);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 0, 110, 0.3);
+}

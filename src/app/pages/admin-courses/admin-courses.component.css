@@ -1,84 +1,119 @@
 .course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Spacing between course cards */
-    padding: 20px; /* Overall padding for the grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 25px;
+}
+
+.course-card {
+  background-color: #f8fafc;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-color: #b0bec5;
+}
+
+.course-card h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2d3748;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.course-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  transition: border-radius 0.3s ease;
+}
+
+.course-card:hover img {
+  border-radius: 12px;
+}
+
+.course-card .description {
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.course-card .teacher {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.course-card .course-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.course-card .info-button,
+.course-card .apply-button {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-card .info-button:hover,
+.course-card .apply-button:hover {
+  background-color: #3182ce;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+}
+
+.course-card .info-button:active,
+.course-card .apply-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.course-card .apply-button {
+  background-color: #e53e3e;
+}
+
+.course-card .apply-button:hover {
+  background-color: #c53030;
+}
+
+@media (max-width: 768px) {
+  .course-grid {
+    grid-template-columns: 1fr;
   }
-  
   .course-card {
-    background-color: #f9f9f9; /* Light background for each card */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    display: flex;
-    flex-direction: column; /* Arrange content vertically */
+    margin-bottom: 20px;
   }
-  
-  .course-card h3 {
-    margin-top: 0; /* Remove default top margin for the heading */
-    margin-bottom: 10px;
-    color: #333; /* Dark heading text */
-  }
-  
-  .course-card img {
-    width: 100%; /* Make the image fill the card width */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 4px; /* Slightly round image corners */
-    margin-bottom: 10px;
-    display: block; /* Prevent extra space below inline images */
-    object-fit: cover; /* Ensure image covers the area without distortion */
-    aspect-ratio: 16 / 9; /* Optional: Maintain a specific aspect ratio */
-  }
-  
-  .course-card .description {
-    color: #555; /* Gray description text */
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    flex-grow: 1; /* Allow description to take up remaining vertical space */
-  }
-  
-  .course-card .teacher {
-    color: #777; /* Light gray teacher text */
-    font-size: 0.85rem;
-    margin-bottom: 15px;
-  }
-  
   .course-card .course-actions {
-    display: flex;
-    gap: 10px; /* Spacing between buttons */
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .course-card .info-button,
-  .course-card .apply-button {
-    background-color: #007bff; /* Primary blue color */
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
+  .course-card .course-actions button {
+    width: 100%;
   }
-  
-  .course-card .info-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .course-card .apply-button {
-    background-color: #dc3545; /* Red color for delete */
-  }
-  
-  .course-card .apply-button:hover {
-    background-color: #c82333; /* Darker red on hover */
-  }
-  
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 600px) {
-    .course-grid {
-      grid-template-columns: 1fr; /* Stack cards on smaller screens */
-    }
-    .course-card {
-      margin-bottom: 15px; /* Add more space between stacked cards */
-    }
-  }
+}

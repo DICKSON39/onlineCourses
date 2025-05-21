@@ -24,7 +24,8 @@ import { AdminCoursesComponent } from './pages/admin-courses/admin-courses.compo
 import { EditCourseComponent } from './pages/edit-course/edit-course.component';
 import { ShowPaymentsComponent } from './pages/show-payments/show-payments.component';
 import { MyPaymentsComponent } from './pages/my-payments/my-payments.component';
-
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { PaymentCancelComponent } from './pages/payment-cancel/payment-cancel.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -34,6 +35,8 @@ export const routes: Routes = [
   {path: 'about',component:AboutComponent},
   {path:'policy',component:PolicyComponent},
   {path:'terms',component:TermsComponent},
+  { path: 'payment-success', component: PaymentSuccessComponent },
+  { path: 'payment-cancel', component: PaymentCancelComponent },
 
 
   {

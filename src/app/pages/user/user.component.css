@@ -1,209 +1,284 @@
 .user-list-container {
-  background: rgba(30, 41, 59, 0.8); /* Dark, translucent background */
-  color: #f0f8ff; /* Light text */
-  padding: 2em;
-  border-radius: 15px; /* More pronounced rounded corners */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow */
- }
+  background: rgba(30, 41, 59, 0.85); /* Slightly less translucent */
+  color: #f8fafc; /* Off-white, slightly warmer text */
+  padding: 2.2em; /* Slightly increased padding */
+  border-radius: 18px; /* More rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added transition */
+}
 
- .user-list-title {
-  color: #a2d2ff; /* Electric blue title */
-  font-size: 1.8em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid #60a5fa; /* Blue border */
-  padding-bottom: 0.5em;
- }
+.user-list-container:hover {
+  transform: translateY(-4px); /* Slight lift on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6); /* Increased shadow on hover */
+}
 
- .user-table {
+
+.user-list-title {
+  color: #e0f2fe; /* Light cyan title */
+  font-size: 2.2em; /* Larger title */
+  margin-bottom: 1.2em;
+  border-bottom: 3px solid #81d4fa; /* Lighter blue border */
+  padding-bottom: 0.6em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added text shadow */
+  letter-spacing: 0.05em; /* Slight letter spacing */
+}
+
+.user-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1em;
- }
+  margin-top: 1.5em; /* Increased margin */
+}
 
- .search-container {
-  max-width: 400px;
-  margin: 1rem 0;
+.search-container {
+  max-width: 450px; /* Slightly wider */
+  margin: 1.2rem 0;
   text-align: right;
 }
 
 .search-input {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 0.6rem 1.2rem; /* Slightly increased padding */
+  font-size: 1.1rem; /* Larger font size */
+  border-radius: 8px; /* More rounded */
+  border: 1px solid #b0bec5; /* Lighter border */
   width: 100%;
-  max-width: 300px;
+  max-width: 350px; /* Wider input */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+  background-color: #f8fafc; /* Light background for input */
+  color: #2d3748;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #81d4fa; /* Focus border color */
+  box-shadow: 0 0 0 3px rgba(129, 212, 250, 0.2); /* Focus shadow */
 }
 
 
- .user-table th,
- .user-table td {
-  padding: 0.75em 1em;
-  border-bottom: 1px solid rgba(162, 210, 255, 0.1); /* Subtle electric blue border */
+.user-table th,
+.user-table td {
+  padding: 0.9em 1.4em; /* Slightly increased padding */
+  border-bottom: 1px solid rgba(129, 212, 250, 0.15); /* Lighter border */
   text-align: left;
- }
+  transition: background-color 0.2s ease; /* Added transition for hover effect on rows*/
+}
 
- .user-role-badge {
-  padding: 0.3em 0.8em; /* Slightly adjusted padding */
-  border-radius: 15px; /* More rounded */
-  font-weight: bold;
-  font-size: 0.9em; /* Slightly larger */
+.user-table th,
+.user-table td {
+    transition: background-color 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.user-table tr:hover td { /* Hover effect for table cells */
+  background-color: rgba(129, 212, 250, 0.05); /* Very light blue on hover */
+}
+
+
+.user-role-badge {
+  padding: 0.4em 1.0em;
+  border-radius: 20px; /* Even more rounded */
+  font-weight: 600; /* Medium font weight */
+  font-size: 0.95em; /* Slightly larger */
   text-transform: uppercase;
   display: inline-block;
- }
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  transition: transform 0.2s ease;
+}
 
- .admin-role {
-  background-color: #a2d2ff; /* Electric blue */
-  color: #080f29; /* Dark text */
- }
+.user-role-badge:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+}
 
- .teacher-role {
-  background-color: #4aed88; /* Green */
-  color: #080f29; /* Dark text */
- }
+.admin-role {
+  background-color: #81d4fa; /* Light cyan */
+  color: #080f29;
+}
 
- .student-role {
-  background-color: #60a5fa; /* Blue */
-  color: #080f29; /* Dark text */
- }
+.teacher-role {
+  background-color: #6ee7b7; /* Teal green */
+  color: #080f29;
+}
 
- .unknown-role {
-  background-color: #778899; /* Gray */
-  color: #f0f8ff; /* Light text */
- }
+.student-role {
+  background-color: #93c5fd; /* Light blue */
+  color: #080f29;
+}
 
- .user-table th {
-  background-color: rgba(162, 210, 255, 0.1); /* Light electric blue background */
-  color: #a2d2ff; /* Electric blue text */
+.unknown-role {
+  background-color: #9ca3af; /* Cool gray */
+  color: #f8fafc;
+}
+
+.user-table th {
+  background-color: rgba(129, 212, 250, 0.1);
+  color: #81d4fa;
   text-transform: uppercase;
-  font-size: 0.9em; /* Slightly larger */
- }
+  font-size: 1.1em; /* Larger font size for header */
+  font-weight: 600; /* Medium font weight for header */
+  letter-spacing: 0.05em;
+}
 
- .user-table tr:hover {
-  background: rgba(30, 41, 59, 0.3); /* Darker hover */
- }
+.user-table tr:hover {
+  background: rgba(30, 41, 59, 0.4);
+}
 
- .user-role-badge {
-  display: inline-block;
-  padding: 0.3em 0.7em; /* Slightly adjusted */
-  border-radius: 20px;
-  font-size: 0.8em; /* Slightly larger */
-  font-weight: bold;
-  background-color: #4a90e2; /* A shade of blue */
-  color: #f0f8ff; /* Light text */
- }
 
- .action-btn.delete-btn {
-  background-color: #ff4b2b; /* Keep original red */
+.action-btn.delete-btn {
+  background-color: #ef4444;
   color: white;
-  padding: 8px 16px; /* Adjusted padding */
+  padding: 0.8em 1.8em; /* Slightly increased horizontal padding */
   border: none;
-  border-radius: 8px; /* More rounded */
-  cursor: pointer;
-  transition: background 0.3s ease;
- }
-
- .action-btn.delete-btn:hover {
-  background-color: #ff1e00;
- }
-
- .snackbar-success {
-  background-color: #4caf50; /* Keep original green */
-  color: white;
-  border-radius: 8px; /* Added border-radius */
-  padding: 0.8em 1.5em; /* Adjusted padding */
- }
-
- .snackbar-error {
-  background-color: #f44336; /* Keep original red */
-  color: white;
-  border-radius: 8px; /* Added border-radius */
-  padding: 0.8em 1.5em; /* Adjusted padding */
- }
-
- /* General Button Styles */
- .btn {
-  display: inline-block;
-  padding: 12px 24px; /* Adjusted padding */
-  margin: 5px;
-  text-align: center;
   border-radius: 10px; /* More rounded */
-  font-size: 1em; /* Slightly larger */
-  font-weight: bold; /* Make buttons bold */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-btn.delete-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn.delete-btn:active {
+  background-color: #b91c1c;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.snackbar-success {
+  background-color: #16a34a;
+  color: white;
+  border-radius: 10px;
+  padding: 1em 2em; /* Increased padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out, slideOut 0.3s 2.5s ease-in forwards;
+}
+
+.snackbar-error {
+  background-color: #dc2626;
+  color: white;
+  border-radius: 10px;
+  padding: 1em 2em; /* Increased padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out, slideOut 0.3s 2.5s ease-in forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+
+/* General Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.8em 1.8em;
+  margin: 0.5em;
+  text-align: center;
+  border-radius: 12px; /* More rounded */
+  font-size: 1.1em; /* Larger font size */
+  font-weight: 600; /* Medium font weight */
   text-decoration: none;
   transition: all 0.3s ease;
   border: none;
- }
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
 
- /* View Button */
- .btn-info {
-  background-color: #60a5fa; /* Blue */
-  color: #080f29; /* Dark text */
- }
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
 
- .btn-info:hover {
-  background-color: #4a90e2; /* Darker blue */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
- }
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
 
- .btn-info:active {
-  background-color: #376ab3; /* Even darker blue */
- }
 
- /* Edit Button */
- .btn-edit {
-  background-color: #4aed88; /* Green */
-  color: #080f29; /* Dark text */
- }
+/* View Button */
+.btn-info {
+  background-color: #81d4fa;
+  color: #080f29;
+}
 
- .btn-edit:hover {
-  background-color: #2dd4bf; /* Darker green */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
- }
+.btn-info:hover {
+  background-color: #4fc3f7;
+}
 
- .btn-edit:active {
-  background-color: #1aa788; /* Even darker green */
- }
 
- /* General Button Hover Effect */
- .btn:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
- }
+/* Edit Button */
+.btn-edit {
+  background-color: #6ee7b7;
+  color: #080f29;
+}
 
- /* Responsive button styling */
- @media (max-width: 768px) {
+.btn-edit:hover {
+  background-color: #34d399;
+}
+
+
+/* Responsive button styling */
+@media (max-width: 768px) {
   .btn {
-   padding: 10px 20px; /* Adjusted padding */
-   font-size: 0.9em; /* Adjusted font size */
+    padding: 0.7em 1.5em;
+    font-size: 1em;
   }
- }
+  .search-input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
 
- @media (max-width: 768px) {
+@media (max-width: 768px) {
   .user-table,
   .user-table thead,
   .user-table tbody,
   .user-table th,
   .user-table td,
   .user-table tr {
-   display: block;
+    display: block;
   }
 
   .user-table th {
-   display: none;
+    display: none;
   }
 
   .user-table td {
-   padding: 1em;
-   border: none;
-   border-bottom: 1px solid #ddd;
-   position: relative;
+    padding: 0.8em;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    padding-left: 50%; /* Make space for the data-label */
   }
 
   .user-table td::before {
-   content: attr(data-label);
-   font-weight: bold;
-   display: block;
-   color: #a2d2ff; /* Electric blue label */
-   margin-bottom: 0.5em;
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    color: #81d4fa;
+    margin-bottom: 0.5em;
+    position: absolute; /* Position the label */
+    left: 1em;
+    top: 0.8em;
   }
- }
+   .user-table td {
+        text-align: left; /* Keep text left-aligned */
+    }
+}

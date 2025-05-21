@@ -17,16 +17,16 @@ interface Course {
   providedIn: 'root'
 })
 export class CourseService {
- 
-  private apiUrl = 'http://localhost:3000/api/v1/courses';
-  private baseUrl = 'http://localhost:3000/api/v1/teachers';
+
+  private apiUrl = 'https://elearning-f7yg.onrender.com/api/v1/courses';
+  private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/teachers';
   constructor(private http:HttpClient) { }
 
   getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('access_token');
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
-  
+
 
   createCourse(courseData: FormData): Observable<any> {
     return this.http.post(this.apiUrl, courseData, {
@@ -41,7 +41,7 @@ export class CourseService {
   getAllCourseWithTeachers():Observable<Course[]>{
     return this.http.get<Course[]>(`${this.apiUrl}/courses`)
   }
-  
+
   getCourseById(courseId:number):Observable<Course> {
     return this.http.get<Course>(`${this.apiUrl}/courses/${courseId}`,{headers:this.getAuthHeaders()})
   }
@@ -57,7 +57,7 @@ export class CourseService {
   }
 
   updateCourse(courseId: number, formData: FormData):Observable<any> {
-    return this.http.put(`http://localhost:3000/api/v1/courses/courses/${courseId}`,formData, {
+    return this.http.put(`https://elearning-f7yg.onrender.com/api/v1/courses/courses/${courseId}`,formData, {
       headers: this.getAuthHeaders()
   })
 }

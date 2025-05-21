@@ -1,45 +1,102 @@
 <div class="course-details-container" *ngIf="course; else loadingOrError">
-    <h2>{{ course.title }}</h2>
-    <p>{{ course.description }}</p>
-    <p class="price">Price: ${{ course.price }}</p>
-    <p>Teacher: {{ teacherName }}</p> <img [src]="course.imageUrl" alt="{{ course.title }}" *ngIf="course.imageUrl">
-    <p class="description">{{ course.description | slice:0:100 }}...</p>
-  
-    <div class="enroll-button-container">
-      <button class="enroll-button" (click)="handlePayment(course.id,course.price)">Enroll Now</button>
-    </div>
-  </div>
+  <h2>{{ course.title }}</h2>
+  <img *ngIf="course.imageUrl" [src]="course.imageUrl" alt="{{ course.title }}" />
 
- <!-- Modal -->
+  <p class="price">Price: Ksh {{ course.price }}</p>
+  <p>Teacher: {{ teacherName }}</p>
+  <p class="description">{{ course.description | slice: 0:100 }}...</p>
+
+  <div class="enroll-button-container">
+    <button class="enroll-button" (click)="startPaymentFlow(course.id, course.price)">
+      Enroll Now
+    </button>
+  </div>
+</div>
+
 <div *ngIf="showModal" class="modal-backdrop">
   <div class="modal">
     <h3>Confirm Payment</h3>
-    <p>Are you sure you want to pay Ksh {{ selectedCoursePrice }} for this course?</p>
-    <button (click)="handleConfirmedPayment()">Yes, Pay</button>
-    <button (click)="showModal = false">Cancel</button>
+    <p>
+      Are you sure you want to pay Ksh {{ selectedCoursePrice }} for the course
+      "<strong>{{ course?.title }}</strong>"?
+    </p>
+
+    <div class="payment-method-selection">
+      <h4>Select Payment Method:</h4>
+      <label>
+        <input
+          type="radio"
+          name="paymentMethod"
+          value="stripe"
+          [(ngModel)]="selectedPaymentMethod"
+          (change)="startPaymentFlow(selectedCourseId, selectedCoursePrice)"
+        />
+        Credit/Debit Card (Stripe)
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="paymentMethod"
+          value="mpesa"
+          [(ngModel)]="selectedPaymentMethod"
+          (change)="startPaymentFlow(selectedCourseId, selectedCoursePrice)"
+        />
+        M-Pesa
+      </label>
+    </div>
+
+    <div
+      id="card-element"
+      class="stripe-card-element-container"
+      *ngIf="selectedPaymentMethod === 'stripe'"
+    ></div>
+
+    <div *ngIf="selectedPaymentMethod === 'mpesa'">
+      <label for="mpesaPhoneNumber">M-Pesa Phone Number:</label>
+      <input
+        type="tel"
+        id="mpesaPhoneNumber"
+        [(ngModel)]="mpesaPhoneNumber"
+        placeholder="e.g., 254712345678"
+        required
+      />
+    </div>
+
+    <div class="modal-buttons">
+      <button (click)="handleConfirmedPayment()" [disabled]="isProcessingPayment">
+        Yes, Pay
+      </button>
+      <button (click)="showModal = false" [disabled]="isProcessingPayment">
+        Cancel
+      </button>
+    </div>
+
+    <div *ngIf="isProcessingPayment" class="spinner">
+      Processing payment, please wait...
+    </div>
   </div>
 </div>
-  
-  <ng-template #loadingOrError>
-    <div class="loading-error-container" *ngIf="errorMessage; else loading">
-      <p class="error">{{ errorMessage }}</p>
-    </div>
-    <ng-template #loading>
-      <div class="loading-error-container">
-        <p>Loading course details...</p>
-      </div>
-    </ng-template>
-  </ng-template>
 
+<ng-template #loadingOrError>
+  <div class="loading-error-container">
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    <p *ngIf="!errorMessage">Loading course details...</p>
+  </div>
+</ng-template>
+
+<section class="payment-history" *ngIf="paymentHistory.length > 0; else noPayments">
   <h3>Your Payment History</h3>
-<ul *ngIf="paymentHistory.length > 0; else noPayments">
-  <li *ngFor="let payment of paymentHistory">
-    Paid Ksh {{ payment.amount }}  on {{ payment.paymentDate | date:'medium' }} {{ payment.status }} 
-    <em>Status:</em> {{ payment.status }}<br />
-    <small> {{ payment.userName }} ({{ payment.userEmail }})</small>
-    <p>{{ payment.courseDescription }}</p>
-  </li>
-</ul>
+  <ul>
+    <li *ngFor="let payment of paymentHistory" class="payment-item">
+      <strong>Paid:</strong> Ksh {{ payment.amount }} <br />
+      <strong>Date:</strong> {{ payment.paymentDate | date: 'medium' }} <br />
+      <strong>Status:</strong> {{ payment.status }} <br />
+      <small>{{ payment.userName }} ({{ payment.userEmail }})</small>
+      <p>{{ payment.courseDescription }}</p>
+    </li>
+  </ul>
+</section>
+
 <ng-template #noPayments>
   <p>You haven't made any payments yet.</p>
 </ng-template>

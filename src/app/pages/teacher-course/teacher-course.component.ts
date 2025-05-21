@@ -14,7 +14,7 @@ import { CreateClassComponent } from '../create-class/create-class.component';
 })
 export class TeacherCourseComponent implements OnInit {
   courses: any[] = [];
-  backendBaseUrl: string = 'http://localhost:3000';
+  backendBaseUrl: string = 'https://elearning-f7yg.onrender.com';
   selectedCourse: any = null;
 
   constructor(private courseService: CourseService) {}
@@ -39,7 +39,7 @@ export class TeacherCourseComponent implements OnInit {
     this.selectedCourse = null; // Close modal
   }
  // Re-fetch or update the course data
-  
+
 }
 
 

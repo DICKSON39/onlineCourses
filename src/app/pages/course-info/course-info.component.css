@@ -1,181 +1,380 @@
-/* Course details container */
+/* Course details container - Cool Vibe */
 .course-details-container {
-    background: rgba(30, 41, 59, 0.7);
-    padding: 2em;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    margin: 2em auto; /* Added margin for spacing */
-    color: #f0f8ff;
-    font-family: 'Space Mono', monospace; /* Added font-family for consistency */
-  }
-  
-  /* Course title */
-  .course-details-container h2 {
-    color: #a2d2ff;
-    margin-bottom: 0.75em;
-    font-size: 1.75em;
-  }
-  
-  /* Course description, price, teacher */
-  .course-details-container p {
-    margin-bottom: 1em;
-    color: #f0f8ff;
-  }
-  
-  /* Price text */
-  .course-details-container .price {
-    font-weight: bold;
-    color: #4aed88;
-  }
-  
-  /* Image styling */
-  .course-details-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1em;
-  }
-  
-  /* Enroll button container */
-  .enroll-button-container {
-    text-align: center;
-    margin-top: 1.5em;
-  }
-  
-  /* Enroll button */
-  .enroll-button-container .enroll-button {
-    background: linear-gradient(135deg, #4aed88, #2dd4bf);
-    color: #080f29;
-    border: none;
-    padding: 0.75em 2em;
-    border-radius: 8px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    font-family: 'Space Mono', monospace; /* Added font-family for consistency */
-  }
-  
-  /* Enroll button hover */
-  .enroll-button-container .enroll-button:hover {
-    background: linear-gradient(135deg, #60f9a6, #4dddc7);
-  }
-  
-  /* Loading/Error container */
-  .loading-error-container {
-    background: rgba(30, 41, 59, 0.7);
-    padding: 2em;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    margin: 2em auto; /* Added margin for spacing */
-    color: #f0f8ff;
-    text-align: center;
-    font-family: 'Space Mono', monospace; /* Added font-family for consistency */
-  }
-  
-  /* Error text */
-  .loading-error-container .error {
-    color: #ff6b6b;
-    font-weight: bold;
-    margin-bottom: 1em;
-  }
+  background: rgba(44, 62, 80, 0.8); /* Dark blue-grey with transparency */
+  padding: 2.5em; /* Slightly more padding */
+  border-radius: 16px; /* More rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
+  max-width: 700px; /* Slightly wider */
+  margin: 3em auto; /* More top/bottom margin */
+  color: #ecf0f1; /* Light grey text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border */
+}
 
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: 100px auto;
-    text-align: center;
-  }
-  
+/* Course title - Cool Vibe */
+.course-details-container h2 {
+  color: #3498db; /* Bright blue accent color */
+  margin-bottom: 1em; /* More space below title */
+  font-size: 2em; /* Slightly larger title */
+  font-weight: 500; /* Lighter font weight */
+}
 
-  .loading-error-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .error {
-    color: red;
-    background-color: #ffe0e0;
-    border: 1px solid #ffb3b3;
-  }
-  
-  .loading-error-container p {
-    margin: 0;
-  }
-  
-  h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 600px; /* Limit the width for better readability */
-  }
-  
-  li {
-    background-color: #f9f9f9;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border: 1px solid #eee;
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out the content */
-    align-items: center; /* Vertically center items */
-    word-wrap: break-word; /* prevent long words from overflowing */
-  }
-  
-  li:last-child {
-    margin-bottom: 0; /* Remove bottom margin from the last item */
-  }
-  
-  li:nth-child(odd) {
-    background-color: #f1f1f1; /* Slightly different background for odd items */
-  }
-  
-  .no-payments {
-    text-align: center;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 5px;
-    margin: 1rem auto;
-    max-width: 600px;
-    border: 1px solid #ddd;
-  }
-  
-  /* Style for payment status */
-  li span {
-    font-weight: bold; /* Make the status bold */
-    margin-left: 1rem; /* Add some space to the left of the status */
-  }
-  li span.paid {
-    color: green;
-  }
-  li span.pending{
-    color: orange;
-  }
-  li span.failed {
-    color: red;
-  }
+/* Course image - Cool Vibe (subtle border) */
+.course-details-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 1.5em;
+  border: 2px solid rgba(255, 255, 255, 0.05); /* Very subtle border */
+}
+
+/* Course description, price, teacher - Cool Vibe */
+.course-details-container p {
+  margin-bottom: 1.2em;
+  color: #d0d7de; /* Softer grey text */
+  line-height: 1.6; /* Improved readability */
+}
+
+/* Price text - Cool Vibe (accent color) */
+.course-details-container .price {
+  font-weight: 600;
+  color: #2ecc71; /* Green accent for price */
+}
+
+/* Enroll button container - Cool Vibe (more spacing) */
+.enroll-button-container {
+  text-align: center;
+  margin-top: 2em;
+}
+
+/* Enroll button - Cool Vibe */
+.enroll-button-container .enroll-button {
+  background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient */
+  color: #fff;
+  border: none;
+  padding: 1em 2.5em; /* Larger padding */
+  border-radius: 10px; /* More rounded */
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4); /* Blue shadow */
+}
+.enroll-button-container .enroll-button:hover {
+  background: linear-gradient(135deg, #5dade2, #3a7bd5); /* Lighter blue on hover */
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(52, 152, 219, 0.6);
+}
+.enroll-button-container .enroll-button:active {
+  background: #2980b9;
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(52, 152, 219, 0.5) inset;
+}
+.enroll-button-container .enroll-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: linear-gradient(135deg, #7f8c8d, #616a6b); /* Grey when disabled */
+}
+
+/* Stripe Card Element - No direct cool vibe style needed, keeping as is */
+#card-element {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.stripe-card-element-container {
+  border: 1px solid #cceeff; /* Lighter blue border for a cool vibe */
+  background-color: #e6f7ff; /* Very light blue background */
+  padding: 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+}
+
+/* Modal backdrop - Darker and slightly more transparent */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Slightly more transparent */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Modal window - Cool vibe background and border */
+.modal {
+  background: #f0f8ff; /* Light, cool background */
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 450px; /* Slightly wider modal */
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  color: #333; /* Darker text for contrast */
+  border: 1px solid #add8e6; /* Light blue border */
+}
+
+/* Modal buttons container - Adjusted spacing */
+.modal-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* More space between buttons */
+}
+
+/* Modal buttons - Cool vibe styling */
+.modal button {
+  background: #3498db; /* Blue button */
+  color: #fff;
+  border: none;
+  padding: 0.8em 2em;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+.modal button:hover:not(:disabled) {
+  background: #5dade2;
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.5);
+}
+.modal button:active:not(:disabled) {
+  background: #2980b9;
+  transform: scale(0.98);
+  box-shadow: 0 1px 3px rgba(52, 152, 219, 0.4) inset;
+}
+.modal button:first-child { /* Primary/confirm button */
+  background-color: #2ecc71; /* Green confirm button */
+  box-shadow: 0 2px 6px rgba(46, 204, 113, 0.3);
+}
+.modal button:first-child:hover:not(:disabled) {
+  background-color: #27ae60;
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.5);
+}
+.modal button:last-child { /* Secondary/cancel button */
+  background-color: #e74c3c; /* Red cancel button */
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+}
+.modal button:last-child:hover:not(:disabled) {
+  background-color: #c0392b;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.5);
+}
+.modal button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: #95a5a6; /* Grey when disabled */
+}
+
+/* Loading/Error container - Cool vibe background */
+.loading-error-container {
+  background: rgba(44, 62, 80, 0.8);
+  padding: 2em;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  margin: 3em auto;
+  color: #ecf0f1;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Error text - Light red/orange for visibility */
+.loading-error-container .error {
+  color: #e67e22;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+/* Headings - Cool blue */
+h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #3498db;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+}
+
+/* Payment history list - Clean background */
+.payment-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* Payment history items - Light background with subtle border */
+.payment-history li {
+  background-color: #f9f9f9;
+  padding: 1.2rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  word-wrap: break-word;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Alternate background for odd items - Slightly lighter */
+.payment-history li:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Remove margin for last item */
+.payment-history li:last-child {
+  margin-bottom: 0;
+}
+
+/* No payments message - Clean style */
+.no-payments {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 1.5rem auto;
+  max-width: 700px;
+  border: 1px solid #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #555;
+}
+
+/* Payment status styles */
+.payment-history li strong {
+  font-weight: bold;
+}
+.payment-history li small {
+  color: #777;
+  font-style: italic;
+}
+
+/* Status color badges - Cool color scheme */
+.status {
+  font-weight: bold;
+  margin-left: 0.5rem;
+  padding: 0.2em 0.6em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  display: inline-block;
+  color: #fff;
+}
+.status.paid {
+  background-color: #2ecc71;
+}
+.status.pending {
+  background-color: #f39c12;
+}
+.status.failed {
+  background-color: #e74c3c;
+}
+
+/* --- M-Pesa Specific Styles --- */
+
+/* Payment Method Selection */
+.payment-method-selection {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left; /* Align radio buttons to the left */
+  color: #555;
+}
+
+.payment-method-selection h4 {
+  color: #3498db; /* Blue heading for selection */
+  margin-bottom: 0.8rem;
+  font-size: 1.1em;
+}
+
+.payment-method-selection label {
+  display: flex; /* Use flexbox for better alignment */
+  align-items: center;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  font-size: 1em;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.payment-method-selection label:hover {
+  color: #3498db; /* Highlight on hover */
+}
+
+.payment-method-selection input[type="radio"] {
+  margin-right: 0.8rem; /* Space between radio button and text */
+  appearance: none; /* Hide default radio button */
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3498db; /* Blue border */
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0; /* Prevent shrinking on smaller screens */
+}
+
+.payment-method-selection input[type="radio"]:checked {
+  background-color: #3498db; /* Blue fill when checked */
+  border-color: #3498db;
+}
+
+.payment-method-selection input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #fff; /* White dot inside when checked */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* M-Pesa Phone Number Input */
+.modal div input[type="tel"] { /* Targeting the phone number input within the modal */
+  width: calc(100% - 24px); /* Full width minus padding */
+  padding: 12px;
+  margin-top: 0.8rem; /* Space above input */
+  margin-bottom: 1.5rem; /* Space below input */
+  border: 1px solid #add8e6; /* Light blue border */
+  border-radius: 8px;
+  font-size: 1em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.modal div input[type="tel"]:focus {
+  outline: none;
+  border-color: #3498db; /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Blue glow on focus */
+}
+
+.modal div label[for="mpesaPhoneNumber"] {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Spinner (already existing but ensuring consistency) */
+.spinner {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
