@@ -1,51 +1,55 @@
 <body>
-    <div class="sidebar">
-      <h2>Navigation</h2>
-      <a >Dashboard</a>
-      <div class="separator"></div>
-      <div class="group-title">Management</div>
-      <a (click)="navigateToAvailableUsers()">User Management</a>
-      <a routerLink="/admin/courses">Create a Course</a>
-      <a routerLink="/my-courses"> Courses</a>
-      <a  routerLink="/admin/payments">Payments</a>
-      <a >Analytics</a>
-      <div class="separator"></div>
-      <div class="group-title">Settings</div>
-      <a >Profile</a>
-      <a >Preferences</a>
-      <a (click)="logout()">Logout</a>
-    </div>
-  
-    <div class="main-content">
-      <h1>Main Content Area</h1>
-      <section id="dashboard" class="section">
-        <h2>Dashboard</h2>
-        <p>Overview of your application.</p>
-      </section>
-      <section id="users" class="section">
-        <h2>User Management</h2>
-        <p>Functionality for user profiles, roles, and permissions.</p>
-      </section>
-      <section id="courses" class="section">
-        <h2>Courses</h2>
-        <p>Functionality for managing course content, scheduling, and student enrollment.</p>
-      </section>
-      <section id="payments" class="section">
-        <h2>Payments</h2>
-        <p>Functionality for processing transactions, managing subscriptions, and generating invoices.</p>
-      </section>
-      <section id="analytics" class="section">
-        <h2>Analytics</h2>
-        <p>Functionality for dashboards and reports on user activity, course progress, and revenue.</p>
-      </section>
-    </div>
-  
-    <!-- Modal for logout confirmation -->
-    <app-modal
-      [message]="'Are you sure you want to log out?'"
-      [visible]="showModal"
-      (confirm)="confirmLogout()"
-      (cancel)="cancelLogout()">
-    </app-modal>
-  </body>
-  
+<div class="hamburger-menu" (click)="toggleSidebar()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<div class="sidebar" [ngClass]="{'open': isSidebarOpen}">
+  <h2>Navigation</h2>
+  <a (click)="closeSidebar()">Dashboard</a>
+  <div class="separator"></div>
+  <div class="group-title">Management</div>
+  <a (click)="navigateToAvailableUsers()">User Management</a>
+  <a routerLink="/admin/courses" (click)="closeSidebar()">Create a Course</a>
+  <a routerLink="/my-courses" (click)="closeSidebar()"> Courses</a>
+  <a  routerLink="/admin/payments" (click)="closeSidebar()">Payments</a>
+  <a (click)="closeSidebar()">Analytics</a>
+  <div class="separator"></div>
+  <div class="group-title">Settings</div>
+  <a (click)="closeSidebar()">Profile</a>
+  <a (click)="closeSidebar()">Preferences</a>
+  <a (click)="logout()">Logout</a>
+</div>
+
+<div class="main-content">
+  <h1>Main Content Area</h1>
+  <section id="dashboard" class="section">
+    <h2>Dashboard</h2>
+    <p>Overview of your application.</p>
+  </section>
+  <section id="users" class="section">
+    <h2>User Management</h2>
+    <p>Functionality for user profiles, roles, and permissions.</p>
+  </section>
+  <section id="courses" class="section">
+    <h2>Courses</h2>
+    <p>Functionality for managing course content, scheduling, and student enrollment.</p>
+  </section>
+  <section id="payments" class="section">
+    <h2>Payments</h2>
+    <p>Functionality for processing transactions, managing subscriptions, and generating invoices.</p>
+  </section>
+  <section id="analytics" class="section">
+    <h2>Analytics</h2>
+    <p>Functionality for dashboards and reports on user activity, course progress, and revenue.</p>
+  </section>
+</div>
+
+<app-modal
+  [message]="'Are you sure you want to log out?'"
+  [visible]="showModal"
+  (confirm)="confirmLogout()"
+  (cancel)="cancelLogout()">
+</app-modal>
+</body>
