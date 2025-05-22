@@ -1,54 +1,20 @@
-import { Component, OnInit } from '@angular/core'; // Import OnInit
+import { Component } from '@angular/core';
 import { AuthServicesService } from '../../services/auth-services.service';
 import { Router, RouterLink } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common'; // Import CommonModule for ngClass
-import { ClassService } from '../../services/class.service'; // Import ClassService
 
 @Component({
   selector: 'app-student-dashboard',
-  // If this is an Angular 14+ standalone component, add 'standalone: true'
-  // standalone: true,
   imports: [ModalComponent,RouterLink, CommonModule], // Add CommonModule here
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.css'
 })
-export class StudentDashboardComponent implements OnInit { // Implement OnInit
+export class StudentDashboardComponent {
   showModal: boolean = false;
-  isSidebarOpen: boolean = false;
+  isSidebarOpen: boolean = false; // Renamed for consistency and clarity
 
-  // New properties to hold the classId and courseId for the "Join Classes" button
-  defaultClassId: number | null = null;
-  defaultCourseId: number | null = null;
-  loadingClassLink: boolean = true;
-  classLinkError: string = '';
-
-  constructor(
-    private authService:AuthServicesService,
-    private router:Router,
-    private classService: ClassService // Inject ClassService
-  ) {}
-
-  ngOnInit(): void { // Use ngOnInit for initialization logic
-    this.fetchDefaultPaidClassLink();
-  }
-
-  fetchDefaultPaidClassLink(): void {
-    this.loadingClassLink = true;
-    this.classLinkError = '';
-    this.classService.getLatestPaidClass().subscribe({
-      next: (data) => {
-        this.defaultClassId = data.class_id;
-        this.defaultCourseId = data.courseId;
-        this.loadingClassLink = false;
-      },
-      error: (err) => {
-        console.error('Error fetching default paid class link:', err);
-        this.classLinkError = err.error?.message || 'Could not load a class to join. Please try again.';
-        this.loadingClassLink = false;
-      }
-    });
-  }
+  constructor( private authService:AuthServicesService, private router:Router) {}
 
   logout() {
     this.showModal = true;  // Show the modal for confirmation
