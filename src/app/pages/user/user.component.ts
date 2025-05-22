@@ -1,5 +1,5 @@
 // src/app/components/user-list/user.component.ts
-import { Component, OnInit } from '@angular/core';
+import {Component, NgIterable, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UserService, PaginatedUsers, User } from '../../services/user.service'; // Import PaginatedUsers
@@ -13,7 +13,7 @@ import { Subject } from 'rxjs'; // For search optimization
 @Component({
   selector: 'app-user-list',
   templateUrl: './user.component.html',
-  // You might want to add MatPaginatorModule here if using Angular Material pagination
+
   imports: [CommonModule, RouterLink, ModalComponent, FormsModule],
   styleUrls: ['./user.component.css']
 })
@@ -107,6 +107,7 @@ export class UserComponent implements OnInit {
   }
 
   // --- Pagination Methods ---
+  filteredUsers: (NgIterable<unknown> & NgIterable<any>) | undefined | null;
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
       this.currentPage = page;

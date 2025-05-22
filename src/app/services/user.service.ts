@@ -54,19 +54,19 @@ export class UserService {
   }
 
   getUserById(userId: number): Observable<any> {
-    return this.http.get(`${this.usersListUrl}/${userId}`, {
+    return this.http.get(`${this.baseUrl}/${userId}`, {
       headers: this.getAuthHeaders()
     });
   }
 
   updateUser(userId: number, data: any): Observable<any> {
-    return this.http.put(`${this.usersListUrl}/${userId}`, data, {
+    return this.http.put(`${this.baseUrl}/${userId}`, data, {
       headers: this.getAuthHeaders()
     });
   }
 
   deleteUser(userId: number): Observable<any> {
-    return this.http.delete(`${this.usersListUrl}/${userId}`, {
+    return this.http.delete(`${this.baseUrl}/${userId}`, {
       headers: this.getAuthHeaders()
     });
   }
