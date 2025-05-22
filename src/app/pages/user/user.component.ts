@@ -107,7 +107,7 @@ export class UserComponent implements OnInit {
   }
 
   // --- Pagination Methods ---
-  filteredUsers: (NgIterable<unknown> & NgIterable<any>) | undefined | null;
+
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
       this.currentPage = page;
