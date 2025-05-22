@@ -11,7 +11,8 @@
     <ul>
       <li><a routerLink="/courses" (click)="closeSidebar()">Available Classes</a></li>
       <li><a routerLink="/courses" (click)="closeSidebar()">Enroll & Pay</a></li>
-      <li><a  [routerLink]="['/paid-class', someClassIdVariable]" (click)="closeSidebar()">My Paid Classes</a></li> <li><a (click)="closeSidebar()">Attendance & Progress</a></li>
+      <li><a routerLink="/my-paid-classes" (click)="closeSidebar()">My Paid Classes</a></li>
+      <li><a (click)="closeSidebar()">Attendance & Progress</a></li>
       <li><a (click)="closeSidebar()">Certificate</a></li>
       <li><a routerLink="/payments" (click)="closeSidebar()">Payments</a></li>
       <li><a (click)="logout()">Logout</a></li>
@@ -29,7 +30,7 @@
     <h2>Enroll and Pay</h2>
     <p>Enroll in selected courses and proceed with the payment process.</p>
   </section>
-  <section id="my-paid-classes" class="section"> <h2>My Paid Classes</h2>
+  <section id="my-paid-classes-section" class="section"> <h2>My Paid Classes Overview</h2>
     <p>
       Access live sessions or view recorded lectures for your enrolled
       courses.
