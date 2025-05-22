@@ -58,6 +58,15 @@ export class ClassService {
     );
   }
 
+  getClassPaid(courseId: number, classId: number) {
+    return this.http.post(
+      'https://elearning-f7yg.onrender.com/api/v1/class/paid',
+      { courseId, classId },
+      { headers: this.getAuthHeaders() }
+    );
+  }
+
+
 
 
 }

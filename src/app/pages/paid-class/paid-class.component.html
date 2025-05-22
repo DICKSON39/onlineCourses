@@ -1,0 +1,22 @@
+<div *ngIf="loading">Loading class info... 🌀</div>
+
+<div *ngIf="errorMsg && !loading" class="error">
+  ⚠️ {{ errorMsg }}
+</div>
+
+<div *ngIf="classData && !loading">
+  <h2>{{ classData.course_name }}</h2>
+  <p>{{ classData.course_description }}</p>
+  <p>🕒 {{ classData.startTime }} - {{ classData.endTime }}</p>
+  <p *ngIf="classData.isLive">🔴 Live Now</p>
+  <p *ngIf="!classData.isLive">📼 Recording: <a [href]="classData.videoPath" target="_blank">Watch</a></p>
+  <p>📎 <a [href]="classData.meetingLink" target="_blank">Join Meeting</a></p>
+</div>
+
+
+<div *ngIf="loading" class="container">
+  <div class="skeleton skeleton-title"></div>
+  <div class="skeleton skeleton-line"></div>
+  <div class="skeleton skeleton-line"></div>
+  <div class="skeleton skeleton-link"></div>
+</div>

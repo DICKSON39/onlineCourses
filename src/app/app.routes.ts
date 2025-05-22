@@ -26,6 +26,7 @@ import { ShowPaymentsComponent } from './pages/show-payments/show-payments.compo
 import { MyPaymentsComponent } from './pages/my-payments/my-payments.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './pages/payment-cancel/payment-cancel.component';
+import {PaidClassComponent} from './pages/paid-class/paid-class.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -93,5 +94,6 @@ export const routes: Routes = [
 
   {path:'admin/payments',component:ShowPaymentsComponent,canActivate:[AuthGuard],data:{roles:[1]}}, // Admin payments
   {path: 'payments', component:MyPaymentsComponent,canActivate:[AuthGuard],data:{roles:[3]}}, // Student payments
-  
+  {path:'paid-class/:classId',component:PaidClassComponent,canActivate:[AuthGuard],data:{roles:[3]}},
+
 ];
