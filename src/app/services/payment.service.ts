@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { loadStripe } from '@stripe/stripe-js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaymentService {
   private apiUrl = 'https://elearning-f7yg.onrender.com/api/v1/payment';
@@ -20,9 +20,10 @@ export class PaymentService {
   makePayment(courseId: number, amount: number) {
     return this.http.post<{ clientSecret: string }>(
       'https://elearning-f7yg.onrender.com/api/v1/payment/create-payment-intent',
-      { courseId, amount },{
-        headers: this.getAuthHeaders()
-      }
+      { courseId, amount },
+      {
+        headers: this.getAuthHeaders(),
+      },
     );
   }
 
@@ -32,24 +33,28 @@ export class PaymentService {
       `${this.apiUrl}/payment/make-payment`, // This hits your existing makePayment endpoint in the backend
       { courseId, paymentMethod: 'mpesa', phoneNumber },
       {
-        headers: this.getAuthHeaders()
-      }
+        headers: this.getAuthHeaders(),
+      },
     );
   }
 
   confirmPayment(courseId: number, paymentIntentId: string): Observable<any> {
     const userId = localStorage.getItem('userId');
-    return this.http.post(`${this.apiUrl}/${userId}/confirmPayment`, {
-      courseId,
-      paymentIntentId,
-    }, {
-      headers: this.getAuthHeaders()
-    });
+    return this.http.post(
+      `${this.apiUrl}/${userId}/confirmPayment`,
+      {
+        courseId,
+        paymentIntentId,
+      },
+      {
+        headers: this.getAuthHeaders(),
+      },
+    );
   }
 
   getPayments(userId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${userId}/payments`, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 
@@ -60,14 +65,13 @@ export class PaymentService {
     }
 
     return this.http.get<any[]>(url, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 
   getAllPayments(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/payment-info`, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 }
-

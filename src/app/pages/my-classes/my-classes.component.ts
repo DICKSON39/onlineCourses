@@ -12,7 +12,7 @@ import { TeacherService } from '../../services/teacher.service';
   templateUrl: './my-classes.component.html',
   styleUrls: ['./my-classes.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
 export class MyClassesComponent implements OnInit {
   classes: any[] = [];
@@ -23,7 +23,7 @@ export class MyClassesComponent implements OnInit {
     private classService: ClassService,
     private authService: AuthServicesService,
     private router: Router,
-    private teacherService:TeacherService
+    private teacherService: TeacherService,
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class MyClassesComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to load classes:', err);
-      }
+      },
     });
   }
 
@@ -54,22 +54,24 @@ export class MyClassesComponent implements OnInit {
     if (confirm('Are you sure you want to delete this class?')) {
       this.classService.deleteClass(id).subscribe({
         next: () => {
-          this.classes = this.classes.filter(cls => cls.id !== id);
+          this.classes = this.classes.filter((cls) => cls.id !== id);
         },
-        error: err => console.error('Delete failed', err)
+        error: (err) => console.error('Delete failed', err),
       });
     }
   }
 
   updateClass(): void {
-    this.classService.updateClass(this.selectedClass.id, this.selectedClass).subscribe({
-      next: () => {
-        this.classes = this.classes.map(cls =>
-          cls.id === this.selectedClass.id ? this.selectedClass : cls
-        );
-        this.showEditModal = false;
-      },
-      error: err => console.error('Update failed', err)
-    });
+    this.classService
+      .updateClass(this.selectedClass.id, this.selectedClass)
+      .subscribe({
+        next: () => {
+          this.classes = this.classes.map((cls) =>
+            cls.id === this.selectedClass.id ? this.selectedClass : cls,
+          );
+          this.showEditModal = false;
+        },
+        error: (err) => console.error('Update failed', err),
+      });
   }
 }

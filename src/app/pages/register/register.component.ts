@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServicesService } from '../../services/auth-services.service';
 
@@ -15,22 +20,33 @@ export class RegisterComponent {
   errorMessage: string = '';
   showSuccessModal: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthServicesService) {
-    this.registerForm = this.fb.group({
-      name: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^\\+?[0-9]{7,15}$')]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      roleId: [3], // keep roleId for students by default
-      inviteCode: [''], // <---- added inviteCode here, optional
-      agreeTerms: [false, Validators.requiredTrue]
-    }, { validator: this.passwordMatchValidator });
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthServicesService,
+  ) {
+    this.registerForm = this.fb.group(
+      {
+        name: ['', Validators.required],
+        phoneNumber: [
+          '',
+          [Validators.required, Validators.pattern('^\\+?[0-9]{7,15}$')],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+        roleId: [3], // keep roleId for students by default
+        inviteCode: [''], // <---- added inviteCode here, optional
+        agreeTerms: [false, Validators.requiredTrue],
+      },
+      { validator: this.passwordMatchValidator },
+    );
   }
 
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('confirmPassword')?.value
-      ? null : { mismatch: true };
+      ? null
+      : { mismatch: true };
   }
 
   navigateToLogin() {
@@ -39,7 +55,6 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-
       // Prepare registration data
       const registrationData: any = {
         name: this.registerForm.get('name')?.value,
@@ -61,8 +76,7 @@ export class RegisterComponent {
           this.registerForm.reset();
         },
         error: (error) => {
-          this.errorMessage =
-            error.error.message || 'Registration failed';
+          this.errorMessage = error.error.message || 'Registration failed';
           console.error('Registration error', error);
         },
       });

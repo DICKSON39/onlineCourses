@@ -5,8 +5,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-payment-success',
   imports: [RouterLink],
   templateUrl: './payment-success.component.html',
-  styleUrl: './payment-success.component.css'
+  styleUrl: './payment-success.component.css',
 })
-export class PaymentSuccessComponent {
-
-}
+export class PaymentSuccessComponent {}

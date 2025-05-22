@@ -1,5 +1,10 @@
-import { Component,OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CourseService } from '../../services/course.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -20,40 +25,52 @@ export interface User {
 
 @Component({
   selector: 'app-course-form',
-  imports: [ MatFormFieldModule,CommonModule,ReactiveFormsModule,MatSelectModule, MatOptionModule],
+  imports: [
+    MatFormFieldModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatOptionModule,
+  ],
   templateUrl: './course-form.component.html',
-  styleUrl: './course-form.component.css'
+  styleUrl: './course-form.component.css',
 })
-export class CourseFormComponent  implements OnInit{
-  courseForm!:FormGroup;
+export class CourseFormComponent implements OnInit {
+  courseForm!: FormGroup;
   teachers: User[] = [];
 
-  constructor(private fb: FormBuilder,private courseService:CourseService,private snackBar:MatSnackBar,private router:Router,private teacherService:TeacherService){}
+  constructor(
+    private fb: FormBuilder,
+    private courseService: CourseService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private teacherService: TeacherService,
+  ) {}
   ngOnInit(): void {
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       teacherId: ['', Validators.required],
-      image: [null, Validators.required]
+      image: [null, Validators.required],
     });
-  
+
     this.teacherService.getAllTeachers().subscribe((data: User[]) => {
       this.teachers = data;
     });
   }
-  
 
   onImageSelected(event: any): void {
     const file = event.target.files[0];
     this.courseForm.patchValue({ image: file }); // Corrected 'image'
     this.courseForm.get('image')?.updateValueAndValidity(); // Optional, but good practice
   }
-  
 
   onSubmit(): void {
-    if(this.courseForm.invalid){
-      this.snackBar.open('❌ Please fill out the form correctly!', 'Close', { duration: 3000 })
+    if (this.courseForm.invalid) {
+      this.snackBar.open('❌ Please fill out the form correctly!', 'Close', {
+        duration: 3000,
+      });
       return;
     }
 
@@ -66,14 +83,16 @@ export class CourseFormComponent  implements OnInit{
 
     this.courseService.createCourse(formData).subscribe(
       (response) => {
-        this.snackBar.open("✅ Course added successfully!", 'Close', { duration: 3000 })
+        this.snackBar.open('✅ Course added successfully!', 'Close', {
+          duration: 3000,
+        });
         //this.router.navigate(['/courses'])
       },
       (error) => {
-        this.snackBar.open('❌ Failed to add course', 'Close', { duration: 3000 });
-      }
-    )
+        this.snackBar.open('❌ Failed to add course', 'Close', {
+          duration: 3000,
+        });
+      },
+    );
   }
-
-
 }

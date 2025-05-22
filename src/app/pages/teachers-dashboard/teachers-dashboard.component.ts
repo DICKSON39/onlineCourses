@@ -6,18 +6,21 @@ import { CommonModule } from '@angular/common'; // Import CommonModule for ngCla
 
 @Component({
   selector: 'app-teachers-dashboard',
-  imports: [ModalComponent,RouterLink, CommonModule], // Add CommonModule here
+  imports: [ModalComponent, RouterLink, CommonModule], // Add CommonModule here
   templateUrl: './teachers-dashboard.component.html',
-  styleUrl: './teachers-dashboard.component.css'
+  styleUrl: './teachers-dashboard.component.css',
 })
 export class TeachersDashboardComponent {
   showModal: boolean = false;
   isSidebarOpen: boolean = false; // New property to control sidebar visibility
 
-  constructor( private authService:AuthServicesService, private router:Router) {}
+  constructor(
+    private authService: AuthServicesService,
+    private router: Router,
+  ) {}
 
   logout() {
-    this.showModal = true;  // Show the modal for confirmation
+    this.showModal = true; // Show the modal for confirmation
   }
 
   confirmLogout(): void {
@@ -26,7 +29,7 @@ export class TeachersDashboardComponent {
   }
 
   cancelLogout(): void {
-    this.showModal = false;  // Hide the modal if canceled
+    this.showModal = false; // Hide the modal if canceled
   }
 
   navigateToAvailableUsers() {

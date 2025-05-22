@@ -6,8 +6,14 @@
   <li *ngFor="let payment of allPayments" class="payment-item">
     <strong class="course-title">{{ payment.courseTitle }}</strong> –
     <span class="amount">Ksh {{ payment.amount }}</span> –
-    <span class="date">{{ payment.paymentDate | date:'medium' }}</span> –
-    <span class="status" [ngClass]="{ 'paid': payment.status === 'paid', 'pending': payment.status !== 'paid' }">
+    <span class="date">{{ payment.paymentDate | date: "medium" }}</span> –
+    <span
+      class="status"
+      [ngClass]="{
+        paid: payment.status === 'paid',
+        pending: payment.status !== 'paid',
+      }"
+    >
       {{ payment.status }}
     </span>
   </li>

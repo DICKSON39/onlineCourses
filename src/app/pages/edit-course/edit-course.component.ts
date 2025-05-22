@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-edit-course',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './edit-course.component.html',
   styleUrls: ['./edit-course.component.css'],
 })
@@ -22,7 +22,6 @@ export class EditCourseComponent implements OnInit {
     private route: ActivatedRoute,
     private courseService: CourseService,
     private router: Router,
-    
   ) {}
 
   ngOnInit(): void {

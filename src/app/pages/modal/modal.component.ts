@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component,Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
   imports: [CommonModule],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  styleUrl: './modal.component.css',
 })
 export class ModalComponent {
   @Input() message = 'Are you sure?';

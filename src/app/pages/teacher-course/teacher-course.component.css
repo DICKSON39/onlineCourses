@@ -1,6 +1,6 @@
 .teacher-courses {
   padding: 2rem;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .teacher-courses h2 {
@@ -22,7 +22,9 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
 }
 
 .course-card:hover {
@@ -54,7 +56,9 @@
 .price {
   font-weight: bold;
   color: #2ecc71;
-  transition: transform 0.2s ease-in-out, text-shadow 0.2s ease-in-out; /* Added transitions */
+  transition:
+    transform 0.2s ease-in-out,
+    text-shadow 0.2s ease-in-out; /* Added transitions */
 }
 
 .course-card:hover .price {
@@ -83,4 +87,3 @@
   margin-top: 2rem;
   font-size: 1.1rem;
 }
-

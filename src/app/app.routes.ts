@@ -26,19 +26,18 @@ import { ShowPaymentsComponent } from './pages/show-payments/show-payments.compo
 import { MyPaymentsComponent } from './pages/my-payments/my-payments.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './pages/payment-cancel/payment-cancel.component';
-import {PaidClassComponent} from './pages/paid-class/paid-class.component';
+import { PaidClassComponent } from './pages/paid-class/paid-class.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'courses/login', component: LoginComponent },
   { path: 'courses/register', component: RegisterComponent },
-  {path:'contact',component:ContactComponent},
-  {path: 'about',component:AboutComponent},
-  {path:'policy',component:PolicyComponent},
-  {path:'terms',component:TermsComponent},
+  { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'policy', component: PolicyComponent },
+  { path: 'terms', component: TermsComponent },
   { path: 'payment-success', component: PaymentSuccessComponent },
   { path: 'payment-cancel', component: PaymentCancelComponent },
-
 
   {
     path: 'courses/admin',
@@ -49,7 +48,8 @@ export const routes: Routes = [
   {
     path: 'courses/teacher',
     component: TeachersDashboardComponent,
-    canActivate: [AuthGuard], data: { roles: [2]},
+    canActivate: [AuthGuard],
+    data: { roles: [2] },
   },
 
   {
@@ -84,16 +84,49 @@ export const routes: Routes = [
   },
   {
     path: 'courses',
-    component: CourseListComponent
+    component: CourseListComponent,
   },
-  {path:'my-classes',component:MyClassesComponent,canActivate:[AuthGuard],data:{roles:[2]}}, // Teacher's classes
-  {path:'courses/:id',component:CourseInfoComponent,canActivate:[AuthGuard],data: {roles:[1,2,3]}},
-  {path: 'teacher/courses',component:TeacherCourseComponent,canActivate:[AuthGuard],data:{roles:[2]}}, // Teacher's cours
-  {path:'my-courses',component:AdminCoursesComponent,canActivate:[AuthGuard],data:{roles:[1]}},
-  {path: 'admin/edit-course/:id',component:EditCourseComponent,canActivate:[AuthGuard],data:{roles:[1]}},
+  {
+    path: 'my-classes',
+    component: MyClassesComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [2] },
+  }, // Teacher's classes
+  {
+    path: 'courses/:id',
+    component: CourseInfoComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1, 2, 3] },
+  },
+  {
+    path: 'teacher/courses',
+    component: TeacherCourseComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [2] },
+  }, // Teacher's cours
+  {
+    path: 'my-courses',
+    component: AdminCoursesComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1] },
+  },
+  {
+    path: 'admin/edit-course/:id',
+    component: EditCourseComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1] },
+  },
 
-  {path:'admin/payments',component:ShowPaymentsComponent,canActivate:[AuthGuard],data:{roles:[1]}}, // Admin payments
-  {path: 'payments', component:MyPaymentsComponent,canActivate:[AuthGuard],data:{roles:[3]}}, // Student payments
-
-
+  {
+    path: 'admin/payments',
+    component: ShowPaymentsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1] },
+  }, // Admin payments
+  {
+    path: 'payments',
+    component: MyPaymentsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [3] },
+  }, // Student payments
 ];

@@ -1,17 +1,16 @@
 <div class="main-content">
-    <div class="section">
-      <h2>User Profile</h2>
-      <div *ngIf="user && user.id; else loadingOrError">
-        <p><strong>Name:</strong> {{ user.name }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Phone:</strong> {{ user.phoneNumber }}</p>
-        <p><strong>Role:</strong> {{ getRoleName(user.roleId) }}</p>
-      </div>
-  
-      <ng-template #loadingOrError>
-        <p *ngIf="loading">Loading user profile...</p>
-        <p *ngIf="!loading">User not found or error loading user.</p>
-      </ng-template>
+  <div class="section">
+    <h2>User Profile</h2>
+    <div *ngIf="user && user.id; else loadingOrError">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone:</strong> {{ user.phoneNumber }}</p>
+      <p><strong>Role:</strong> {{ getRoleName(user.roleId) }}</p>
     </div>
+
+    <ng-template #loadingOrError>
+      <p *ngIf="loading">Loading user profile...</p>
+      <p *ngIf="!loading">User not found or error loading user.</p>
+    </ng-template>
   </div>
-  
+</div>

@@ -1,6 +1,11 @@
 /* Variables for easier theme management */
 :root {
-  --primary-bg: rgba(30, 41, 59, 0.9); /* Slightly less translucent, darker base */
+  --primary-bg: rgba(
+    30,
+    41,
+    59,
+    0.9
+  ); /* Slightly less translucent, darker base */
   --primary-text: #f8fafc; /* Off-white, slightly warmer text */
   --accent-blue: #81d4fa; /* Light cyan/blue */
   --light-blue: #e0f2fe; /* Very light blue for titles */
@@ -21,7 +26,9 @@
   padding: 2.5em; /* Increased padding for more breathing room */
   border-radius: 20px; /* Even more rounded corners */
   box-shadow: 0 12px 30px var(--shadow-color); /* Enhanced and refined shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; /* Smoother transition */
   overflow: hidden; /* Ensures shadows and rounded corners are contained */
   position: relative; /* For potential future absolute positioning of elements */
 }
@@ -58,7 +65,9 @@
   border: 1px solid var(--input-border);
   width: 100%;
   max-width: 400px; /* Wider input */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   background-color: var(--input-bg);
   color: var(--input-text);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
@@ -75,7 +84,12 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 2em; /* Increased margin */
-  background-color: rgba(255, 255, 255, 0.03); /* Slight background for the table */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.03
+  ); /* Slight background for the table */
   border-radius: 10px; /* Rounded corners for the table itself */
   overflow: hidden; /* Ensures rounded corners are visible */
 }
@@ -101,7 +115,12 @@
 }
 
 .user-table tr:hover td {
-  background-color: rgba(129, 212, 250, var(--hover-bg-alpha)); /* Consistent hover background */
+  background-color: rgba(
+    129,
+    212,
+    250,
+    var(--hover-bg-alpha)
+  ); /* Consistent hover background */
 }
 
 /* User Role Badge */
@@ -113,7 +132,9 @@
   text-transform: uppercase;
   display: inline-block;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   min-width: 80px; /* Ensures consistent width for badges */
   text-align: center;
 }
@@ -151,7 +172,10 @@
   border: none;
   border-radius: 12px; /* More rounded */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   font-weight: 600; /* Added font-weight */
 }
 
@@ -174,8 +198,9 @@
   border-radius: 12px; /* More rounded */
   padding: 1.2em 2.5em; /* Increased padding */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-  slideOut 0.4s 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards; /* Smoother cubic-bezier timings */
+  animation:
+    slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    slideOut 0.4s 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards; /* Smoother cubic-bezier timings */
   font-weight: 500;
   text-align: center;
 }
@@ -186,8 +211,9 @@
   border-radius: 12px;
   padding: 1.2em 2.5em;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-  slideOut 0.4s 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  animation:
+    slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    slideOut 0.4s 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
   font-weight: 500;
   text-align: center;
 }
@@ -352,7 +378,10 @@
   padding: 10px 18px; /* More padding */
   border-radius: 8px; /* More rounded */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   font-weight: 500;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
@@ -394,13 +423,21 @@
 }
 
 .page-number-btn {
-  background-color: rgba(255, 255, 255, 0.1); /* Lighter background for inactive pages */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Lighter background for inactive pages */
   color: var(--primary-text);
   border: 1px solid rgba(129, 212, 250, 0.2);
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   font-weight: 500;
 }
 
@@ -416,4 +453,3 @@
   transform: translateY(-2px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
-

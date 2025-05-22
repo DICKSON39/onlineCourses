@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* styles.css or styles.scss */
 
-
 .toast {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   border-radius: 14px;
   padding: 18px 28px;
@@ -17,10 +22,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
   align-items: center;
   gap: 12px;
-  animation: slideInRight 0.4s ease forwards, pop 0.2s ease-out 0.4s forwards;
+  animation:
+    slideInRight 0.4s ease forwards,
+    pop 0.2s ease-out 0.4s forwards;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.2s ease-in-out; /* Added border transition */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border 0.2s ease-in-out; /* Added border transition */
   border: 2px solid transparent; /* Initially transparent border */
 }
 
@@ -44,7 +54,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .toast-success::before {
-  content: '✔️';
+  content: "✔️";
 }
 
 /* Error toast */
@@ -54,7 +64,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .toast-error::before {
-  content: '❌';
+  content: "❌";
 }
 
 /* Info toast */
@@ -64,7 +74,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .toast-info::before {
-  content: 'ℹ️';
+  content: "ℹ️";
 }
 
 /* Warning toast */
@@ -74,7 +84,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .toast-warning::before {
-  content: '⚠️';
+  content: "⚠️";
 }
 
 /* Toast title */

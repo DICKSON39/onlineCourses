@@ -1,19 +1,37 @@
-<h2 style="text-align: center; margin-bottom: 1rem;">Edit Course</h2>
+<h2 style="text-align: center; margin-bottom: 1rem">Edit Course</h2>
 
-<form  [formGroup]="courseForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+<form
+  [formGroup]="courseForm"
+  (ngSubmit)="onSubmit()"
+  enctype="multipart/form-data"
+>
   <label for="title">
     Title:
-    <input id="title" type="text" formControlName="title" placeholder="Enter course title" />
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      placeholder="Enter course title"
+    />
   </label>
 
   <label for="description">
     Description:
-    <textarea id="description" formControlName="description" placeholder="Enter course description"></textarea>
+    <textarea
+      id="description"
+      formControlName="description"
+      placeholder="Enter course description"
+    ></textarea>
   </label>
 
   <label for="price">
     Price:
-    <input id="price" type="number" formControlName="price" placeholder="Enter course price" />
+    <input
+      id="price"
+      type="number"
+      formControlName="price"
+      placeholder="Enter course price"
+    />
   </label>
 
   <label for="image">

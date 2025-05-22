@@ -33,7 +33,7 @@ export class UpdateUserComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -71,7 +71,6 @@ export class UpdateUserComponent implements OnInit {
       ...this.userForm.value,
       roleId: Number(this.userForm.value.roleId), // 🔥 force numeric type
     };
-    
 
     console.log('Payload to update:', updatedUser);
 
@@ -98,7 +97,7 @@ export class UpdateUserComponent implements OnInit {
           duration: 3000,
           panelClass: ['snackbar-error'],
         });
-      }
+      },
     );
     this.showModal = false; // Close modal after confirmation
   }

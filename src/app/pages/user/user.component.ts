@@ -1,5 +1,5 @@
 // src/app/components/user-list/user.component.ts
-import {Component, NgIterable, OnInit} from '@angular/core';
+import { Component, NgIterable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UserService, PaginatedUsers, User } from '../../services/user.service'; // Import PaginatedUsers
@@ -15,7 +15,7 @@ import { Subject } from 'rxjs'; // For search optimization
   templateUrl: './user.component.html',
 
   imports: [CommonModule, RouterLink, ModalComponent, FormsModule],
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
   users: User[] = [];
@@ -35,28 +35,31 @@ export class UserComponent implements OnInit {
     private http: HttpClient,
     private userService: UserService,
     private snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.fetchUsers();
 
     // Set up debounced search
-    this.searchSubject.pipe(
-      debounceTime(300), // Wait for 300ms after the last keystroke
-      distinctUntilChanged() // Only emit if the current value is different from the last
-    ).subscribe(() => {
-      this.currentPage = 1; // Reset to first page on new search
-      this.fetchUsers();
-    });
+    this.searchSubject
+      .pipe(
+        debounceTime(300), // Wait for 300ms after the last keystroke
+        distinctUntilChanged(), // Only emit if the current value is different from the last
+      )
+      .subscribe(() => {
+        this.currentPage = 1; // Reset to first page on new search
+        this.fetchUsers();
+      });
   }
 
   fetchUsers(): void {
-    this.userService.getUsers(this.currentPage, this.pageSize, this.userSearchTerm)
+    this.userService
+      .getUsers(this.currentPage, this.pageSize, this.userSearchTerm)
       .subscribe((paginatedData: PaginatedUsers) => {
-        this.users = paginatedData.items.map(user => ({
+        this.users = paginatedData.items.map((user) => ({
           ...user,
-          roleName: this.getRoleName(user.roleId)
+          roleName: this.getRoleName(user.roleId),
         }));
         this.totalItems = paginatedData.totalItems;
         this.totalPages = paginatedData.totalPages;
@@ -65,10 +68,14 @@ export class UserComponent implements OnInit {
 
   getRoleName(roleId: number): string {
     switch (roleId) {
-      case 1: return 'Admin';
-      case 2: return 'Teacher';
-      case 3: return 'Student';
-      default: return 'Unknown';
+      case 1:
+        return 'Admin';
+      case 2:
+        return 'Teacher';
+      case 3:
+        return 'Student';
+      default:
+        return 'Unknown';
     }
   }
 
@@ -96,7 +103,7 @@ export class UserComponent implements OnInit {
             duration: 3000,
             panelClass: ['snackbar-error'],
           });
-        }
+        },
       });
     }
     this.showModal = false;

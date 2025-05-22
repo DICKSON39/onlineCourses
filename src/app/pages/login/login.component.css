@@ -1,26 +1,29 @@
 /* Base Styles (Consistent with Landing Page) */
 
-
- body {
+body {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(180deg, #0d1a36, #080f29); /* Deep space gradient */
+  background: linear-gradient(
+    180deg,
+    #0d1a36,
+    #080f29
+  ); /* Deep space gradient */
   position: relative;
   overflow: hidden;
- }
+}
 
- .container {
+.container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
- }
+}
 
- /* Login Page Specific Styles (Matching Register Page) */
- .login-page {
+/* Login Page Specific Styles (Matching Register Page) */
+.login-page {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -28,9 +31,9 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
- }
+}
 
- .login-form-section {
+.login-form-section {
   background: rgba(30, 41, 59, 0.8); /* Darker, translucent background */
   padding: 50px 40px;
   border-radius: 15px;
@@ -38,24 +41,24 @@
   z-index: 10;
   position: relative;
   width: 450px; /* Match register form width */
- }
+}
 
- .login-form-section h2 {
+.login-form-section h2 {
   margin-bottom: 35px;
   text-align: center;
   font-size: 32px;
   color: #a2d2ff; /* Electric blue accent */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
- }
+}
 
- form {
+form {
   width: 100%;
   display: flex;
   flex-direction: column;
- }
+}
 
- input[type="text"],
- input[type="password"] {
+input[type="text"],
+input[type="password"] {
   width: calc(100% - 22px);
   padding: 14px 18px;
   border: 1px solid #3a475e; /* Darker border */
@@ -67,77 +70,83 @@
   color: #f0f8ff;
   pointer-events: auto;
   margin-bottom: 25px; /* Spacing similar to register form groups */
- }
+}
 
- input::placeholder {
+input::placeholder {
   color: #778899;
- }
+}
 
- .error {
+.error {
   color: #ff8a65; /* Orange/red error color */
   font-size: 0.95rem;
   margin-top: 8px;
- }
+}
 
- .forgot-password {
+.forgot-password {
   display: block;
   text-align: right;
   margin-bottom: 20px;
   font-size: 16px;
   color: #60a5fa;
   text-decoration: none;
- }
+}
 
- .forgot-password strong {
+.forgot-password strong {
   font-weight: bold;
- }
+}
 
- .forgot-password:hover {
+.forgot-password:hover {
   text-decoration: underline;
- }
+}
 
- button[type="submit"] {
+button[type="submit"] {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic gradient */
+  background: linear-gradient(
+    135deg,
+    #4aed88,
+    #2dd4bf
+  ); /* Energetic gradient */
   color: #080f29;
   border: none;
   border-radius: 8px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
- }
+}
 
- button[type="submit"]:hover {
+button[type="submit"]:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   background: linear-gradient(135deg, #2dd4bf, #4aed88);
- }
+}
 
- button[type="submit"]:disabled {
+button[type="submit"]:disabled {
   background: #3a475e;
   color: #778899;
   cursor: not-allowed;
- }
+}
 
- .signup-text {
+.signup-text {
   text-align: center;
   margin-top: 30px;
   font-size: 16px;
   color: #d1cfe2;
- }
+}
 
- .signup-text a {
+.signup-text a {
   color: #60a5fa; /* Blue link color */
   cursor: pointer;
   text-decoration: underline;
   font-weight: bold;
- }
+}
 
- /* Bubbles Background (Subtler - Same as Register) */
- .bubbles {
+/* Bubbles Background (Subtler - Same as Register) */
+.bubbles {
   position: absolute;
   top: 0;
   left: 0;
@@ -145,9 +154,9 @@
   height: 100%;
   overflow: hidden;
   z-index: 1; /* Behind the form */
- }
+}
 
- .bubbles span {
+.bubbles span {
   position: absolute;
   display: block;
   width: 20px;
@@ -161,16 +170,19 @@
   width: var(--size);
   height: var(--size);
   animation-delay: calc(var(--i) * 0.3s);
- }
+}
 
- .bubbles span:nth-child(even) {
+.bubbles span:nth-child(even) {
   background: rgba(74, 237, 136, 0.2); /* Translucent green */
- }
+}
 
- .modal-overlay {
+.modal-overlay {
   display: none;
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
@@ -190,7 +202,7 @@
   max-width: 400px;
 }
 .modal-content button {
-  background-color: #4CAF50; /* Green background */
+  background-color: #4caf50; /* Green background */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -205,45 +217,42 @@
   background-color: #45a049;
 }
 
-
-
-
- @keyframes subtleBubbleAnimation {
+@keyframes subtleBubbleAnimation {
   0% {
-   transform: translateY(0) scale(0);
-   opacity: 0;
+    transform: translateY(0) scale(0);
+    opacity: 0;
   }
   30% {
-   opacity: 0.6;
+    opacity: 0.6;
   }
   100% {
-   transform: translateY(-150vh) scale(1.2);
-   opacity: 0;
+    transform: translateY(-150vh) scale(1.2);
+    opacity: 0;
   }
- }
+}
 
- /* Right side: Welcome Message (Still Hidden) */
- .welcome-section {
+/* Right side: Welcome Message (Still Hidden) */
+.welcome-section {
   display: none;
- }
+}
 
- /* Responsive adjustments */
- @media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .login-page {
-   flex-direction: column;
-   justify-content: flex-start;
-   padding-top: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
   }
 
   .login-form-section {
-   width: 90%;
-   padding: 40px 30px;
-   margin-bottom: 30px;
+    width: 90%;
+    padding: 40px 30px;
+    margin-bottom: 30px;
   }
 
   .login-form-section h2 {
-   font-size: 28px;
-   margin-bottom: 25px;
+    font-size: 28px;
+    margin-bottom: 25px;
   }
 
   input[type="text"],
@@ -251,15 +260,15 @@
   button[type="submit"],
   .forgot-password,
   .signup-text {
-   font-size: 15px;
+    font-size: 15px;
   }
 
   .bubbles {
-   /* Slightly reduce bubble density on smaller screens if needed */
-   display: none
+    /* Slightly reduce bubble density on smaller screens if needed */
+    display: none;
   }
 
   .welcome-section {
-   display: none;
+    display: none;
   }
- }
+}

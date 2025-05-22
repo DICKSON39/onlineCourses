@@ -16,10 +16,9 @@ export interface TeacherDetail {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeacherService {
-
   private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/teachers';
 
   constructor(private http: HttpClient) {}
@@ -31,11 +30,13 @@ export class TeacherService {
     return this.http.get<User[]>(this.baseUrl, { headers });
   }
 
-  getTeacherById(teacherId:number):Observable<TeacherDetail[]> {
+  getTeacherById(teacherId: number): Observable<TeacherDetail[]> {
     const token = localStorage.getItem('access_token'); // make sure this matches your AuthService key
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<TeacherDetail[]>(`${this.baseUrl}/teachers/${teacherId}`,{headers});
+    return this.http.get<TeacherDetail[]>(
+      `${this.baseUrl}/teachers/${teacherId}`,
+      { headers },
+    );
   }
-
 }

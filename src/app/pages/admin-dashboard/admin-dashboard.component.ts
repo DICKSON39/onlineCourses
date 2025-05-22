@@ -8,16 +8,19 @@ import { CommonModule } from '@angular/common'; // Import CommonModule for ngCla
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css'],
-  imports:[ModalComponent,RouterLink, CommonModule] // Add CommonModule here
+  imports: [ModalComponent, RouterLink, CommonModule], // Add CommonModule here
 })
 export class AdminDashboardComponent {
   showModal: boolean = false;
   isSidebarOpen: boolean = false; // New property to control sidebar visibility
 
-  constructor(private authService: AuthServicesService, private router: Router) {}
+  constructor(
+    private authService: AuthServicesService,
+    private router: Router,
+  ) {}
 
   logout() {
-    this.showModal = true;  // Show the modal for confirmation
+    this.showModal = true; // Show the modal for confirmation
   }
 
   confirmLogout(): void {
@@ -26,7 +29,7 @@ export class AdminDashboardComponent {
   }
 
   cancelLogout(): void {
-    this.showModal = false;  // Hide the modal if canceled
+    this.showModal = false; // Hide the modal if canceled
   }
 
   navigateToAvailableUsers() {

@@ -1,5 +1,5 @@
 body {
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
   margin: 0; /* Explicitly reset body margin */
   padding: 0;
   background: linear-gradient(180deg, #0d1a36, #080f29);
@@ -65,11 +65,17 @@ body {
   margin-bottom: 0.25em; /* Adjust margin */
   border-radius: 8px;
   display: block;
-  transition: background 0.3s ease, color 0.3s;
+  transition:
+    background 0.3s ease,
+    color 0.3s;
 }
 
 .sidebar a:hover {
-  background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic green-teal gradient */
+  background: linear-gradient(
+    135deg,
+    #4aed88,
+    #2dd4bf
+  ); /* Energetic green-teal gradient */
   color: #080f29; /* Dark text on hover */
 }
 
@@ -107,7 +113,12 @@ body {
 }
 
 .section {
-  background: rgba(30, 41, 59, 0.7); /* Darker, translucent section background */
+  background: rgba(
+    30,
+    41,
+    59,
+    0.7
+  ); /* Darker, translucent section background */
   border-radius: 10px; /* Add some rounded corners */
   padding: 1.5em; /* Adjust padding */
   margin-bottom: 1.5em; /* Adjust margin */

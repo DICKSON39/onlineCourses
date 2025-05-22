@@ -29,9 +29,11 @@
   color: #fff59d; /* Light yellow input text */
   border: 1px solid #ff79c6; /* Hot pink border */
   border-radius: 10px; /* More rounded corners */
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease; /* Added transition */
 }
 
 .course-form input:focus,
@@ -40,7 +42,6 @@
   border-color: #42e6a4; /* Neon green focus border */
   box-shadow: 0 0 5px rgba(66, 230, 164, 0.5); /* Neon green focus shadow */
 }
-
 
 /* File input (no change in appearance in some browsers) */
 .course-form input[type="file"] {
@@ -51,7 +52,11 @@
 
 /* Submit button */
 .course-form button[type="submit"] {
-  background: linear-gradient(to right, #ff006e, #560bad); /* Gradient: Pink to Purple */
+  background: linear-gradient(
+    to right,
+    #ff006e,
+    #560bad
+  ); /* Gradient: Pink to Purple */
   color: #ffffff;
   border: none;
   padding: 0.8em 2.2em; /* Slightly increased padding */
@@ -66,7 +71,11 @@
 
 /* Button hover */
 .course-form button[type="submit"]:hover {
-  background: linear-gradient(to right, #ff4585, #7e57c2); /* Slightly lighter gradient */
+  background: linear-gradient(
+    to right,
+    #ff4585,
+    #7e57c2
+  ); /* Slightly lighter gradient */
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(255, 0, 110, 0.4);
 }

@@ -1,13 +1,20 @@
 <div class="course-details-container" *ngIf="course; else loadingOrError">
   <h2>{{ course.title }}</h2>
-  <img *ngIf="course.imageUrl" [src]="course.imageUrl" alt="{{ course.title }}" />
+  <img
+    *ngIf="course.imageUrl"
+    [src]="course.imageUrl"
+    alt="{{ course.title }}"
+  />
 
   <p class="price">Price: Ksh {{ course.price }}</p>
   <p>Teacher: {{ teacherName }}</p>
-  <p class="description">{{ course.description | slice: 0:100 }}...</p>
+  <p class="description">{{ course.description | slice: 0 : 100 }}...</p>
 
   <div class="enroll-button-container">
-    <button class="enroll-button" (click)="startPaymentFlow(course.id, course.price)">
+    <button
+      class="enroll-button"
+      (click)="startPaymentFlow(course.id, course.price)"
+    >
       Enroll Now
     </button>
   </div>
@@ -18,7 +25,8 @@
     <h3>Confirm Payment</h3>
     <p>
       Are you sure you want to pay Ksh {{ selectedCoursePrice }} for the course
-      "<strong>{{ course?.title }}</strong>"?
+      "<strong>{{ course?.title }}</strong
+      >"?
     </p>
 
     <div class="payment-method-selection">
@@ -63,7 +71,10 @@
     </div>
 
     <div class="modal-buttons">
-      <button (click)="handleConfirmedPayment()" [disabled]="isProcessingPayment">
+      <button
+        (click)="handleConfirmedPayment()"
+        [disabled]="isProcessingPayment"
+      >
         Yes, Pay
       </button>
       <button (click)="showModal = false" [disabled]="isProcessingPayment">
@@ -84,12 +95,15 @@
   </div>
 </ng-template>
 
-<section class="payment-history" *ngIf="paymentHistory.length > 0; else noPayments">
+<section
+  class="payment-history"
+  *ngIf="paymentHistory.length > 0; else noPayments"
+>
   <h3>Your Payment History</h3>
   <ul>
     <li *ngFor="let payment of paymentHistory" class="payment-item">
       <strong>Paid:</strong> Ksh {{ payment.amount }} <br />
-      <strong>Date:</strong> {{ payment.paymentDate | date: 'medium' }} <br />
+      <strong>Date:</strong> {{ payment.paymentDate | date: "medium" }} <br />
       <strong>Status:</strong> {{ payment.status }} <br />
       <small>{{ payment.userName }} ({{ payment.userEmail }})</small>
       <p>{{ payment.courseDescription }}</p>

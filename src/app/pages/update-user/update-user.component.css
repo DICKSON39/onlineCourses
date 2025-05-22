@@ -6,28 +6,28 @@
   max-width: 600px;
   margin: 2em auto; /* Added some top/bottom margin */
   color: #f0f8ff; /* Light text color */
- }
+}
 
- .update-user-form h2 {
+.update-user-form h2 {
   color: #a2d2ff; /* Electric blue heading */
   margin-bottom: 1em;
   border-bottom: 2px solid #60a5fa; /* Blue accent border */
   padding-bottom: 0.5em;
- }
+}
 
- .form-group {
+.form-group {
   margin-bottom: 1.5em;
- }
+}
 
- label {
+label {
   display: block;
   font-weight: bold;
   color: #a2d2ff; /* Electric blue label */
   margin-bottom: 0.5em;
- }
+}
 
- input,
- select {
+input,
+select {
   width: 100%;
   padding: 0.75em;
   border-radius: 8px;
@@ -36,17 +36,21 @@
   font-size: 1em;
   background-color: #1e293b; /* Dark input background */
   color: #f0f8ff; /* Light input text */
- }
+}
 
- input:focus,
- select:focus {
+input:focus,
+select:focus {
   border-color: #4aed88; /* Green focus color */
   outline: none;
   box-shadow: 0 0 0 3px rgba(74, 237, 136, 0.2); /* Green focus shadow */
- }
+}
 
- .btn-update {
-  background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic green-teal gradient */
+.btn-update {
+  background: linear-gradient(
+    135deg,
+    #4aed88,
+    #2dd4bf
+  ); /* Energetic green-teal gradient */
   color: #080f29; /* Dark text */
   border: none;
   padding: 0.75em 1.5em;
@@ -54,13 +58,13 @@
   font-size: 1em;
   cursor: pointer;
   transition: background 0.3s ease;
- }
+}
 
- .btn-update:hover {
+.btn-update:hover {
   background: linear-gradient(135deg, #2dd4bf, #4aed88);
- }
+}
 
- .btn-back {
+.btn-back {
   display: inline-block;
   margin-top: 1em;
   background: transparent;
@@ -71,9 +75,9 @@
   text-decoration: none;
   font-size: 0.95em;
   transition: all 0.3s ease;
- }
+}
 
- .btn-back:hover {
+.btn-back:hover {
   background: #a2d2ff; /* Electric blue background */
   color: #080f29; /* Dark text */
- }
+}

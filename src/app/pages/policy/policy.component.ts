@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-policy',
   imports: [],
   templateUrl: './policy.component.html',
-  styleUrl: './policy.component.css'
+  styleUrl: './policy.component.css',
 })
-export class PolicyComponent {
-
-}
+export class PolicyComponent {}

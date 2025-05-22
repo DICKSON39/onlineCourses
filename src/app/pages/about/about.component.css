@@ -1,188 +1,189 @@
 /* about.component.css (or add to your global styles) */
 .about-page {
-    /* Inherits body background and font styles */
-  }
-  
-  /* Hero About Section */
-  .hero-about {
-    position: relative;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
-    padding: 180px 20px;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  .hero-about-content {
-    position: relative;
-    z-index: 1;
-  }
-  
+  /* Inherits body background and font styles */
+}
+
+/* Hero About Section */
+.hero-about {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  padding: 180px 20px;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-about-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-about h1 {
+  font-size: 4rem;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2.2px;
+  font-weight: bold;
+}
+
+.hero-about p {
+  font-size: 1.6rem;
+  color: #d1cfe2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-about-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://images.unsplash.com/photo-1542739572-709b513a6259?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")
+    center/cover no-repeat; /* Replace with a relevant image */
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Our Story Section */
+.our-story {
+  background: #080f29;
+  padding: 100px 20px;
+  color: #fff;
+}
+
+.story-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 2;
+}
+
+.story-content p {
+  margin-bottom: 30px;
+}
+
+/* Our Mission Section */
+.our-mission {
+  background: #0d1a36;
+  padding: 100px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.mission-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.mission-item {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon-mission {
+  font-size: 3rem;
+  color: #60a5fa;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.mission-item h3 {
+  color: #a2d2ff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.mission-item p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Our Team Section */
+.our-team {
+  background: #080f29;
+  padding: 100px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.team-member {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.team-member h3 {
+  color: #a2d2ff;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #d1cfe2;
+}
+
+.team-message {
+  margin-top: 40px;
+  font-size: 1.1rem;
+  color: #d1cfe2;
+}
+
+/* Contact Us Brief Section */
+.contact-us-brief {
+  background: #0d1a36;
+  padding: 80px 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.contact-link {
+  color: #4aed88;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #2dd4bf;
+}
+
+/* Responsive Design for About Page */
+@media (max-width: 768px) {
   .hero-about h1 {
-    font-size: 4rem;
-    margin-bottom: 30px;
-    color: #fff;
-    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-    letter-spacing: 2.2px;
-    font-weight: bold;
-  }
-  
-  .hero-about p {
-    font-size: 1.6rem;
-    color: #d1cfe2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  .hero-about-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1542739572-709b513a6259?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat; /* Replace with a relevant image */
-    opacity: 0.5;
-    z-index: 0;
-  }
-  
-  /* Our Story Section */
-  .our-story {
-    background: #080f29;
-    padding: 100px 20px;
-    color: #fff;
-  }
-  
-  .story-content {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.15rem;
-    line-height: 2;
-  }
-  
-  .story-content p {
-    margin-bottom: 30px;
-  }
-  
-  /* Our Mission Section */
-  .our-mission {
-    background: #0d1a36;
-    padding: 100px 20px;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .mission-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
-  }
-  
-  .mission-item {
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .icon-mission {
     font-size: 3rem;
-    color: #60a5fa;
-    margin-bottom: 20px;
-    display: block;
   }
-  
-  .mission-item h3 {
-    color: #a2d2ff;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
+
+  .hero-about p {
+    font-size: 1.4rem;
   }
-  
-  .mission-item p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+
+  .mission-content {
+    grid-template-columns: 1fr;
   }
-  
-  /* Our Team Section */
-  .our-team {
-    background: #080f29;
-    padding: 100px 20px;
-    color: #fff;
-    text-align: center;
-  }
-  
+
   .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
-  
-  .team-member {
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .team-member img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-  }
-  
-  .team-member h3 {
-    color: #a2d2ff;
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-  }
-  
-  .team-member p {
-    font-size: 1rem;
-    color: #d1cfe2;
-  }
-  
-  .team-message {
-    margin-top: 40px;
-    font-size: 1.1rem;
-    color: #d1cfe2;
-  }
-  
-  /* Contact Us Brief Section */
-  .contact-us-brief {
-    background: #0d1a36;
-    padding: 80px 20px;
-    text-align: center;
-    color: #fff;
-  }
-  
-  .contact-link {
-    color: #4aed88;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .contact-link:hover {
-    color: #2dd4bf;
-  }
-  
-  /* Responsive Design for About Page */
-  @media (max-width: 768px) {
-    .hero-about h1 {
-      font-size: 3rem;
-    }
-  
-    .hero-about p {
-      font-size: 1.4rem;
-    }
-  
-    .mission-content {
-      grid-template-columns: 1fr;
-    }
-  
-    .team-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-  }
+}

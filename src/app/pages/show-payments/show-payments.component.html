@@ -28,10 +28,12 @@
         <td>{{ payment.courseTitle }}</td>
         <td>{{ payment.amount | currency }}</td>
         <td>{{ payment.paymentDate | date }}</td>
-        <td><span class="status" [ngClass]="payment.status.toLowerCase()">{{ payment.status }}</span></td>
+        <td>
+          <span class="status" [ngClass]="payment.status.toLowerCase()">{{
+            payment.status
+          }}</span>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-

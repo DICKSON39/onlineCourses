@@ -1,32 +1,30 @@
 <div class="teacher-courses">
-    <h2>My Assigned Courses</h2>
-  
-    <div *ngIf="courses.length > 0; else noCourses" class="courses-grid">
-      <div *ngFor="let course of courses" class="course-card">
-        <img [src]="'http://localhost:3000' + course.imageUrl" alt="Course Image" />
-        <div class="course-info">
-          <h3>{{ course.title }}</h3>
-          <p>{{ course.description }}</p>
-          
-          <!-- <p class="price">Price: ${{ course.price }}</p> -->
-          <button (click)="openClassModal(course)">Create Class</button>
+  <h2>My Assigned Courses</h2>
 
-        </div>
+  <div *ngIf="courses.length > 0; else noCourses" class="courses-grid">
+    <div *ngFor="let course of courses" class="course-card">
+      <img
+        [src]="'http://localhost:3000' + course.imageUrl"
+        alt="Course Image"
+      />
+      <div class="course-info">
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+
+        <!-- <p class="price">Price: ${{ course.price }}</p> -->
+        <button (click)="openClassModal(course)">Create Class</button>
       </div>
     </div>
-  
-    <ng-template #noCourses>
-      <p class="no-courses-msg">No courses assigned to you yet.</p>
-    </ng-template>
-
-    <app-create-class
-  *ngIf="selectedCourse"
-  [courseId]="selectedCourse.id"
-  (classCreated)="onClassCreated()"
-  (close)="selectedCourse = null"
-></app-create-class>
-
   </div>
-  
 
+  <ng-template #noCourses>
+    <p class="no-courses-msg">No courses assigned to you yet.</p>
+  </ng-template>
 
+  <app-create-class
+    *ngIf="selectedCourse"
+    [courseId]="selectedCourse.id"
+    (classCreated)="onClassCreated()"
+    (close)="selectedCourse = null"
+  ></app-create-class>
+</div>

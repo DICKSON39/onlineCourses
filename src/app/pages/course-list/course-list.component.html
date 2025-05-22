@@ -30,7 +30,6 @@
           class="search-input"
         />
       </div>
-      
 
       <section class="course-grid">
         <div *ngFor="let course of filteredCourses" class="course-card">
@@ -41,7 +40,7 @@
             *ngIf="course.imageFullUrl"
           />
           <p class="description">
-            {{ course.description | slice : 0 : 100 }}...
+            {{ course.description | slice: 0 : 100 }}...
           </p>
           <p class="teacher">Teacher: {{ course.teacher }}</p>
           <div class="course-actions">

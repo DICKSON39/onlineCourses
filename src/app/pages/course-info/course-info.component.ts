@@ -7,10 +7,15 @@ import { CommonModule, NgIf } from '@angular/common'; // Import NgIf
 import { TeacherService } from '../../services/teacher.service';
 import { switchMap, of } from 'rxjs';
 
-import { loadStripe, Stripe, StripeElements, StripeCardElement } from '@stripe/stripe-js';
+import {
+  loadStripe,
+  Stripe,
+  StripeElements,
+  StripeCardElement,
+} from '@stripe/stripe-js';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
-import {PaymentService} from '../../services/payment.service';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-course-info',
@@ -44,10 +49,15 @@ export class CourseInfoComponent implements OnInit {
   private courseService = inject(CourseService);
   private teacherService = inject(TeacherService);
 
-  constructor(private paymentService: PaymentService, private toastr: ToastrService) {}
+  constructor(
+    private paymentService: PaymentService,
+    private toastr: ToastrService,
+  ) {}
 
   async ngOnInit(): Promise<void> {
-    this.stripe = await loadStripe('pk_test_51RO0lO2cCqKNtuUREQ3BtS6covRzAQvM71uLNsgNBVTTBdzQASkCtgCwlnncCzhWHTpf2ICS7pORY64ONUPQYANP00jPXyi8FU');
+    this.stripe = await loadStripe(
+      'pk_test_51RO0lO2cCqKNtuUREQ3BtS6covRzAQvM71uLNsgNBVTTBdzQASkCtgCwlnncCzhWHTpf2ICS7pORY64ONUPQYANP00jPXyi8FU',
+    );
 
     this.route.params.subscribe((params) => {
       this.courseId = +params['id'];
@@ -59,31 +69,38 @@ export class CourseInfoComponent implements OnInit {
   }
 
   fetchCourseDetails(id: number): void {
-    this.courseService.getCourseById(id).pipe(
-      switchMap(courseFromBackend => {
-        this.course = {
-          id: courseFromBackend.id,
-          title: courseFromBackend.title,
-          description: courseFromBackend.description,
-          price: courseFromBackend.price,
-          teacherId: courseFromBackend.teacherId,
-          imageUrl: this.backendBaseUrl + (courseFromBackend.imageUrl || ''),
-        };
-        if (this.course.teacherId) {
-          return this.teacherService.getTeacherById(this.course.teacherId);
-        } else {
-          return of(null);
-        }
-      })
-    ).subscribe({
-      next: (teacher) => {
-        this.teacherName = teacher && teacher.length > 0 ? teacher[0].name : 'N/A';
-      },
-      error: (error) => {
-        console.error('Error fetching course or teacher details:', error);
-        this.errorMessage = error.status === 404 ? 'Course not found.' : 'Failed to load course details.';
-      }
-    });
+    this.courseService
+      .getCourseById(id)
+      .pipe(
+        switchMap((courseFromBackend) => {
+          this.course = {
+            id: courseFromBackend.id,
+            title: courseFromBackend.title,
+            description: courseFromBackend.description,
+            price: courseFromBackend.price,
+            teacherId: courseFromBackend.teacherId,
+            imageUrl: this.backendBaseUrl + (courseFromBackend.imageUrl || ''),
+          };
+          if (this.course.teacherId) {
+            return this.teacherService.getTeacherById(this.course.teacherId);
+          } else {
+            return of(null);
+          }
+        }),
+      )
+      .subscribe({
+        next: (teacher) => {
+          this.teacherName =
+            teacher && teacher.length > 0 ? teacher[0].name : 'N/A';
+        },
+        error: (error) => {
+          console.error('Error fetching course or teacher details:', error);
+          this.errorMessage =
+            error.status === 404
+              ? 'Course not found.'
+              : 'Failed to load course details.';
+        },
+      });
   }
 
   loadPaymentHistory(): void {
@@ -100,7 +117,7 @@ export class CourseInfoComponent implements OnInit {
     this.selectedCoursePrice = price;
 
     const alreadyPaid = this.paymentHistory.some(
-      (p) => p.courseId === courseId && p.status === 'paid'
+      (p) => p.courseId === courseId && p.status === 'paid',
     );
 
     if (alreadyPaid) {
@@ -158,7 +175,8 @@ export class CourseInfoComponent implements OnInit {
         if (result.error) {
           this.toastr.error(result.error.message || 'Payment failed');
         } else if (result.paymentIntent?.status === 'succeeded') {
-          this.paymentService.confirmPayment(this.selectedCourseId, result.paymentIntent.id)
+          this.paymentService
+            .confirmPayment(this.selectedCourseId, result.paymentIntent.id)
             .subscribe({
               next: () => {
                 this.toastr.success('Payment successful!');
@@ -169,7 +187,7 @@ export class CourseInfoComponent implements OnInit {
                 console.error('DB Save Error:', err);
                 this.toastr.warning('Payment succeeded, but saving failed.');
                 this.showModal = false;
-              }
+              },
             });
         }
       } else if (this.selectedPaymentMethod === 'mpesa') {
@@ -180,7 +198,8 @@ export class CourseInfoComponent implements OnInit {
         }
 
         // Initiate M-Pesa STK Push
-        this.paymentService.initiateMpesaPayment(this.selectedCourseId, this.mpesaPhoneNumber)
+        this.paymentService
+          .initiateMpesaPayment(this.selectedCourseId, this.mpesaPhoneNumber)
           .subscribe({
             next: (res) => {
               this.toastr.info('M-Pesa STK Push initiated. Check your phone.');
@@ -190,8 +209,11 @@ export class CourseInfoComponent implements OnInit {
             },
             error: (err) => {
               console.error('M-Pesa initiation error:', err);
-              this.toastr.error('Failed to initiate M-Pesa payment: ' + (err.error?.message || err.message));
-            }
+              this.toastr.error(
+                'Failed to initiate M-Pesa payment: ' +
+                  (err.error?.message || err.message),
+              );
+            },
           });
       }
     } catch (err: any) {
@@ -202,4 +224,3 @@ export class CourseInfoComponent implements OnInit {
     }
   }
 }
-

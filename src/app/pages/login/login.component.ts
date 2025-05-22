@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServicesService } from '../../services/auth-services.service';
 
@@ -8,7 +13,7 @@ import { AuthServicesService } from '../../services/auth-services.service';
   selector: 'app-login',
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -16,10 +21,14 @@ export class LoginComponent {
   showSuccessModal = false;
   showErrorModal = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthServicesService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthServicesService,
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 

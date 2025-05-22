@@ -10,13 +10,12 @@ interface CourseViewModel {
   description: string;
   teacher: string;
   imageFullUrl: string;
-
 }
 @Component({
   selector: 'app-course-list',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './course-list.component.html',
-  styleUrl: './course-list.component.css'
+  styleUrl: './course-list.component.css',
 })
 export class CourseListComponent implements OnInit {
   courses: CourseViewModel[] = [];
@@ -24,10 +23,10 @@ export class CourseListComponent implements OnInit {
   backendBaseUrl: string = 'https://elearning-f7yg.onrender.com';
   searchTerm: string = '';
 
-
-
-
-  constructor(private courseService: CourseService,private router:Router) {}
+  constructor(
+    private courseService: CourseService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.loadCourses();
@@ -36,18 +35,15 @@ export class CourseListComponent implements OnInit {
   loadCourses(): void {
     this.courseService.getAllCourseWithTeachers().subscribe({
       next: (data) => {
-        this.courses = data.map(course => ({
+        this.courses = data.map((course) => ({
           id: course.id,
           title: course.title,
           description: course.description,
           teacher: `${course.teacherName} (${course.roleName})`,
           imageFullUrl: this.backendBaseUrl + course.image,
 
-
           // Construct the full URL here
         }));
-
-
       },
       error: (error) => {
         this.errorMessage = 'Failed to load courses.';
@@ -60,15 +56,15 @@ export class CourseListComponent implements OnInit {
     this.router.navigate(['/courses', courseId]);
   }
 
+  get filteredCourses() {
+    if (!this.searchTerm) return this.courses;
 
-get filteredCourses() {
-  if (!this.searchTerm) return this.courses;
-
-  const term = this.searchTerm.toLowerCase();
-  return this.courses.filter(course =>
-    course.title.toLowerCase().includes(term) ||
-    course.description.toLowerCase().includes(term) ||
-    course.teacher.toLowerCase().includes(term)
-  );
-}
+    const term = this.searchTerm.toLowerCase();
+    return this.courses.filter(
+      (course) =>
+        course.title.toLowerCase().includes(term) ||
+        course.description.toLowerCase().includes(term) ||
+        course.teacher.toLowerCase().includes(term),
+    );
+  }
 }

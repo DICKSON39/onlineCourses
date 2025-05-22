@@ -23,22 +23,27 @@ export interface PaginatedUsers {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/users';
-  private usersListUrl = 'https://elearning-f7yg.onrender.com/api/v1/users/users';
+  private usersListUrl =
+    'https://elearning-f7yg.onrender.com/api/v1/users/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('access_token');
     return new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
   }
 
-  getUsers(page: number, pageSize: number, searchTerm: string = ''): Observable<PaginatedUsers> {
+  getUsers(
+    page: number,
+    pageSize: number,
+    searchTerm: string = '',
+  ): Observable<PaginatedUsers> {
     let params = new HttpParams()
       .set('page', page.toString())
       .set('pageSize', pageSize.toString());
@@ -49,25 +54,25 @@ export class UserService {
 
     return this.http.get<PaginatedUsers>(this.usersListUrl, {
       headers: this.getAuthHeaders(),
-      params: params
+      params: params,
     });
   }
 
   getUserById(userId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/users/${userId}`, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 
   updateUser(userId: number, data: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/users/${userId}`, data, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 
   deleteUser(userId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/users/${userId}`, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 }

@@ -1,9 +1,13 @@
 /* Base styles */
 body {
-  font-family: 'Space Mono', monospace; /* Consistent font */
+  font-family: "Space Mono", monospace; /* Consistent font */
   margin: 0;
   padding: 0;
-  background: linear-gradient(180deg, #0d1a36, #080f29); /* Deep space gradient */
+  background: linear-gradient(
+    180deg,
+    #0d1a36,
+    #080f29
+  ); /* Deep space gradient */
   color: #f0f8ff; /* Light, ethereal text */
   display: flex;
   min-height: 100vh;
@@ -41,11 +45,17 @@ body {
   margin-bottom: 0.25em;
   border-radius: 8px;
   display: block;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .sidebar a:hover {
-  background: linear-gradient(135deg, #4aed88, #2dd4bf); /* Energetic green-teal gradient */
+  background: linear-gradient(
+    135deg,
+    #4aed88,
+    #2dd4bf
+  ); /* Energetic green-teal gradient */
   color: #080f29; /* Dark text on hover */
 }
 
@@ -82,7 +92,12 @@ body {
 }
 
 .section {
-  background: rgba(30, 41, 59, 0.7); /* Darker, translucent section background */
+  background: rgba(
+    30,
+    41,
+    59,
+    0.7
+  ); /* Darker, translucent section background */
   border-radius: 12px;
   padding: 1.5em;
   margin-bottom: 1.5em;
