@@ -62,16 +62,16 @@ export class ClassService {
   }
 
   getClassesByTeacher(teacherId: string): Observable<any[]> {
-    return this.http.get<any[]>(`https://elearning-f7yg.onrender.com/api/v1/class/teacher/${teacherId}`, {headers: this.getAuthHeaders()});
+    return this.http.get<any[]>(`https://elearning-f7yg.onrender.com/api/v1/class/class/teacher/${teacherId}`, {headers: this.getAuthHeaders()});
   }
 
   deleteClass(id: number) {
-    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/class/${id}`, {headers: this.getAuthHeaders()})
+    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/class/class/${id}`, {headers: this.getAuthHeaders()})
   }
 
   updateClass(classId: number, data: any) {
     return this.http.put(
-      `https://elearning-f7yg.onrender.com/api/v1/class/${classId}`,
+      `https://elearning-f7yg.onrender.com/api/v1/class/class/${classId}`,
       data, // Send the data as the body of the request
       {headers: this.getAuthHeaders()} // Attach headers with the token
     );
@@ -79,7 +79,7 @@ export class ClassService {
 
   getClassPaid(courseId: number, classId: number) {
     return this.http.post(
-      `${this.apiUrl}/paid`, // Use apiUrl variable here
+      `${this.apiUrl}class/paid`, // Use apiUrl variable here
       {courseId, classId},
       {headers: this.getAuthHeaders()}
     );
@@ -87,7 +87,7 @@ export class ClassService {
 
   // NEW METHOD: To fetch the details of the single latest paid class
   getLatestPaidClass(): Observable<LatestPaidClassInfo> {
-    return this.http.get<LatestPaidClassInfo>(`${this.apiUrl}/latest-paid`, {headers: this.getAuthHeaders()});
+    return this.http.get<LatestPaidClassInfo>(`${this.apiUrl}/class/latest-paid`, {headers: this.getAuthHeaders()});
 
 
   }
