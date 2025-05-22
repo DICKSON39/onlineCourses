@@ -9,7 +9,23 @@
   <h2>Student Menu</h2>
   <a routerLink="/courses" (click)="closeSidebar()">Available Classes</a>
   <a routerLink="/courses" (click)="closeSidebar()">Enroll & Pay</a>
-  <a href="#join-classes" (click)="closeSidebar()">Join Classes Overview</a>
+
+  <ng-container *ngIf="loadingClassLink">
+    <span class="sidebar-status">Loading class link...</span>
+  </ng-container>
+  <ng-container *ngIf="!loadingClassLink && classLinkError">
+    <span class="sidebar-error-status">{{ classLinkError }}</span>
+  </ng-container>
+  <ng-container *ngIf="!loadingClassLink && !classLinkError">
+    <a *ngIf="defaultClassId && defaultCourseId"
+       [routerLink]="['/paid-classes', defaultClassId]"
+       [queryParams]="{ courseId: defaultCourseId }"
+       (click)="closeSidebar()">
+      Join My Class
+    </a>
+    <span *ngIf="!defaultClassId" class="sidebar-status">No class to join.</span>
+  </ng-container>
+
   <a (click)="closeSidebar()">Attendance & Progress</a>
   <a (click)="closeSidebar()">Certificate</a>
   <a routerLink="/payments" (click)="closeSidebar()">Payments</a>
@@ -33,30 +49,24 @@
       courses.
     </p>
 
-    <div *ngIf="loadingClasses">
-      <p>Loading your paid classes... 🌀</p>
-    </div>
+    <div class="join-class-section">
+      <button *ngIf="loadingClassLink" disabled class="loading-button">Loading Class Link...</button>
 
-    <div *ngIf="classesError && !loadingClasses" class="error-message">
-      ⚠️ {{ classesError }}
-    </div>
+      <button *ngIf="!loadingClassLink && classLinkError" disabled class="error-button">
+        {{ classLinkError }}
+      </button>
 
-    <div *ngIf="!loadingClasses && paidClasses.length > 0">
-      <h3>Your Enrolled & Paid Classes:</h3>
-      <ul>
-        <li *ngFor="let classItem of paidClasses">
-          <a [routerLink]="['/paid-classes', classItem.class_id]"
-             [queryParams]="{ courseId: classItem.courseId }"
-             (click)="closeSidebar()">
-            {{ classItem.course_name }} - {{ classItem.startTime | date:'short' }}
-            <span *ngIf="classItem.isLive" class="live-indicator">🔴 Live</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+      <button *ngIf="!loadingClassLink && defaultClassId && defaultCourseId"
+              [routerLink]="['/paid-classes', defaultClassId]"
+              [queryParams]="{ courseId: defaultCourseId }"
+              class="action-button">
+        Go to Your Class
+      </button>
 
-    <div *ngIf="!loadingClasses && paidClasses.length === 0 && !classesError">
-      <p>You haven't enrolled or paid for any classes yet. Browse <a routerLink="/courses">available courses</a> to get started!</p>
+      <p *ngIf="!loadingClassLink && !defaultClassId && !classLinkError" class="no-class-message">
+        No upcoming or recent paid class found.
+        <a routerLink="/courses">Browse available courses</a> to get started!
+      </p>
     </div>
 
   </section>
@@ -82,3 +92,4 @@
   </app-modal>
 </div>
 </body>
+

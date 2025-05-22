@@ -13,6 +13,11 @@ interface Class {
 
 }
 
+interface LatestPaidClassInfo {
+  class_id: number; // Matches the alias from the SQL query
+  courseId: number;
+}
+
 interface PaidClassListItem { // New interface for the list of paid classes
   class_id: number;
   startTime: string;
@@ -44,7 +49,8 @@ interface CreateClassResponse {
 export class ClassService {
   private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/class`
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('access_token');
@@ -52,35 +58,38 @@ export class ClassService {
   }
 
   createClass(payload: CreateClassPayload): Observable<CreateClassResponse> {
-    return this.http.post<CreateClassResponse>(`${this.apiUrl}`, payload,{headers:this.getAuthHeaders()});
+    return this.http.post<CreateClassResponse>(`${this.apiUrl}`, payload, {headers: this.getAuthHeaders()});
   }
 
   getClassesByTeacher(teacherId: string): Observable<any[]> {
-    return this.http.get<any[]>(`https://elearning-f7yg.onrender.com/api/v1/class/teacher/${teacherId}`, { headers: this.getAuthHeaders() });
+    return this.http.get<any[]>(`https://elearning-f7yg.onrender.com/api/v1/class/teacher/${teacherId}`, {headers: this.getAuthHeaders()});
   }
 
-  deleteClass(id:number) {
-    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/class/${id}`,{headers:this.getAuthHeaders()})
+  deleteClass(id: number) {
+    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/class/${id}`, {headers: this.getAuthHeaders()})
   }
 
   updateClass(classId: number, data: any) {
     return this.http.put(
       `https://elearning-f7yg.onrender.com/api/v1/class/${classId}`,
       data, // Send the data as the body of the request
-      { headers: this.getAuthHeaders() } // Attach headers with the token
+      {headers: this.getAuthHeaders()} // Attach headers with the token
     );
   }
 
   getClassPaid(courseId: number, classId: number) {
     return this.http.post(
-      'https://elearning-f7yg.onrender.com/api/v1/class/paid',
-      { courseId, classId },
-      { headers: this.getAuthHeaders() }
+      `${this.apiUrl}/paid`, // Use apiUrl variable here
+      {courseId, classId},
+      {headers: this.getAuthHeaders()}
     );
   }
 
-  // NEW: Get all paid classes for the student
-  getMyPaidClasses(): Observable<PaidClassListItem[]> {
-    return this.http.get<PaidClassListItem[]>(`${this.apiUrl}/my-paid`, { headers: this.getAuthHeaders() });
+  // NEW METHOD: To fetch the details of the single latest paid class
+  getLatestPaidClass(): Observable<LatestPaidClassInfo> {
+    return this.http.get<LatestPaidClassInfo>(`${this.apiUrl}/latest-paid`, {headers: this.getAuthHeaders()});
+
+
   }
 }
+
