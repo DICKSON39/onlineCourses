@@ -45,4 +45,8 @@ export class StudentDashboardComponent {
   closeSidebar(): void {
     this.isSidebarOpen = false;
   }
+  viewSpecificPaidClass(classId: string): void { // This method would be called with a classId
+    this.router.navigate(['/paid-class', classId]);
+    this.closeSidebar(); // If called from sidebar interaction
+  }
 }

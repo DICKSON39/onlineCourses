@@ -11,7 +11,7 @@
     <ul>
       <li><a routerLink="/courses" (click)="closeSidebar()">Available Classes</a></li>
       <li><a routerLink="/courses" (click)="closeSidebar()">Enroll & Pay</a></li>
-      <li><a routerLink="/my-paid-classes" (click)="closeSidebar()">My Paid Classes</a></li> <li><a (click)="closeSidebar()">Attendance & Progress</a></li>
+      <li><a  [routerLink]="['/paid-class', someClassIdVariable]" (click)="closeSidebar()">My Paid Classes</a></li> <li><a (click)="closeSidebar()">Attendance & Progress</a></li>
       <li><a (click)="closeSidebar()">Certificate</a></li>
       <li><a routerLink="/payments" (click)="closeSidebar()">Payments</a></li>
       <li><a (click)="logout()">Logout</a></li>
