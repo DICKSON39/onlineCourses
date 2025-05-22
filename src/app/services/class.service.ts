@@ -13,6 +13,18 @@ interface Class {
 
 }
 
+interface PaidClassListItem { // New interface for the list of paid classes
+  class_id: number;
+  startTime: string;
+  endTime: string;
+  meetingLink?: string;
+  videoPath?: string;
+  courseId: number;
+  isLive: boolean;
+  course_name: string;
+  course_description: string;
+}
+
 interface CreateClassPayload {
   courseId: number;
   startTime: string;
@@ -25,6 +37,7 @@ interface CreateClassResponse {
   message: string;
   class: Class;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -66,7 +79,8 @@ export class ClassService {
     );
   }
 
-
-
-
+  // NEW: Get all paid classes for the student
+  getMyPaidClasses(): Observable<PaidClassListItem[]> {
+    return this.http.get<PaidClassListItem[]>(`${this.apiUrl}/my-paid`, { headers: this.getAuthHeaders() });
+  }
 }

@@ -1,23 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServicesService } from '../../services/auth-services.service';
 import { Router, RouterLink } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
-import { CommonModule } from '@angular/common'; // Import CommonModule for ngClass
+import { CommonModule } from '@angular/common';
+import { ClassService } from '../../services/class.service'; // Import ClassService
 
 @Component({
   selector: 'app-student-dashboard',
-  imports: [ModalComponent,RouterLink, CommonModule], // Add CommonModule here
+  imports: [ModalComponent,RouterLink, CommonModule],
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.css'
 })
-export class StudentDashboardComponent {
+export class StudentDashboardComponent implements OnInit { // Implement OnInit
   showModal: boolean = false;
-  isSidebarOpen: boolean = false; // Renamed for consistency and clarity
+  isSidebarOpen: boolean = false;
+  paidClasses: any[] = []; // To store the list of paid classes
+  loadingClasses: boolean = true;
+  classesError: string = '';
 
-  constructor( private authService:AuthServicesService, private router:Router) {}
+  constructor(
+    private authService: AuthServicesService,
+    private router: Router,
+    private classService: ClassService // Inject ClassService
+  ) {}
+
+  ngOnInit(): void { // Use ngOnInit for initialization
+    this.fetchPaidClasses();
+  }
+
+  fetchPaidClasses(): void {
+    this.loadingClasses = true;
+    this.classesError = '';
+    this.classService.getMyPaidClasses().subscribe({
+      next: (data) => {
+        this.paidClasses = data;
+        this.loadingClasses = false;
+      },
+      error: (err) => {
+        console.error('Error fetching paid classes:', err);
+        this.classesError = err.error?.message || 'Failed to load your paid classes.';
+        this.loadingClasses = false;
+      }
+    });
+  }
 
   logout() {
-    this.showModal = true;  // Show the modal for confirmation
+    this.showModal = true;
   }
 
   confirmLogout(): void {
@@ -26,27 +54,19 @@ export class StudentDashboardComponent {
   }
 
   cancelLogout(): void {
-    this.showModal = false;  // Hide the modal if canceled
+    this.showModal = false;
   }
 
   navigateToAvailableUsers() {
-    // This method seems to navigate to admin users, which might be incorrect for a student dashboard.
-    // Assuming it's a placeholder or intended for a specific cross-role scenario.
     this.router.navigate(['/admin/users']);
-    this.closeSidebar(); // Close sidebar after navigation on mobile
+    this.closeSidebar();
   }
 
-  // New method to toggle sidebar visibility
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
-  // New method to close sidebar
   closeSidebar(): void {
     this.isSidebarOpen = false;
-  }
-  viewSpecificPaidClass(classId: string): void { // This method would be called with a classId
-    this.router.navigate(['/paid-class', classId]);
-    this.closeSidebar(); // If called from sidebar interaction
   }
 }

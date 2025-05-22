@@ -7,17 +7,13 @@
 
 <div class="sidebar" [ngClass]="{'open': isSidebarOpen}">
   <h2>Student Menu</h2>
-  <nav>
-    <ul>
-      <li><a routerLink="/courses" (click)="closeSidebar()">Available Classes</a></li>
-      <li><a routerLink="/courses" (click)="closeSidebar()">Enroll & Pay</a></li>
-      <li><a routerLink="/my-paid-classes" (click)="closeSidebar()">My Paid Classes</a></li>
-      <li><a (click)="closeSidebar()">Attendance & Progress</a></li>
-      <li><a (click)="closeSidebar()">Certificate</a></li>
-      <li><a routerLink="/payments" (click)="closeSidebar()">Payments</a></li>
-      <li><a (click)="logout()">Logout</a></li>
-    </ul>
-  </nav>
+  <a routerLink="/courses" (click)="closeSidebar()">Available Classes</a>
+  <a routerLink="/courses" (click)="closeSidebar()">Enroll & Pay</a>
+  <a href="#join-classes" (click)="closeSidebar()">Join Classes Overview</a>
+  <a (click)="closeSidebar()">Attendance & Progress</a>
+  <a (click)="closeSidebar()">Certificate</a>
+  <a routerLink="/payments" (click)="closeSidebar()">Payments</a>
+  <a (click)="logout()">Logout</a>
 </div>
 
 <div class="main-content">
@@ -30,11 +26,39 @@
     <h2>Enroll and Pay</h2>
     <p>Enroll in selected courses and proceed with the payment process.</p>
   </section>
-  <section id="my-paid-classes-section" class="section"> <h2>My Paid Classes Overview</h2>
+  <section id="join-classes" class="section">
+    <h2>Join Classes</h2>
     <p>
       Access live sessions or view recorded lectures for your enrolled
       courses.
     </p>
+
+    <div *ngIf="loadingClasses">
+      <p>Loading your paid classes... 🌀</p>
+    </div>
+
+    <div *ngIf="classesError && !loadingClasses" class="error-message">
+      ⚠️ {{ classesError }}
+    </div>
+
+    <div *ngIf="!loadingClasses && paidClasses.length > 0">
+      <h3>Your Enrolled & Paid Classes:</h3>
+      <ul>
+        <li *ngFor="let classItem of paidClasses">
+          <a [routerLink]="['/paid-classes', classItem.class_id]"
+             [queryParams]="{ courseId: classItem.courseId }"
+             (click)="closeSidebar()">
+            {{ classItem.course_name }} - {{ classItem.startTime | date:'short' }}
+            <span *ngIf="classItem.isLive" class="live-indicator">🔴 Live</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="!loadingClasses && paidClasses.length === 0 && !classesError">
+      <p>You haven't enrolled or paid for any classes yet. Browse <a routerLink="/courses">available courses</a> to get started!</p>
+    </div>
+
   </section>
   <section id="attendance-progress" class="section">
     <h2>View Attendance and Progress</h2>

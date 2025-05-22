@@ -94,6 +94,6 @@ export const routes: Routes = [
 
   {path:'admin/payments',component:ShowPaymentsComponent,canActivate:[AuthGuard],data:{roles:[1]}}, // Admin payments
   {path: 'payments', component:MyPaymentsComponent,canActivate:[AuthGuard],data:{roles:[3]}}, // Student payments
-  {path:'paid-class/:classId',component:PaidClassComponent,canActivate:[AuthGuard],data:{roles:[3]}},
+  {path:'paid-classes/:classId',component:PaidClassComponent,canActivate:[AuthGuard],data:{roles:[3]}},
 
 ];
