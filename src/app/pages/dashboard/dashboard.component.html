@@ -1,0 +1,42 @@
+<div class="analytics-dashboard" *ngIf="stats">
+  <div class="overview-cards">
+    <div class="card">
+      <h3>Total Users</h3>
+      <p class="number">{{ stats.totalUsers }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Payment</h3>
+      <p class="number">{{ stats.totalPayments }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Courses</h3>
+      <p class="number">{{ stats.totalCourses }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Classes</h3>
+      <p class="number">{{ stats.totalClasses }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Enrolled Students</h3>
+      <p class="number">
+        {{ stats.totalEnrolled }} out Of the registered
+        {{ stats.totalStudents }} students
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Total Teachers</h3>
+      <p class="number">{{ stats.totalTeachers }}</p>
+      <button routerLink="/admin/teachers">View</button>
+    </div>
+
+    <div class="card">
+      <h3>Total Registered Students</h3>
+      <p class="number">{{ stats.totalStudents }}</p>
+    </div>
+  </div>
+</div>

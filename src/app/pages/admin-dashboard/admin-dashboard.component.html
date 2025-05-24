@@ -14,10 +14,13 @@
     <a routerLink="/admin/courses" (click)="closeSidebar()">Create a Course</a>
     <a routerLink="/my-courses" (click)="closeSidebar()"> Courses</a>
     <a routerLink="/admin/payments" (click)="closeSidebar()">Payments</a>
-    <a (click)="closeSidebar()">Analytics</a>
+    <a routerLink="/admin/dashboard-stats" (click)="closeSidebar()"
+      >Analytics</a
+    >
     <div class="separator"></div>
     <div class="group-title">Settings</div>
-    <a (click)="closeSidebar()">Profile</a>
+
+    <a [routerLink]="'/users/update'" (click)="closeSidebar()">Profile</a>
     <a (click)="closeSidebar()">Preferences</a>
     <a (click)="logout()">Logout</a>
   </div>

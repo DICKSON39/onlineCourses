@@ -32,13 +32,6 @@ export class StudentDashboardComponent {
     this.showModal = false; // Hide the modal if canceled
   }
 
-  navigateToAvailableUsers() {
-    // This method seems to navigate to admin users, which might be incorrect for a student dashboard.
-    // Assuming it's a placeholder or intended for a specific cross-role scenario.
-    this.router.navigate(['/admin/users']);
-    this.closeSidebar(); // Close sidebar after navigation on mobile
-  }
-
   // New method to toggle sidebar visibility
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;

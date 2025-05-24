@@ -17,8 +17,8 @@ interface Course {
   providedIn: 'root',
 })
 export class CourseService {
-  private apiUrl = 'https://elearning-f7yg.onrender.com/api/v1/courses';
-  private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/teachers';
+  private apiUrl = 'http://localhost:3000/api/v1/courses';
+  private baseUrl = 'http://localhost:3000/api/v1/teachers';
   constructor(private http: HttpClient) {}
 
   getAuthHeaders(): HttpHeaders {
@@ -60,7 +60,7 @@ export class CourseService {
 
   updateCourse(courseId: number, formData: FormData): Observable<any> {
     return this.http.put(
-      `https://elearning-f7yg.onrender.com/api/v1/courses/courses/${courseId}`,
+      `http://localhost:3000/api/v1/courses/courses/${courseId}`,
       formData,
       {
         headers: this.getAuthHeaders(),

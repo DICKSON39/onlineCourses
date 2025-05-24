@@ -26,7 +26,9 @@ import { ShowPaymentsComponent } from './pages/show-payments/show-payments.compo
 import { MyPaymentsComponent } from './pages/my-payments/my-payments.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './pages/payment-cancel/payment-cancel.component';
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EditAdminComponent } from './pages/edit-admin/edit-admin.component';
+import { TeachersOnlyComponent } from './pages/teachers-only/teachers-only.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -128,5 +130,26 @@ export const routes: Routes = [
     component: MyPaymentsComponent,
     canActivate: [AuthGuard],
     data: { roles: [3] },
-  }, // Student payments
+  },
+
+  {
+    path: 'admin/dashboard-stats',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1] },
+  },
+
+  {
+    path: 'editProfile/:id',
+    component: EditAdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1, 2, 3] },
+  },
+
+  {
+    path: 'admin/teachers',
+    component: TeachersOnlyComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [1] },
+  },
 ];

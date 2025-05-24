@@ -35,7 +35,8 @@ interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthServicesService {
-  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/auth`;
+  // private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/auth`;
+  private apiUrl = `http://localhost:3000/api/v1/auth`;
 
   constructor(
     private http: HttpClient,

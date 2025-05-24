@@ -19,7 +19,7 @@ export interface TeacherDetail {
   providedIn: 'root',
 })
 export class TeacherService {
-  private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/teachers';
+  private baseUrl = 'http://localhost:3000/api/v1/teachers';
 
   constructor(private http: HttpClient) {}
 

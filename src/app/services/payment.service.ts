@@ -8,7 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
   providedIn: 'root',
 })
 export class PaymentService {
-  private apiUrl = 'https://elearning-f7yg.onrender.com/api/v1/payment';
+  private apiUrl = 'http://localhost:3000/api/v1/payment';
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class PaymentService {
 
   makePayment(courseId: number, amount: number) {
     return this.http.post<{ clientSecret: string }>(
-      'https://elearning-f7yg.onrender.com/api/v1/payment/create-payment-intent',
+      'http://localhost:3000/api/v1/payment/create-payment-intent',
       { courseId, amount },
       {
         headers: this.getAuthHeaders(),

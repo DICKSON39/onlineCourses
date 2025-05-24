@@ -32,8 +32,9 @@
 /* Course description, price, teacher - Cool Vibe */
 .course-details-container p {
   margin-bottom: 1.2em;
-  color: #d0d7de; /* Softer grey text */
+  color: #333;
   line-height: 1.6; /* Improved readability */
+  font-weight: bold;
 }
 
 /* Price text - Cool Vibe (accent color) */

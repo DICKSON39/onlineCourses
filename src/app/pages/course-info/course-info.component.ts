@@ -28,7 +28,7 @@ export class CourseInfoComponent implements OnInit {
   courseId: number | null = null;
   course: Course | null = null;
   errorMessage: string = '';
-  backendBaseUrl: string = 'https://elearning-f7yg.onrender.com';
+  backendBaseUrl: string = 'http://localhost:3000';
   teacherName: string = '';
   selectedCourseId!: number;
   selectedCoursePrice!: number;
