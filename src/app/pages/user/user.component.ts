@@ -1,5 +1,5 @@
 // src/app/components/user-list/user.component.ts
-import { Component, NgIterable, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UserService, PaginatedUsers, User } from '../../services/user.service'; // Import PaginatedUsers

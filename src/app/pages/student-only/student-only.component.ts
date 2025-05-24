@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Dashboard, DashboardService } from '../../services/dashboard.service';
+import {  DashboardService } from '../../services/dashboard.service';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ class Student {
   styleUrl: './student-only.component.css',
 })
 export class StudentOnlyComponent implements OnInit {
-  students = [];
+  students!:Student
 
   constructor(private dashboardService: DashboardService) {}
 
