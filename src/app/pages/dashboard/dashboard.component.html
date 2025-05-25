@@ -1,136 +1,73 @@
 <div class="analytics-dashboard" *ngIf="stats">
-  <div class="overview-cards">
-    <div class="card">
-      <h3>Total Users</h3>
-      <p class="number">{{ stats.totalUsers }}</p>
-    </div>
 
-    <div class="card">
-      <h3>Total Payment</h3>
-      <p class="number">{{ stats.totalPayments  }}</p>
-    </div>
+  <h1 class="section-title">Overview Statistics</h1> <section class="overview-cards">
+  <article class="card"> <h3>Total Users</h3>
+    <p class="number">{{ stats.totalUsers }}</p>
+  </article>
 
-    <div class="card">
-      <h3>Total Courses</h3>
-      <p class="number">{{ stats.totalCourses }}</p>
-    </div>
+  <article class="card">
+    <h3>Total Payment</h3>
+    <p class="number">{{ stats.totalPayments  }}</p>
+  </article>
 
-    <div class="card">
-      <h3>Total Classes</h3>
-      <p class="number">{{ stats.totalClasses }}</p>
-    </div>
+  <article class="card">
+    <h3>Total Courses</h3>
+    <p class="number">{{ stats.totalCourses }}</p>
+  </article>
 
-    <div class="chart-container" *ngIf="pieChartData.length">
-      <h3>Enrollment Distribution</h3>
-      <canvas
-        baseChart
-        [data]="{ labels: pieChartLabels, datasets: [{ data: pieChartData }] }"
-        [type]="pieChartType"
-        [options]="pieChartOptions"
-      >
-      </canvas>
-    </div><div class="analytics-dashboard" *ngIf="stats">
-    <div class="overview-cards">
-      <div class="card">
-        <h3>Total Users</h3>
-        <p class="number">{{ stats.totalUsers }}</p>
-      </div>
+  <article class="card">
+    <h3>Total Classes</h3>
+    <p class="number">{{ stats.totalClasses }}</p>
+  </article>
 
-      <div class="card">
-        <h3>Total Payment</h3>
-        <p class="number">{{ stats.totalPayments  }}</p>
-      </div>
+  <article class="card">
+    <h3>Total Teachers</h3>
+    <p class="number">{{ stats.totalTeachers }}</p>
+    <button routerLink="/admin/teachers">View</button>
+  </article>
 
-      <div class="card">
-        <h3>Total Courses</h3>
-        <p class="number">{{ stats.totalCourses }}</p>
-      </div>
+  <article class="card">
+    <h3>Total Registered Students</h3>
+    <p class="number">{{ stats.totalStudents }}</p>
+    <button routerLink="/admin/students">View</button>
+  </article>
+</section>
 
-      <div class="card">
-        <h3>Total Classes</h3>
-        <p class="number">{{ stats.totalClasses }}</p>
-      </div>
+  <h2 class="section-title">Visualizations & Insights</h2> <section class="chart-gallery"> <figure class="chart-container" *ngIf="pieChartData.length"> <h3>Enrollment Distribution</h3>
+  <canvas
+    baseChart
+    [data]="{ labels: pieChartLabels, datasets: [{ data: pieChartData, backgroundColor: ['#00e0b8', '#4a00e0'] }] }" [type]="pieChartType"
+    [options]="pieChartOptions"
+    class="chart-canvas"
+  >
+  </canvas>
+  <figcaption class="description">Distribution of enrolled vs. non-enrolled students.</figcaption>
+</figure>
 
-      <div class="chart-container" *ngIf="pieChartData.length">
-        <h3>Enrollment Distribution</h3>
-        <canvas
-          baseChart
-          [data]="{ labels: pieChartLabels, datasets: [{ data: pieChartData }] }"
-          [type]="pieChartType"
-          [options]="pieChartOptions"
-        >
-        </canvas>
-      </div>
+  <figure class="chart-container" *ngIf="barChartData[0].data.length">
+    <h3>Courses vs Classes</h3>
+    <canvas
+      baseChart
+      [data]="{ labels: barChartLabels, datasets: barChartData }"
+      [type]="barChartType"
+      [options]="barChartOptions"
+      class="chart-canvas"
+    >
+    </canvas>
+    <figcaption class="description">Comparison of total courses and total classes.</figcaption>
+  </figure>
 
-      <div class="chart-container" *ngIf="barChartData[0].data.length">
-        <h3>Courses vs Classes</h3>
-        <canvas
-          baseChart
-          [data]="{ labels: barChartLabels, datasets: barChartData }"
-          [type]="barChartType"
-          [options]="barChartOptions"
-        >
-        </canvas>
-      </div>
+  <figure class="chart-container" *ngIf="doughnutChartData.length">
+    <h3>User Types Breakdown</h3>
+    <canvas
+      baseChart
+      [data]="{ labels: doughnutChartLabels, datasets: [{ data: doughnutChartData, backgroundColor: ['#00e0b8', '#4a00e0', '#b0b0b0'] }] }" [type]="doughnutChartType"
+      [options]="doughnutChartOptions"
+      class="chart-canvas"
+    >
+    </canvas>
+    <figcaption class="description">Breakdown of platform users by type.</figcaption>
+  </figure>
+</section>
 
-      <div class="chart-container" *ngIf="doughnutChartData.length">
-        <h3>User Types Breakdown</h3>
-        <canvas
-          baseChart
-          [data]="{ labels: doughnutChartLabels, datasets: [{ data: doughnutChartData }] }"
-          [type]="doughnutChartType"
-          [options]="doughnutChartOptions"
-        >
-        </canvas>
-      </div>
-
-      <div class="card">
-        <h3>Total Teachers</h3>
-        <p class="number">{{ stats.totalTeachers }}</p>
-        <button routerLink="/admin/teachers">View</button>
-      </div>
-
-      <div class="card">
-        <h3>Total Registered Students</h3>
-        <p class="number">{{ stats.totalStudents }}</p>
-        <button routerLink="/admin/students">View</button>
-      </div>
-    </div>
-  </div>
-
-
-    <div class="chart-container" *ngIf="barChartData[0].data.length">
-      <h3>Courses vs Classes</h3>
-      <canvas
-        baseChart
-        [data]="{ labels: barChartLabels, datasets: barChartData }"
-        [type]="barChartType"
-        [options]="barChartOptions"
-      >
-      </canvas>
-    </div>
-
-    <div class="chart-container" *ngIf="doughnutChartData.length">
-      <h3>User Types Breakdown</h3>
-      <canvas
-        baseChart
-        [data]="{ labels: doughnutChartLabels, datasets: [{ data: doughnutChartData }] }"
-        [type]="doughnutChartType"
-        [options]="doughnutChartOptions"
-      >
-      </canvas>
-    </div>
-
-    <div class="card">
-      <h3>Total Teachers</h3>
-      <p class="number">{{ stats.totalTeachers }}</p>
-      <button routerLink="/admin/teachers">View</button>
-    </div>
-
-    <div class="card">
-      <h3>Total Registered Students</h3>
-      <p class="number">{{ stats.totalStudents }}</p>
-      <button routerLink="/admin/students">View</button>
-    </div>
-  </div>
 </div>
