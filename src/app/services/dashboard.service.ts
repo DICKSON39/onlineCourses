@@ -8,7 +8,7 @@ export interface Dashboard {
   totalPayments: number;
   totalCourses: number;
   totalClasses: number;
-  totalEnrolled: bigint;
+  totalEnrolled: number;
   totalTeachers: number;
   totalStudents: number;
 }

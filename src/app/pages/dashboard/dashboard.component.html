@@ -20,14 +20,15 @@
       <p class="number">{{ stats.totalClasses }}</p>
     </div>
 
-    <div class="card">
-      <h3>Total Enrolled Students</h3>
-      <p class="number">
-        {{ stats.totalEnrolled }} out Of the registered
-        {{ stats.totalStudents }} students
-      </p>
-      <button routerLink="/admin/students">View</button>
+    <div class="chart-container" *ngIf="pieChartData.length">
+      <h3>Enrollment Distribution</h3>
+      <canvas baseChart
+              [data]="{ labels: pieChartLabels, datasets: [{ data: pieChartData }] }"
+              [type]="pieChartType"
+              [options]="{ responsive: true }">
+      </canvas>
     </div>
+
 
     <div class="card">
       <h3>Total Teachers</h3>
