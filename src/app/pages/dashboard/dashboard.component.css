@@ -1,124 +1,153 @@
-/* dashboard.component.css */
-
-:root {
-  --dark-blue: #1e2a78;
-  --medium-blue: #3f51b5;
-  --light-blue: #7986cb;
-  --hover-blue: #5c6bc0;
-  --card-bg: #2c3e99;
-  --text-light: #e0e7ff;
-  --shadow-glow: rgba(63, 81, 181, 0.5);
+.analytics-dashboard {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f172a; /* dark blue/indigo bg */
+  color: #cbd5e1; /* light-ish text for contrast */
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(79, 70, 229, 0.3);
+  transition: background-color 0.5s ease;
 }
 
-.analytics-dashboard {
-  background: linear-gradient(135deg, var(--dark-blue), var(--medium-blue));
-  min-height: 100vh;
-  padding: 2rem;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-light);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+.analytics-dashboard:hover {
+  background: #1e293b; /* slightly lighter on hover */
 }
 
 .overview-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.8rem;
-  width: 100%;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
 }
 
 .card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 1.8rem 2rem;
-  box-shadow: 0 0 10px var(--shadow-glow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow:
+    0 4px 8px rgba(79, 70, 229, 0.4),
+    inset 0 0 10px #6366f1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #e0e7ff;
+  cursor: default;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 0 20px var(--hover-blue);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow:
+    0 8px 20px rgba(79, 70, 229, 0.7),
+    inset 0 0 20px #a5b4fc;
 }
 
 .card h3 {
-  font-weight: 600;
   font-size: 1.3rem;
-  margin-bottom: 0.7rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.card .number {
-  font-size: 2.7rem;
   font-weight: 700;
-  color: var(--light-blue);
-  text-align: center;
-  user-select: none;
+  margin-bottom: 1rem;
+  color: #a5b4fc;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 8px #818cf8;
 }
 
-button[routerLink] {
-  margin-top: 1.3rem;
-  background-color: var(--medium-blue);
-  color: var(--text-light);
+.number {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #eef2ff;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 2px 6px #6366f1;
+  transition: color 0.3s ease;
+}
+
+.card:hover .number {
+  color: #c7d2fe;
+  text-shadow: 0 0 12px #818cf8;
+}
+
+button {
+  align-self: flex-start;
+  background-color: #6366f1;
   border: none;
+  padding: 0.7rem 1.4rem;
+  color: white;
+  font-weight: 700;
   border-radius: 8px;
-  padding: 0.5rem 1.3rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.25s ease;
-  align-self: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px #6366f1;
 }
 
-button[routerLink]:hover {
-  background-color: var(--hover-blue);
-  box-shadow: 0 0 8px var(--hover-blue);
+button:hover {
+  background-color: #4f46e5;
+  box-shadow: 0 0 16px #4f46e5;
+}
+
+button:focus {
+  outline: 2px solid #4338ca;
+  outline-offset: 3px;
 }
 
 .chart-container {
-  background: var(--card-bg);
-  padding: 1.5rem 1.8rem;
-  border-radius: 14px;
-  box-shadow: 0 0 12px var(--shadow-glow);
-  margin-top: 2rem;
-  user-select: none;
-  animation: fadeInUp 0.8s ease forwards;
+  max-width: 500px;
+  margin: 3rem auto 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 18px;
+  box-shadow:
+    0 6px 15px rgba(79, 70, 229, 0.5),
+    inset 0 0 15px #4f46e5;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .chart-container h3 {
-  text-align: center;
+  color: #a5b4fc;
+  font-weight: 700;
   margin-bottom: 1rem;
-  font-weight: 600;
-  font-size: 1.4rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 1.1px;
+  text-align: center;
+  text-shadow: 0 0 10px #818cf8;
 }
 
+/* Animate cards fade in with slight upward movement */
 @keyframes fadeInUp {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(15px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Scrollbar styling if needed */
-.analytics-dashboard::-webkit-scrollbar {
-  width: 8px;
+/* Animate number counting glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px #818cf8;
+  }
+  50% {
+    text-shadow: 0 0 20px #a5b4fc;
+  }
 }
 
-.analytics-dashboard::-webkit-scrollbar-thumb {
-  background-color: var(--medium-blue);
-  border-radius: 4px;
+.number {
+  animation: pulseGlow 3s ease-in-out infinite;
 }
 
-.analytics-dashboard::-webkit-scrollbar-track {
-  background: transparent;
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .analytics-dashboard {
+    padding: 1rem 1.5rem;
+  }
+
+  .overview-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview-cards {
+    grid-template-columns: 1fr;
+  }
 }
