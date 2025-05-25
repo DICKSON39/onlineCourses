@@ -8,11 +8,12 @@
   color: #cbd5e1;
   border-radius: 16px;
   box-shadow: 0 0 40px rgba(79, 70, 229, 0.3);
-  transition: background-color 0.5s ease;
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
 }
 
 .analytics-dashboard:hover {
   background: #1e293b;
+  box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);
 }
 
 .overview-cards {
@@ -21,26 +22,31 @@
   gap: 2rem;
 }
 
+/* Card Styles */
 .card {
   background: linear-gradient(135deg, #1e293b, #334155);
   padding: 2rem;
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow:
-    0 4px 8px rgba(79, 70, 229, 0.4),
-    inset 0 0 10px #6366f1;
+    0 4px 12px rgba(79, 70, 229, 0.4),
+    inset 0 0 12px #6366f1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #e0e7ff;
   cursor: default;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow:
-    0 8px 20px rgba(79, 70, 229, 0.7),
+    0 10px 24px rgba(79, 70, 229, 0.6),
     inset 0 0 20px #a5b4fc;
+  background: linear-gradient(135deg, #273449, #3b4860);
 }
 
 .card h3 {
@@ -52,37 +58,39 @@
   text-shadow: 0 0 8px #818cf8;
 }
 
+/* Number Text with Glow Animation */
 .number {
   font-size: 2.6rem;
   font-weight: 900;
   color: #eef2ff;
   margin-bottom: 1.4rem;
   text-shadow: 0 2px 6px #6366f1;
-  transition: color 0.3s ease;
   animation: pulseGlow 3s ease-in-out infinite;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
 .card:hover .number {
   color: #c7d2fe;
-  text-shadow: 0 0 12px #818cf8;
+  text-shadow: 0 0 12px #a5b4fc;
 }
 
+/* Button Styling */
 button {
   align-self: flex-start;
   background-color: #6366f1;
   border: none;
-  padding: 0.7rem 1.4rem;
+  padding: 0.75rem 1.5rem;
   color: white;
   font-weight: 700;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 8px #6366f1;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 10px #6366f1;
 }
 
 button:hover {
   background-color: #4f46e5;
-  box-shadow: 0 0 16px #4f46e5;
+  box-shadow: 0 0 20px #4f46e5;
 }
 
 button:focus {
@@ -90,17 +98,18 @@ button:focus {
   outline-offset: 3px;
 }
 
-/* Chart container */
+/* Chart Containers */
 .chart-container {
   max-width: 500px;
   margin: 3rem auto 0;
   padding: 1.5rem 2rem;
   background: linear-gradient(145deg, #1e293b, #0f172a);
-  border-radius: 18px;
+  border-radius: 20px;
   box-shadow:
-    0 6px 15px rgba(79, 70, 229, 0.5),
-    inset 0 0 15px #4f46e5;
+    0 6px 18px rgba(79, 70, 229, 0.5),
+    inset 0 0 20px #4f46e5;
   animation: fadeInUp 1s ease forwards;
+  transition: background 0.6s ease, box-shadow 0.6s ease;
 }
 
 .chart-container h3 {
@@ -138,6 +147,10 @@ button:focus {
   .analytics-dashboard {
     padding: 1.5rem 2rem;
   }
+
+  .chart-container {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -165,6 +178,10 @@ button:focus {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
+
+  .chart-container {
+    padding: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -176,8 +193,8 @@ button:focus {
     grid-template-columns: 1fr;
   }
 
-  .chart-container {
-    padding: 1rem;
+  .card {
+    padding: 1.2rem;
   }
 
   .card h3 {
@@ -191,5 +208,9 @@ button:focus {
   button {
     font-size: 0.85rem;
     padding: 0.6rem 1rem;
+  }
+
+  .chart-container {
+    padding: 1rem;
   }
 }
