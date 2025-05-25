@@ -1,5 +1,12 @@
 <div>
+  <h1>The Registeres Students Are</h1>
   <div>
+  <div *ngFor="let student of students">
+    <p>name: {{student.name}}</p>
+    <p>Email: {{student.email}}</p>
+    <p>Role: {{student.role_name}}</p>
+
+  </div>
 
   </div>
 </div>

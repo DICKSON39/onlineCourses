@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import {  DashboardService } from '../../services/dashboard.service';
+import {DashboardService, Students} from '../../services/dashboard.service';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-class Student {
-  name: string | undefined;
-  email: string | undefined;
-  roleName: string | undefined;
-}
+
 
 @Component({
   selector: 'app-student-only',
@@ -17,12 +13,12 @@ class Student {
   styleUrl: './student-only.component.css',
 })
 export class StudentOnlyComponent implements OnInit {
-  students!:Student
+  students:Students[] = [];
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.dashboardService.getStudents().subscribe((data) => {
+    this.dashboardService.getStudents().subscribe((data:Students[]) => {
       this.students = data;
     });
   }

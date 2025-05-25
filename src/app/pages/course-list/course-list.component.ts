@@ -20,7 +20,7 @@ interface CourseViewModel {
 export class CourseListComponent implements OnInit {
   courses: CourseViewModel[] = [];
   errorMessage: string = '';
-  backendBaseUrl: string = 'http://localhost:3000';
+  backendBaseUrl: string = 'https://elearning-f7yg.onrender.com';
   searchTerm: string = '';
 
   constructor(

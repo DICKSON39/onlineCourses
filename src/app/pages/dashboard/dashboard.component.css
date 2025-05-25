@@ -1,165 +1,64 @@
 .analytics-dashboard {
-  background: rgba(44, 62, 80, 0.8);
-  padding: 15px; /* Adjust padding for smaller screens */
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  margin-bottom: 15px; /* Adjust margin for smaller screens */
-  height: 100vh;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a202c;
 }
 
 .overview-cards {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(120px, 1fr)
-  ); /* Adjust minmax for smaller cards */
-  gap: 15px; /* Adjust gap for smaller screens */
-  margin-bottom: 15px; /* Adjust margin for smaller screens */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
-  background: rgba(44, 62, 80, 0.8);
-  padding: 10px; /* Adjust padding for smaller screens */
-  border-radius: 6px;
-  border: 1px solid #eee;
-  text-align: center;
+  background-color: #fff;
+  padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
 }
 
 .card h3 {
-  margin-top: 0;
-  background: rgba(44, 62, 80, 0.8);
-  margin-bottom: 3px; /* Adjust margin for smaller screens */
-  color: #3498db;
-  font-size: 2em; /* Adjust font size for smaller screens */
-  font-weight: normal;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #4f46e5; /* cool blue accent */
 }
 
-.card p.number {
-  color: #ffffff;
-  font-size: 1.2em; /* Adjust font size for smaller screens */
-  font-weight: bold;
+.number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #111827;
 }
 
-.charts-section {
-  margin-bottom: 15px; /* Adjust margin for smaller screens */
-}
-
-.chart-container h3 {
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 8px; /* Adjust margin for smaller screens */
-  font-size: 1em; /* Adjust font size for smaller screens */
-}
-
-.chart.placeholder {
-  background: rgba(44, 62, 80, 0.8);
+button {
+  align-self: flex-start;
+  background-color: #4f46e5;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
   border-radius: 6px;
-  padding: 30px 10px; /* Adjust padding for smaller screens */
-  text-align: center;
-  color: #333;
-  font-size: 0.8em; /* Adjust font size for smaller screens */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.bottom-section {
-  display: grid;
-  grid-template-columns: 1fr; /* Stack columns on smaller screens */
-  gap: 15px; /* Adjust gap for smaller screens */
+button:hover {
+  background-color: #4338ca;
 }
 
-.bottom-section h3 {
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 8px; /* Adjust margin for smaller screens */
-  font-size: 1em; /* Adjust font size for smaller screens */
-}
-
-.top-positions ul,
-.source-distribution ul {
-  list-style: none;
-  padding: 0;
-}
-
-.top-positions li,
-.source-distribution li {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0; /* Adjust padding for smaller screens */
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 0.85em; /* Adjust font size for smaller screens */
-}
-
-.top-positions li:last-child,
-.source-distribution li:last-child {
-  border-bottom: none;
-}
-
-.top-positions li span:first-child,
-.source-distribution li span:first-child {
-  color: #555;
-}
-
-.top-positions li span:last-child,
-.source-distribution li span:last-child {
-  color: #333;
-  font-weight: bold;
-}
-
-/* Media query for small devices (up to 600px) */
-@media (max-width: 600px) {
-  .overview-cards {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(100px, 1fr)
-    ); /* Further reduce minmax */
-    gap: 10px; /* Further reduce gap */
-  }
-
-  .card {
-    padding: 8px; /* Further reduce padding */
-  }
-
-  .card h3 {
-    font-size: 0.8em; /* Further reduce font size */
-  }
-
-  .card p.number {
-    font-size: 1em; /* Further reduce font size */
-  }
-
-  .chart.placeholder {
-    padding: 20px 10px; /* Further reduce padding */
-    font-size: 0.7em; /* Further reduce font size */
-  }
-}
-
-/* Media query for slightly larger small devices (up to 768px) */
-@media (min-width: 601px) and (max-width: 768px) {
-  .overview-cards {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(130px, 1fr)
-    ); /* Adjust minmax */
-    gap: 12px; /* Adjust gap */
-  }
-
-  .card {
-    padding: 12px; /* Adjust padding */
-  }
-
-  .card h3 {
-    font-size: 0.9em; /* Adjust font size */
-  }
-
-  .card p.number {
-    font-size: 1.4em; /* Adjust font size */
-  }
-
-  .chart.placeholder {
-    padding: 40px 15px; /* Adjust padding */
-    font-size: 0.85em; /* Adjust font size */
-  }
-
-  .bottom-section {
-    grid-template-columns: 1fr; /* Stack on slightly larger phones too */
-  }
+button:focus {
+  outline: 2px solid #4338ca;
+  outline-offset: 2px;
 }

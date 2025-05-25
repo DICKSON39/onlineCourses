@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Dashboard {
   totalUsers: number;
@@ -16,21 +17,21 @@ export interface Teacher {
   id: number;
   name: string;
   email: string;
-  roleName: string;
+  role_name: string;
 }
 
 export interface Students {
   id: number;
   name: string;
   email: string;
-  roleName: string;
+  role_name: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  private apiUrl: string = 'http://localhost:3000/api/v1/dashboard';
+  private apiUrl: string = 'https://elearning-f7yg.onrender.com/api/v1/dashboard';
 
   constructor(private http: HttpClient) {}
 
@@ -47,15 +48,26 @@ export class DashboardService {
     });
   }
 
-  getStudents(): Observable<Students> {
-    return this.http.get<Students>(`${this.apiUrl}/students`, {
+  getStudents(): Observable<Students[]> {
+    return this.http
+      .get<{items:Students[]}>(`${this.apiUrl}/students`, {
       headers: this.getAuthHeaders(),
-    });
+    })
+      .pipe(
+        map(response => response.items),
+      )
   }
 
-  getTeachers(): Observable<Teacher> {
-    return this.http.get<Teacher>(`${this.apiUrl}/teachers`, {
+
+
+getTeachers(): Observable<Teacher[]> {
+  return this.http
+    .get<{ items: Teacher[] }>(`${this.apiUrl}/teachers`, {
       headers: this.getAuthHeaders(),
-    });
-  }
+    })
+    .pipe(
+      map(response => response.items) // extract the array from 'items'
+    );
+}
+
 }

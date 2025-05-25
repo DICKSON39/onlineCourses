@@ -29,6 +29,7 @@ import { PaymentCancelComponent } from './pages/payment-cancel/payment-cancel.co
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditAdminComponent } from './pages/edit-admin/edit-admin.component';
 import { TeachersOnlyComponent } from './pages/teachers-only/teachers-only.component';
+import {StudentOnlyComponent} from './pages/student-only/student-only.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -152,4 +153,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: [1] },
   },
+
+  {
+    path: 'admin/students',
+    component: StudentOnlyComponent,
+    canActivate:[AuthGuard],
+    data: { roles: [1] },
+  }
 ];

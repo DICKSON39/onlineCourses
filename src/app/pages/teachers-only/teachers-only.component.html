@@ -1,8 +1,9 @@
 <div>
-  <div>
-    <h1>The Registered teachers are</h1>
-    <p>teachersname{{ teachers.name }}</p>
-    <p>teachersemail{{ teachers.roleName }}</p>
-    <p>{{ teachers.email }}</p>
+  <h1>The Registered Teachers are</h1>
+  <div *ngFor="let teacher of teachers">
+
+    <p>Name: {{ teacher.name }}</p>
+    <p>Email: {{ teacher.email }}</p>
+    <p>Role: {{ teacher.role_name }}</p>
   </div>
 </div>

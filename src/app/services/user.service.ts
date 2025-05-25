@@ -26,8 +26,8 @@ export interface PaginatedUsers {
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:3000/api/v1/users';
-  private usersListUrl = 'http://localhost:3000/api/v1/users/users';
+  private baseUrl = 'https://elearning-f7yg.onrender.com/api/v1/users';
+  private usersListUrl = 'https://elearning-f7yg.onrender.com/api/v1/users/users';
 
   constructor(private http: HttpClient) {}
 
