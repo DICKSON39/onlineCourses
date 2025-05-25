@@ -2,18 +2,17 @@
 .analytics-dashboard {
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 2.5rem 3.5rem; /* Slightly more padding for a roomier feel */
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font choice */
-  background: linear-gradient(145deg, #0f172a, #1a2036); /* Subtle gradient for depth */
-  color: #e2e8f0; /* Softer text color */
-  border-radius: 20px; /* More pronounced border-radius */
-  box-shadow: 0 10px 60px rgba(67, 56, 202, 0.4); /* Stronger, yet refined shadow */
-  transition: all 0.8s ease-in-out; /* Smoother overall transitions */
-  position: relative; /* Needed for pseudo-element background effect */
-  overflow: hidden; /* Ensures background effect doesn't spill out */
+  padding: 2.5rem 3.5rem;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(145deg, #0f172a, #1a2036);
+  color: #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 10px 60px rgba(67, 56, 202, 0.4);
+  transition: all 0.8s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Pseudo-element for a subtle background glow/movement */
 .analytics-dashboard::before {
   content: '';
   position: absolute;
@@ -24,15 +23,14 @@
   background: radial-gradient(circle at 60% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
   radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 40%);
   transform: rotate(45deg);
-  animation: backgroundMove 20s linear infinite alternate; /* Slow, mesmerizing movement */
-  z-index: 0; /* Behind other content */
+  animation: backgroundMove 20s linear infinite alternate;
+  z-index: 0;
 }
 
 .analytics-dashboard > * {
-  position: relative; /* Ensures content is above the pseudo-element */
+  position: relative;
   z-index: 1;
 }
-
 
 @keyframes backgroundMove {
   0% {
@@ -43,45 +41,46 @@
   }
 }
 
-
 .analytics-dashboard:hover {
-  box-shadow: 0 15px 80px rgba(79, 70, 229, 0.55); /* More intense hover shadow */
+  box-shadow: 0 15px 80px rgba(79, 70, 229, 0.55);
 }
 
 .overview-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min-width */
-  gap: 2.5rem; /* Increased gap for breathing room */
-  margin-top: 2rem; /* Add some space from the top */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
 }
 
 /* Card Styles */
 .card {
-  background: rgba(30, 41, 59, 0.7); /* Base for glassmorphism */
-  backdrop-filter: blur(15px); /* Frosted glass effect */
-  border: 1px solid rgba(79, 70, 229, 0.3); /* Subtle border for definition */
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(79, 70, 229, 0.3);
   padding: 2.2rem;
   border-radius: 20px;
   box-shadow:
-    0 8px 20px rgba(67, 56, 202, 0.3), /* Adjusted shadow for depth */
-    inset 0 0 15px rgba(99, 102, 241, 0.4); /* Refined inner glow */
+    0 8px 20px rgba(67, 56, 202, 0.3),
+    inset 0 0 15px rgba(99, 102, 241, 0.4);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute content */
-  min-height: 260px; /* Adjusted min-height */
-  max-height: 380px; /* Adjusted max-height */
+  justify-content: space-between;
+  /* Adjusting height properties for flexibility */
+  height: auto; /* Let content determine height */
+  min-height: 200px; /* Ensure a minimum, but don't force too large */
+  /* max-height: 380px; /* If content can truly exceed this, consider removing or adding scroll */
+  overflow: hidden; /* *** IMPORTANT: Prevent content from overflowing the card visually *** */
   color: #eef2ff;
-  cursor: pointer; /* Indicate interactivity */
+  cursor: pointer;
   transition:
-    transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), /* Smoother transform */
+    transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
     box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
     background 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
     border-color 0.5s ease;
-  position: relative; /* For pseudo-elements or specific effects */
-  overflow: hidden; /* To contain hover effects */
+  position: relative;
 }
 
-.card::after { /* Subtle shimmer effect on hover */
+.card::after {
   content: '';
   position: absolute;
   top: 0;
@@ -98,22 +97,28 @@
 }
 
 .card:hover {
-  transform: translateY(-12px) scale(1.03); /* Slightly more pronounced lift */
+  transform: translateY(-12px) scale(1.03);
   box-shadow:
     0 15px 30px rgba(67, 56, 202, 0.5),
-    inset 0 0 25px rgba(129, 140, 248, 0.6); /* Brighter inner glow */
-  background: rgba(30, 41, 59, 0.9); /* More opaque on hover */
-  border-color: rgba(99, 102, 241, 0.6); /* Border also reacts */
+    inset 0 0 25px rgba(129, 140, 248, 0.6);
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(99, 102, 241, 0.6);
 }
 
 .card h3 {
-  font-size: 1.4rem; /* Slightly larger heading */
+  font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #a5b4fc;
-  letter-spacing: 1.3px; /* More distinctive spacing */
-  text-shadow: 0 0 10px #818cf8, 0 0 2px rgba(165, 180, 252, 0.5); /* Enhanced glow */
+  letter-spacing: 1.3px;
+  text-shadow: 0 0 10px #818cf8, 0 0 2px rgba(165, 180, 252, 0.5);
   transition: color 0.4s ease, text-shadow 0.4s ease;
+  /* Text overflow handling */
+  word-wrap: break-word; /* Ensures long words don't overflow */
+  overflow-wrap: break-word;
+  /* white-space: nowrap; /* Use this with overflow: hidden; text-overflow: ellipsis; for single line truncation */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
 }
 
 .card:hover h3 {
@@ -123,19 +128,22 @@
 
 /* Number Text with Glow Animation */
 .number {
-  font-size: 2.8rem; /* Larger and more impactful */
+  font-size: 2.8rem;
   font-weight: 900;
   color: #eef2ff;
   margin-bottom: 1.6rem;
-  text-shadow: 0 0 12px #6366f1, 0 0 4px rgba(238, 242, 255, 0.5); /* Stronger glow */
-  animation: pulseGlow 3.5s ease-in-out infinite alternate; /* Slower, more subtle pulse */
+  text-shadow: 0 0 12px #6366f1, 0 0 4px rgba(238, 242, 255, 0.5);
+  animation: pulseGlow 3.5s ease-in-out infinite alternate;
   transition: color 0.5s ease, text-shadow 0.5s ease;
-  letter-spacing: -0.05em; /* Tighter kerning for numbers */
+  letter-spacing: -0.05em;
+  /* Ensure numbers also wrap if they somehow become extremely long */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .card:hover .number {
   color: #c7d2fe;
-  text-shadow: 0 0 18px #a5b4fc, 0 0 8px rgba(199, 210, 254, 0.8); /* More intense glow on hover */
+  text-shadow: 0 0 18px #a5b4fc, 0 0 8px rgba(199, 210, 254, 0.8);
 }
 
 /* Button Styling */
@@ -143,19 +151,24 @@ button {
   align-self: flex-start;
   background-color: #6366f1;
   border: none;
-  padding: 0.85rem 1.8rem; /* Slightly larger button */
+  padding: 0.85rem 1.8rem;
   color: white;
   font-weight: 700;
-  border-radius: 10px; /* Softer corners */
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6); /* More prominent shadow */
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  /* Ensure button content doesn't overflow if it becomes too long */
+  white-space: nowrap; /* Keep text on one line */
+  text-overflow: ellipsis; /* Add ellipsis if it overflows */
+  overflow: hidden; /* Hide overflowing text */
+  max-width: 100%; /* Ensure button itself doesn't exceed card width */
 }
 
-button::before { /* Inner glow effect on button */
+button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -175,33 +188,34 @@ button:hover::before {
 button:hover {
   background-color: #4f46e5;
   box-shadow: 0 0 25px rgba(79, 70, 229, 0.8);
-  transform: translateY(-2px); /* Slight lift on hover */
+  transform: translateY(-2px);
 }
 
 button:active {
-  transform: translateY(1px); /* Push in on click */
+  transform: translateY(1px);
 }
 
 button:focus {
-  outline: 3px solid #4338ca; /* Thicker focus outline */
+  outline: 3px solid #4338ca;
   outline-offset: 4px;
 }
 
 /* Chart Containers */
 .chart-container {
-  max-width: 550px; /* Slightly wider chart container */
-  margin: 3.5rem auto 0; /* More margin */
+  max-width: 550px;
+  margin: 3.5rem auto 0;
   padding: 2rem 2.5rem;
-  background: rgba(30, 41, 59, 0.7); /* Glassmorphism for charts too */
+  background: rgba(30, 41, 59, 0.7);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(79, 70, 229, 0.3);
-  border-radius: 25px; /* Softer radius */
+  border-radius: 25px;
   box-shadow:
     0 10px 30px rgba(67, 56, 202, 0.4),
     inset 0 0 25px rgba(79, 70, 229, 0.5);
-  animation: fadeInUp 1.2s ease forwards; /* Slightly slower fade in */
+  animation: fadeInUp 1.2s ease forwards;
   transition: background 0.7s ease, box-shadow 0.7s ease, border-color 0.7s ease;
   position: relative;
+  overflow: hidden; /* Added to ensure chart content is contained */
 }
 
 .chart-container:hover {
@@ -219,13 +233,15 @@ button:focus {
   letter-spacing: 1.2px;
   text-align: center;
   text-shadow: 0 0 12px #818cf8, 0 0 3px rgba(165, 180, 252, 0.5);
+  word-wrap: break-word; /* Ensure chart titles also break words */
+  overflow-wrap: break-word;
 }
 
-/* Animations */
+/* Animations (unchanged) */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px); /* More pronounced initial movement */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -242,18 +258,19 @@ button:focus {
   }
 }
 
-/* Responsive Tweaks (Adjusted for new values) */
+/* Responsive Tweaks (Adjusted min-height/padding and added for intermediate grid) */
 @media (max-width: 1024px) {
   .analytics-dashboard {
     padding: 2rem 2.5rem;
   }
   .overview-cards {
     gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly reduce min-width for larger tablets */
   }
   .card {
     padding: 2rem;
-    min-height: 240px;
-    max-height: 360px;
+    min-height: 180px; /* Lower min-height to prevent overstretching with less content */
+    /* max-height: 360px; */ /* Consider if this is really needed or if content should scroll */
   }
   .chart-container {
     max-width: 100%;
@@ -267,24 +284,24 @@ button:focus {
     border-radius: 18px;
   }
   .overview-cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Keep 2 columns if suitable */
     gap: 1.5rem;
   }
   .card {
-    padding: 1.8rem;
-    min-height: 220px;
-    max-height: 320px;
+    padding: 1.6rem; /* Reduced padding */
+    min-height: 160px; /* Further reduced min-height */
+    /* max-height: 320px; */
     border-radius: 18px;
   }
   .card h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Slightly smaller */
   }
   .number {
-    font-size: 2.4rem;
+    font-size: 2.2rem; /* Slightly smaller */
   }
   button {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem; /* Smaller button padding */
+    font-size: 0.9rem;
   }
   .chart-container {
     padding: 1.5rem;
@@ -298,27 +315,27 @@ button:focus {
     border-radius: 16px;
   }
   .overview-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column for small phones */
     gap: 1.2rem;
   }
   .card {
-    padding: 1.5rem;
-    min-height: 200px;
-    max-height: 300px;
+    padding: 1.2rem; /* Significantly reduced padding */
+    min-height: 140px; /* Minimum height for smallest screens */
+    /* max-height: 300px; */
     border-radius: 16px;
   }
   .card h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .number {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
   button {
-    font-size: 0.9rem;
-    padding: 0.6rem 1.1rem;
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
   }
   .chart-container {
-    padding: 1.2rem;
+    padding: 1rem;
     border-radius: 18px;
   }
 }
