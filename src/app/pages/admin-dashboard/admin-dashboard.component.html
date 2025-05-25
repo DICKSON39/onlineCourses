@@ -32,25 +32,25 @@
       <p>Overview of your application.</p>
     </section>
     <section id="users" class="section">
-      <h2>User Management</h2>
+      <h2 (click)="navigateToAvailableUsers()">User Management</h2>
       <p>Functionality for user profiles, roles, and permissions.</p>
     </section>
     <section id="courses" class="section">
-      <h2>Courses</h2>
+      <h2 routerLink="/my-courses">Courses</h2>
       <p>
         Functionality for managing course content, scheduling, and student
         enrollment.
       </p>
     </section>
-    <section id="payments" class="section">
-      <h2>Payments</h2>
+    <section  id="payments" class="section">
+      <h2 routerLink="/admin/payments">Payments</h2>
       <p>
         Functionality for processing transactions, managing subscriptions, and
         generating invoices.
       </p>
     </section>
     <section id="analytics" class="section">
-      <h2>Analytics</h2>
+      <h2 routerLink="/admin/dashboard-stats">Analytics</h2>
       <p>
         Functionality for dashboards and reports on user activity, course
         progress, and revenue.
