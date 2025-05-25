@@ -7,7 +7,7 @@
 
     <div class="card">
       <h3>Total Payment</h3>
-      <p class="number">{{ stats.totalPayments }}</p>
+      <p class="number">{{ stats.totalPayments | currency }}</p>
     </div>
 
     <div class="card">
@@ -22,13 +22,36 @@
 
     <div class="chart-container" *ngIf="pieChartData.length">
       <h3>Enrollment Distribution</h3>
-      <canvas baseChart
-              [data]="{ labels: pieChartLabels, datasets: [{ data: pieChartData }] }"
-              [type]="pieChartType"
-              [options]="{ responsive: true }">
+      <canvas
+        baseChart
+        [data]="{ labels: pieChartLabels, datasets: [{ data: pieChartData }] }"
+        [type]="pieChartType"
+        [options]="pieChartOptions"
+      >
       </canvas>
     </div>
 
+    <div class="chart-container" *ngIf="barChartData[0].data.length">
+      <h3>Courses vs Classes</h3>
+      <canvas
+        baseChart
+        [data]="{ labels: barChartLabels, datasets: barChartData }"
+        [type]="barChartType"
+        [options]="barChartOptions"
+      >
+      </canvas>
+    </div>
+
+    <div class="chart-container" *ngIf="doughnutChartData.length">
+      <h3>User Types Breakdown</h3>
+      <canvas
+        baseChart
+        [data]="{ labels: doughnutChartLabels, datasets: [{ data: doughnutChartData }] }"
+        [type]="doughnutChartType"
+        [options]="doughnutChartOptions"
+      >
+      </canvas>
+    </div>
 
     <div class="card">
       <h3>Total Teachers</h3>
