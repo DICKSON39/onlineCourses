@@ -1,4 +1,4 @@
-/* dashboard.component.css - The "Surprise Me" Edition */
+/* dashboard.component.css */
 
 :root {
   --dark-blue: #1e2a78;
@@ -7,13 +7,9 @@
   --hover-blue: #5c6bc0;
   --card-bg: #2c3e99;
   --text-light: #e0e7ff;
-  --shadow-glow: rgba(63, 81, 181, 0.4); /* Softer initial glow */
-  --card-hover-shadow: rgba(92, 107, 192, 0.6); /* More pronounced hover glow */
-  --button-hover-shadow: rgba(92, 107, 192, 0.5); /* Button specific hover glow */
-  --chart-shadow-glow: rgba(63, 81, 181, 0.7); /* Stronger glow for charts */
+  --shadow-glow: rgba(63, 81, 181, 0.5);
 }
 
-/* --- Base & Global Animations --- */
 .analytics-dashboard {
   background: linear-gradient(135deg, var(--dark-blue), var(--medium-blue));
   min-height: 100vh;
@@ -23,7 +19,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow-x: hidden; /* Prevent horizontal scroll on some animations */
 }
 
 .overview-cards {
@@ -34,38 +29,21 @@
   max-width: 1200px;
 }
 
-/* --- Card Animations: Depth, Staggered Entry, and Dynamic Hover --- */
 .card {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 1.8rem 2rem;
   box-shadow: 0 0 10px var(--shadow-glow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative; /* For pseudo-elements or absolute positioning if needed */
-  overflow: hidden; /* Ensures content respects border-radius during transform */
-
-  /* Initial state for sophisticated entry animation */
-  opacity: 0;
-  transform: translateY(30px) perspective(1000px) rotateX(-5deg); /* Slight 3D tilt */
-  transform-origin: bottom; /* Rotate from bottom */
-  animation: cardFadeInRotate 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* Smooth, quick bezier curve */
 }
 
-/* Staggered entry animation for cards */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(8) { animation-delay: 0.5s; } /* Total Teachers card */
-.card:nth-child(9) { animation-delay: 0.6s; } /* Total Registered Students card */
-
 .card:hover {
-  transform: translateY(-10px) scale(1.04) perspective(1000px) rotateX(0deg); /* Lift higher, zoom more, straighten */
-  box-shadow: 0 15px 30px var(--card-hover-shadow); /* Deeper, more expansive shadow */
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 20px var(--hover-blue);
 }
 
 .card h3 {
@@ -74,34 +52,16 @@
   margin-bottom: 0.7rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--text-light); /* Ensure consistent color */
 }
 
-/* --- Number Animations: Dynamic Flicker and Growth --- */
 .card .number {
   font-size: 2.7rem;
   font-weight: 700;
   color: var(--light-blue);
   text-align: center;
   user-select: none;
-  position: relative;
-  overflow: hidden; /* For future potential effects */
-  display: inline-block; /* Essential for transform on text */
-
-  /* Initial flicker for numbers */
-  animation: numberInitialFlicker 0.4s ease-out forwards;
-  animation-delay: var(--number-delay, 0.8s); /* Controlled per card, default 0.8s */
 }
 
-/* Override default number delay for specific cards to stagger the flicker */
-.card:nth-child(1) .number { --number-delay: 0.7s; }
-.card:nth-child(2) .number { --number-delay: 0.8s; }
-.card:nth-child(3) .number { --number-delay: 0.9s; }
-.card:nth-child(4) .number { --number-delay: 1.0s; }
-.card:nth-child(8) .number { --number-delay: 1.1s; }
-.card:nth-child(9) .number { --number-delay: 1.2s; }
-
-/* --- Button Animations: Interactive Glow and Press Effect --- */
 button[routerLink] {
   margin-top: 1.3rem;
   background-color: var(--medium-blue);
@@ -111,50 +71,24 @@ button[routerLink] {
   padding: 0.5rem 1.3rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition: background-color 0.25s ease;
   align-self: center;
-  position: relative;
-  overflow: hidden;
 }
 
 button[routerLink]:hover {
   background-color: var(--hover-blue);
-  box-shadow: 0 0 15px var(--button-hover-shadow), 0 0 25px var(--button-hover-shadow); /* Double shadow for glow */
-  transform: translateY(-2px) scale(1.03); /* Lift and slight scale */
+  box-shadow: 0 0 8px var(--hover-blue);
 }
 
-button[routerLink]:active {
-  transform: translateY(1px) scale(0.98); /* Press down effect */
-  box-shadow: 0 0 5px var(--button-hover-shadow);
-  background-color: var(--dark-blue);
-}
-
-/* --- Chart Container Animations: Sophisticated Fade-in and Perspective --- */
 .chart-container {
   background: var(--card-bg);
   padding: 1.5rem 1.8rem;
   border-radius: 14px;
-  box-shadow: 0 0 15px var(--chart-shadow-glow); /* Stronger glow for charts */
+  box-shadow: 0 0 12px var(--shadow-glow);
   margin-top: 2rem;
   user-select: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
-
-  /* Initial state for refined chart entry animation */
-  opacity: 0;
-  transform: translateY(40px) scale(0.9) perspective(1000px) rotateX(-8deg); /* More pronounced initial state */
-  transform-origin: top; /* Rotate from top */
-  animation: chartReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* A classic "ease-out-quad" equivalent */
+  animation: fadeInUp 0.8s ease forwards;
 }
-
-/* Staggered entry animation for charts */
-.chart-container:nth-of-type(1) { animation-delay: 0.8s; } /* After all cards */
-.chart-container:nth-of-type(2) { animation-delay: 1.1s; }
-.chart-container:nth-of-type(3) { animation-delay: 1.4s; }
-
 
 .chart-container h3 {
   text-align: center;
@@ -162,82 +96,20 @@ button[routerLink]:active {
   font-weight: 600;
   font-size: 1.4rem;
   letter-spacing: 0.03em;
-  color: var(--text-light); /* Ensure consistent color */
 }
 
-/* --- Keyframe Animations --- */
-
-/* Card entry with slight 3D rotation */
-@keyframes cardFadeInRotate {
+@keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(30px) perspective(1000px) rotateX(-5deg);
-    box-shadow: 0 0 5px var(--shadow-glow);
+    transform: translateY(18px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) perspective(1000px) rotateX(0deg);
-    box-shadow: 0 0 10px var(--shadow-glow);
+    transform: translateY(0);
   }
 }
 
-/* Chart sophisticated reveal with perspective */
-@keyframes chartReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.9) perspective(1000px) rotateX(-8deg);
-    box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1) perspective(1000px) rotateX(0deg);
-    box-shadow: 0 0 15px var(--chart-shadow-glow);
-  }
-}
-
-/* Number initial flicker (simulating a quick load) */
-@keyframes numberInitialFlicker {
-  0% { opacity: 0; transform: translateY(5px); }
-  50% { opacity: 0.8; transform: translateY(-2px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-
-/* --- Responsive Adjustments --- */
-@media (min-width: 769px) {
-  .chart-container {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .analytics-dashboard {
-    padding: 1rem;
-  }
-  .overview-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 1.5rem 1.5rem;
-  }
-
-  .card .number {
-    font-size: 2.2rem;
-  }
-
-  .chart-container {
-    grid-column: span 1;
-    margin-top: 1.5rem;
-    padding: 1.2rem 1.5rem;
-  }
-
-  .chart-container h3 {
-    font-size: 1.2rem;
-  }
-}
-
-/* Scrollbar styling */
+/* Scrollbar styling if needed */
 .analytics-dashboard::-webkit-scrollbar {
   width: 8px;
 }
