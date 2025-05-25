@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
-import { ChartType, ChartOptions,ChartDataset } from 'chart.js';
+import { ChartType, ChartOptions, ChartDataset } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   // PIE CHART - Enrollment Breakdown
   pieChartLabels: string[] = [];
   pieChartData: number[] = [];
-  pieChartType: ChartType = 'pie';
+  pieChartType: 'pie' = 'pie';  // locked in as exact string literal
   pieChartOptions: ChartOptions<'pie'> = {
     responsive: true,
     animation: {
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   barChartData: ChartDataset<'bar'>[] = [
     { data: [], label: 'Count', backgroundColor: ['#4f46e5', '#6366f1'] },
   ];
-  barChartType: ChartType = 'bar';
+  barChartType: 'bar' = 'bar'; // locked in exact literal
   barChartOptions: ChartOptions<'bar'> = {
     responsive: true,
     scales: {
@@ -54,12 +54,9 @@ export class DashboardComponent implements OnInit {
   };
 
   // DOUGHNUT CHART - User Types Breakdown
-  // DOUGHNUT CHART - User Types Breakdown
   doughnutChartLabels: string[] = ['Teachers', 'Students', 'Others'];
-  doughnutChartData: ChartDataset<'doughnut'>[] = [
-    { data: [], backgroundColor: ['#4f46e5', '#6366f1', '#2563eb'] }
-  ];
-  doughnutChartType: ChartType = 'doughnut';
+  doughnutChartData: number[] = [];
+  doughnutChartType: 'doughnut' = 'doughnut';  // locked in exact literal
   doughnutChartOptions: ChartOptions<'doughnut'> = {
     responsive: true,
     cutout: '70%',
@@ -73,7 +70,6 @@ export class DashboardComponent implements OnInit {
       },
     },
   };
-
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -91,8 +87,7 @@ export class DashboardComponent implements OnInit {
 
       // Doughnut chart: Teachers, Students, Others (remaining users)
       const others = data.totalUsers - (data.totalTeachers + data.totalStudents);
-      this.doughnutChartData[0].data = [data.totalTeachers, data.totalStudents, others > 0 ? others : 0];
-
+      this.doughnutChartData = [data.totalTeachers, data.totalStudents, others > 0 ? others : 0];
     });
   }
 }
