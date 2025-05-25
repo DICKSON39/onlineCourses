@@ -9,8 +9,8 @@
 
 body {
   font-family: 'Fira Code', monospace, 'Segoe UI', Tahoma, sans-serif;
-  background-color: #0a0a12; /* Deep space dark */
-  color: #f5f5fa; /* Soft light text */
+  background-color: #0f111a; /* Slightly softer deep space dark */
+  color: #e4e6f0; /* Softer light text */
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -20,16 +20,16 @@ body {
   max-width: 1400px;
   margin: 3rem auto;
   padding: 2.5rem 3.5rem;
-  background-color: #12121a; /* Darker container background */
-  border: 2px solid #262638;
-  box-shadow: 10px 10px 0px 0px #7064f5;
+  background-color: #1a1a2e; /* Darker container with blue-purple tint */
+  border: 2px solid #33354a; /* More neutral border */
+  box-shadow: 10px 10px 0px 0px #5de0e6; /* Neon teal shadow */
   transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
 }
 
 .analytics-dashboard:hover {
-  box-shadow: 15px 15px 0px 0px #8c7ff2;
+  box-shadow: 15px 15px 0px 0px #42c2cc;
   transform: translate(-5px, -5px);
 }
 
@@ -37,11 +37,11 @@ body {
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #64ffda; /* Teal neon */
+  color: #5de0e6; /* Neon teal */
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #64ffda;
+  border-bottom: 2px solid #5de0e6;
   display: inline-block;
   letter-spacing: 2px;
 }
@@ -56,31 +56,32 @@ body {
 
 /* CARD STYLES */
 .card {
-  background-color: #181826;
-  border: 1px solid #2e2e42;
+  background-color: #20203a; /* Dark blue-purple */
+  border: 1px solid #3d3d58;
   padding: 2rem;
-  box-shadow: 5px 5px 0px 0px #64ffda;
+  box-shadow: 5px 5px 0px 0px #5de0e6;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
-  color: #f5f5fa;
+  color: #e4e6f0;
   cursor: pointer;
   transition: all 0.2s ease-out;
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .card:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0px 0px #64ffda;
-  background-color: #1f1f2f;
+  box-shadow: 8px 8px 0px 0px #42c2cc;
+  background-color: #29294b;
 }
 
 .card h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #64ffda;
+  color: #5de0e6;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -94,20 +95,20 @@ body {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 0px #64ffda;
+  text-shadow: 2px 2px 0px #5de0e6;
   transition: text-shadow 0.2s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
 .card:hover .number {
-  text-shadow: 3px 3px 0px #64ffda;
+  text-shadow: 3px 3px 0px #42c2cc;
 }
 
 /* DESCRIPTION TEXT */
 .description {
   font-size: 0.95rem;
-  color: #a1a1b5;
+  color: #b0b3c6;
   flex-grow: 1;
   margin-bottom: 1rem;
   word-wrap: break-word;
@@ -117,37 +118,38 @@ body {
 /* BUTTON STYLING */
 button {
   align-self: flex-start;
-  background-color: #64ffda;
-  border: 2px solid #64ffda;
+  background-color: #5de0e6;
+  border: 2px solid #5de0e6;
   padding: 0.8rem 1.5rem;
-  color: #0a0a12;
+  color: #0f111a;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease-out;
-  box-shadow: 3px 3px 0px 0px #33ccb4;
+  box-shadow: 3px 3px 0px 0px #2ba8ab;
   letter-spacing: 0.5px;
   font-family: 'Fira Code', monospace;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  border-radius: 6px;
 }
 
 button:hover {
-  background-color: #33ccb4;
-  box-shadow: 5px 5px 0px 0px #64ffda;
+  background-color: #2ba8ab;
+  box-shadow: 5px 5px 0px 0px #5de0e6;
   transform: translate(-2px, -2px);
-  border-color: #33ccb4;
+  border-color: #2ba8ab;
 }
 
 button:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px 0px #33ccb4;
+  box-shadow: 1px 1px 0px 0px #2ba8ab;
 }
 
 button:focus {
-  outline: 2px dashed #64ffda;
+  outline: 2px dashed #5de0e6;
   outline-offset: 4px;
 }
 
@@ -156,11 +158,12 @@ button:focus {
   max-width: 700px;
   margin: 3.5rem auto 0;
   padding: 2rem 2.5rem;
-  background-color: #181826;
-  border: 1px solid #2e2e42;
+  background-color: #20203a;
+  border: 1px solid #3d3d58;
   box-shadow: 7px 7px 0px 0px #7064f5;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .chart-container:hover {
@@ -169,7 +172,7 @@ button:focus {
 }
 
 .chart-container h3 {
-  color: #64ffda;
+  color: #5de0e6;
   font-weight: 700;
   margin-bottom: 1.5rem;
   letter-spacing: 1.5px;
@@ -244,10 +247,10 @@ button:focus {
 @media (max-width: 768px) {
   .analytics-dashboard {
     padding: 1.5rem 1.8rem;
-    box-shadow: 7px 7px 0px 0px #7064f5;
+    box-shadow: 7px 7px 0px 0px #5de0e6;
   }
   .analytics-dashboard:hover {
-    box-shadow: 10px 10px 0px 0px #8c7ff2;
+    box-shadow: 10px 10px 0px 0px #42c2cc;
   }
   .section-title {
     font-size: 1.8rem;
@@ -259,10 +262,10 @@ button:focus {
   }
   .card {
     padding: 1.5rem;
-    box-shadow: 4px 4px 0px 0px #64ffda;
+    box-shadow: 4px 4px 0px 0px #5de0e6;
   }
   .card:hover {
-    box-shadow: 6px 6px 0px 0px #64ffda;
+    box-shadow: 6px 6px 0px 0px #5de0e6;
   }
   .card h3 {
     font-size: 1.2rem;
@@ -278,6 +281,41 @@ button:focus {
     padding: 1.5rem 1.8rem;
   }
   .chart-container h3 {
-    font-size: 1.4rem;
+    font-size:
+      1.4rem;
   }
 }
+
+@media (max-width: 480px) {
+  .overview-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .number {
+    font-size: 2.2rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.8rem 0;
+  }
+
+  .chart-container {
+    max-width: 100%;
+    padding: 1rem 1rem;
+  }
+
+  .chart-container h3 {
+    font-size: 1.2rem;
+  }
+}
+
