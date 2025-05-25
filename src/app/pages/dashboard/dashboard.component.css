@@ -8,41 +8,41 @@
 }
 
 body {
-  font-family: 'Roboto Mono', monospace, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Monospace for a raw, technical feel */
-  background-color: #0d0d0d; /* Deep dark background */
-  color: #e0e0e0; /* Off-white for text */
+  font-family: 'Fira Code', monospace, 'Segoe UI', Tahoma, sans-serif;
+  background-color: #0a0a12; /* Deep space dark */
+  color: #f5f5fa; /* Soft light text */
   line-height: 1.6;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 /* MAIN DASHBOARD CONTAINER */
 .analytics-dashboard {
-  max-width: 1400px; /* Wider for more content */
+  max-width: 1400px;
   margin: 3rem auto;
   padding: 2.5rem 3.5rem;
-  background-color: #1a1a1a; /* Slightly lighter dark background */
-  border: 2px solid #333333; /* Strong, visible border */
-  box-shadow: 10px 10px 0px 0px #4a00e0; /* Neo-brutalist strong offset shadow */
+  background-color: #12121a; /* Darker container background */
+  border: 2px solid #262638;
+  box-shadow: 10px 10px 0px 0px #7064f5;
   transition: all 0.3s ease-in-out;
-  position: relative; /* For overlay effects */
-  overflow: hidden; /* To contain inner elements and ensure shadow integrity */
+  position: relative;
+  overflow: hidden;
 }
 
 .analytics-dashboard:hover {
-  box-shadow: 15px 15px 0px 0px #6a00f0; /* Stronger shadow on hover */
-  transform: translate(-5px, -5px); /* Slight lift */
+  box-shadow: 15px 15px 0px 0px #8c7ff2;
+  transform: translate(-5px, -5px);
 }
 
 /* SECTION HEADINGS */
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #00e0b8; /* Striking accent color */
+  color: #64ffda; /* Teal neon */
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #00e0b8; /* Underline accent */
-  display: inline-block; /* To make border-bottom only as wide as text */
+  border-bottom: 2px solid #64ffda;
+  display: inline-block;
   letter-spacing: 2px;
 }
 
@@ -56,35 +56,35 @@ body {
 
 /* CARD STYLES */
 .card {
-  background-color: #222222;
-  border: 1px solid #333333;
+  background-color: #181826;
+  border: 1px solid #2e2e42;
   padding: 2rem;
-  box-shadow: 5px 5px 0px 0px #00e0b8; /* Accent offset shadow for cards */
+  box-shadow: 5px 5px 0px 0px #64ffda;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 200px; /* Ensure basic height */
-  color: #e0e0e0;
+  min-height: 200px;
+  color: #f5f5fa;
   cursor: pointer;
   transition: all 0.2s ease-out;
   position: relative;
-  overflow: hidden; /* Prevent content overflow */
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translate(-3px, -3px); /* Slight lift on hover */
-  box-shadow: 8px 8px 0px 0px #00e0b8; /* Stronger shadow on hover */
-  background-color: #2b2b2b;
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px 0px #64ffda;
+  background-color: #1f1f2f;
 }
 
 .card h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #00e0b8; /* Accent for titles */
+  color: #64ffda;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  word-wrap: break-word; /* Ensure long words break */
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
@@ -92,85 +92,84 @@ body {
 .number {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #e0e0e0;
+  color: #ffffff;
   margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 0px #00e0b8; /* Hard shadow for numbers */
+  text-shadow: 2px 2px 0px #64ffda;
   transition: text-shadow 0.2s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
 .card:hover .number {
-  text-shadow: 3px 3px 0px #00e0b8; /* More pronounced shadow on hover */
+  text-shadow: 3px 3px 0px #64ffda;
 }
 
-/* DESCRIPTION TEXT (for below number) */
+/* DESCRIPTION TEXT */
 .description {
-  font-size: 0.9rem;
-  color: #b0b0b0;
-  flex-grow: 1; /* Allows it to take available space */
+  font-size: 0.95rem;
+  color: #a1a1b5;
+  flex-grow: 1;
   margin-bottom: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-
 /* BUTTON STYLING */
 button {
   align-self: flex-start;
-  background-color: #00e0b8; /* Accent color button */
-  border: 2px solid #00e0b8; /* Strong border */
+  background-color: #64ffda;
+  border: 2px solid #64ffda;
   padding: 0.8rem 1.5rem;
-  color: #1a1a1a; /* Dark text on bright button */
+  color: #0a0a12;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease-out;
-  box-shadow: 3px 3px 0px 0px #00a88a; /* Button shadow */
+  box-shadow: 3px 3px 0px 0px #33ccb4;
   letter-spacing: 0.5px;
-  font-family: 'Roboto Mono', monospace; /* Monospace font for button */
-  white-space: nowrap; /* Prevent button text from wrapping */
+  font-family: 'Fira Code', monospace;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%; /* Ensure button itself doesn't overflow card */
+  max-width: 100%;
 }
 
 button:hover {
-  background-color: #00a88a; /* Darker accent on hover */
-  box-shadow: 5px 5px 0px 0px #00e0b8; /* Reverse shadow effect */
+  background-color: #33ccb4;
+  box-shadow: 5px 5px 0px 0px #64ffda;
   transform: translate(-2px, -2px);
-  border-color: #00a88a;
+  border-color: #33ccb4;
 }
 
 button:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px 0px #00a88a;
+  box-shadow: 1px 1px 0px 0px #33ccb4;
 }
 
 button:focus {
-  outline: 2px dashed #00e0b8; /* Dashed outline for focus */
+  outline: 2px dashed #64ffda;
   outline-offset: 4px;
 }
 
 /* CHART CONTAINERS */
 .chart-container {
-  max-width: 700px; /* Wider chart container */
+  max-width: 700px;
   margin: 3.5rem auto 0;
   padding: 2rem 2.5rem;
-  background-color: #222222;
-  border: 1px solid #333333;
-  box-shadow: 7px 7px 0px 0px #4a00e0; /* Same shadow as main dashboard */
+  background-color: #181826;
+  border: 1px solid #2e2e42;
+  box-shadow: 7px 7px 0px 0px #7064f5;
   transition: all 0.3s ease-in-out;
-  overflow: hidden; /* Essential for chart canvases */
+  overflow: hidden;
 }
 
 .chart-container:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 10px 10px 0px 0px #6a00f0;
+  box-shadow: 10px 10px 0px 0px #8c7ff2;
 }
 
 .chart-container h3 {
-  color: #00e0b8;
+  color: #64ffda;
   font-weight: 700;
   margin-bottom: 1.5rem;
   letter-spacing: 1.5px;
@@ -181,27 +180,23 @@ button:focus {
   overflow-wrap: break-word;
 }
 
-/* CHART CANVAS (if you are using Chart.js or similar) */
 .chart-canvas {
   max-width: 100%;
-  height: auto; /* Ensures chart scales proportionally */
-  display: block; /* Removes extra space below canvas */
-  margin: 0 auto; /* Center the chart */
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* ANIMATIONS (for initial load) */
+/* ANIMATIONS */
 .card, .chart-container {
   animation: fadeInSlideUp 0.8s ease-out forwards;
-  opacity: 0; /* Start invisible */
+  opacity: 0;
 }
 
-/* Staggered animation */
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }
 .card:nth-child(3) { animation-delay: 0.3s; }
 .card:nth-child(4) { animation-delay: 0.4s; }
-/* Add more as needed for your card count */
-
 
 @keyframes fadeInSlideUp {
   from {
@@ -214,9 +209,7 @@ button:focus {
   }
 }
 
-/* RESPONSIVE LAYOUT */
-
-/* For smaller desktops / large tablets */
+/* RESPONSIVE */
 @media (max-width: 1200px) {
   .analytics-dashboard {
     padding: 2rem 2.5rem;
@@ -248,29 +241,28 @@ button:focus {
   }
 }
 
-/* For tablets (portrait) */
 @media (max-width: 768px) {
   .analytics-dashboard {
     padding: 1.5rem 1.8rem;
-    box-shadow: 7px 7px 0px 0px #4a00e0; /* Reduce shadow size */
+    box-shadow: 7px 7px 0px 0px #7064f5;
   }
   .analytics-dashboard:hover {
-    box-shadow: 10px 10px 0px 0px #6a00f0;
+    box-shadow: 10px 10px 0px 0px #8c7ff2;
   }
   .section-title {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
   }
   .overview-cards {
-    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
   .card {
     padding: 1.5rem;
-    box-shadow: 4px 4px 0px 0px #00e0b8;
+    box-shadow: 4px 4px 0px 0px #64ffda;
   }
   .card:hover {
-    box-shadow: 6px 6px 0px 0px #00e0b8;
+    box-shadow: 6px 6px 0px 0px #64ffda;
   }
   .card h3 {
     font-size: 1.2rem;
@@ -284,67 +276,8 @@ button:focus {
   }
   .chart-container {
     padding: 1.5rem 1.8rem;
-    max-width: 100%; /* Allow chart to take full width */
-    box-shadow: 5px 5px 0px 0px #4a00e0;
-  }
-  .chart-container:hover {
-    box-shadow: 7px 7px 0px 0px #6a00f0;
   }
   .chart-container h3 {
     font-size: 1.4rem;
-  }
-}
-
-/* For mobile phones */
-@media (max-width: 480px) {
-  .analytics-dashboard {
-    margin: 1rem auto;
-    padding: 1rem 1.2rem;
-    box-shadow: 5px 5px 0px 0px #4a00e0; /* Smaller shadows for small screens */
-  }
-  .analytics-dashboard:hover {
-    box-shadow: 7px 7px 0px 0px #6a00f0;
-  }
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.3rem;
-  }
-  .overview-cards {
-    grid-template-columns: 1fr; /* Single column */
-    gap: 1rem;
-  }
-  .card {
-    padding: 1.2rem;
-    min-height: 120px; /* Adapt min-height for mobile */
-    box-shadow: 3px 3px 0px 0px #00e0b8;
-  }
-  .card:hover {
-    box-shadow: 4px 4px 0px 0px #00e0b8;
-  }
-  .card h3 {
-    font-size: 1rem;
-  }
-  .number {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .description {
-    font-size: 0.8rem;
-  }
-  button {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-  .chart-container {
-    padding: 1rem;
-    margin: 2rem auto 0;
-    box-shadow: 3px 3px 0px 0px #4a00e0;
-  }
-  .chart-container:hover {
-    box-shadow: 5px 5px 0px 0px #6a00f0;
-  }
-  .chart-container h3 {
-    font-size: 1.2rem;
   }
 }
