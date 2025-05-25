@@ -2,78 +2,140 @@
 .analytics-dashboard {
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 2rem 3rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #0f172a;
-  color: #cbd5e1;
-  border-radius: 16px;
-  box-shadow: 0 0 40px rgba(79, 70, 229, 0.3);
-  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+  padding: 2.5rem 3.5rem; /* Slightly more padding for a roomier feel */
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font choice */
+  background: linear-gradient(145deg, #0f172a, #1a2036); /* Subtle gradient for depth */
+  color: #e2e8f0; /* Softer text color */
+  border-radius: 20px; /* More pronounced border-radius */
+  box-shadow: 0 10px 60px rgba(67, 56, 202, 0.4); /* Stronger, yet refined shadow */
+  transition: all 0.8s ease-in-out; /* Smoother overall transitions */
+  position: relative; /* Needed for pseudo-element background effect */
+  overflow: hidden; /* Ensures background effect doesn't spill out */
 }
 
+/* Pseudo-element for a subtle background glow/movement */
+.analytics-dashboard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 60% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+  radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 40%);
+  transform: rotate(45deg);
+  animation: backgroundMove 20s linear infinite alternate; /* Slow, mesmerizing movement */
+  z-index: 0; /* Behind other content */
+}
+
+.analytics-dashboard > * {
+  position: relative; /* Ensures content is above the pseudo-element */
+  z-index: 1;
+}
+
+
+@keyframes backgroundMove {
+  0% {
+    transform: rotate(45deg) translate(0, 0);
+  }
+  100% {
+    transform: rotate(45deg) translate(-50px, 50px);
+  }
+}
+
+
 .analytics-dashboard:hover {
-  background: #1e293b;
-  box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 15px 80px rgba(79, 70, 229, 0.55); /* More intense hover shadow */
 }
 
 .overview-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min-width */
+  gap: 2.5rem; /* Increased gap for breathing room */
+  margin-top: 2rem; /* Add some space from the top */
 }
 
 /* Card Styles */
 .card {
-  background: linear-gradient(135deg, #1e293b, #334155);
-  padding: 2rem;
-  border-radius: 16px;
+  background: rgba(30, 41, 59, 0.7); /* Base for glassmorphism */
+  backdrop-filter: blur(15px); /* Frosted glass effect */
+  border: 1px solid rgba(79, 70, 229, 0.3); /* Subtle border for definition */
+  padding: 2.2rem;
+  border-radius: 20px;
   box-shadow:
-    0 4px 12px rgba(79, 70, 229, 0.4),
-    inset 0 0 12px #6366f1;
+    0 8px 20px rgba(67, 56, 202, 0.3), /* Adjusted shadow for depth */
+    inset 0 0 15px rgba(99, 102, 241, 0.4); /* Refined inner glow */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* updated */
-  min-height: 240px; /* added */
-  max-height: 340px; /* added */
-  color: #e0e7ff;
-  cursor: default;
+  justify-content: space-between; /* Distribute content */
+  min-height: 260px; /* Adjusted min-height */
+  max-height: 380px; /* Adjusted max-height */
+  color: #eef2ff;
+  cursor: pointer; /* Indicate interactivity */
   transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease,
-    background 0.4s ease;
+    transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), /* Smoother transform */
+    box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.5s ease;
+  position: relative; /* For pseudo-elements or specific effects */
+  overflow: hidden; /* To contain hover effects */
+}
+
+.card::after { /* Subtle shimmer effect on hover */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 2;
+}
+
+.card:hover::after {
+  left: 100%;
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.05);
+  transform: translateY(-12px) scale(1.03); /* Slightly more pronounced lift */
   box-shadow:
-    0 10px 24px rgba(79, 70, 229, 0.6),
-    inset 0 0 20px #a5b4fc;
-  background: linear-gradient(135deg, #273449, #3b4860);
+    0 15px 30px rgba(67, 56, 202, 0.5),
+    inset 0 0 25px rgba(129, 140, 248, 0.6); /* Brighter inner glow */
+  background: rgba(30, 41, 59, 0.9); /* More opaque on hover */
+  border-color: rgba(99, 102, 241, 0.6); /* Border also reacts */
 }
 
 .card h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem; /* Slightly larger heading */
   font-weight: 700;
   margin-bottom: 1rem;
   color: #a5b4fc;
-  letter-spacing: 1.2px;
-  text-shadow: 0 0 8px #818cf8;
+  letter-spacing: 1.3px; /* More distinctive spacing */
+  text-shadow: 0 0 10px #818cf8, 0 0 2px rgba(165, 180, 252, 0.5); /* Enhanced glow */
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.card:hover h3 {
+  color: #c7d2fe;
+  text-shadow: 0 0 15px #a5b4fc, 0 0 5px rgba(199, 210, 254, 0.7);
 }
 
 /* Number Text with Glow Animation */
 .number {
-  font-size: 2.6rem;
+  font-size: 2.8rem; /* Larger and more impactful */
   font-weight: 900;
   color: #eef2ff;
-  margin-bottom: 1.4rem;
-  text-shadow: 0 2px 6px #6366f1;
-  animation: pulseGlow 3s ease-in-out infinite;
-  transition: color 0.4s ease, text-shadow 0.4s ease;
+  margin-bottom: 1.6rem;
+  text-shadow: 0 0 12px #6366f1, 0 0 4px rgba(238, 242, 255, 0.5); /* Stronger glow */
+  animation: pulseGlow 3.5s ease-in-out infinite alternate; /* Slower, more subtle pulse */
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+  letter-spacing: -0.05em; /* Tighter kerning for numbers */
 }
 
 .card:hover .number {
   color: #c7d2fe;
-  text-shadow: 0 0 12px #a5b4fc;
+  text-shadow: 0 0 18px #a5b4fc, 0 0 8px rgba(199, 210, 254, 0.8); /* More intense glow on hover */
 }
 
 /* Button Styling */
@@ -81,53 +143,89 @@ button {
   align-self: flex-start;
   background-color: #6366f1;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.8rem; /* Slightly larger button */
   color: white;
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: 10px; /* Softer corners */
   cursor: pointer;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 0 10px #6366f1;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6); /* More prominent shadow */
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before { /* Inner glow effect on button */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+button:hover::before {
+  opacity: 1;
 }
 
 button:hover {
   background-color: #4f46e5;
-  box-shadow: 0 0 20px #4f46e5;
+  box-shadow: 0 0 25px rgba(79, 70, 229, 0.8);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+button:active {
+  transform: translateY(1px); /* Push in on click */
 }
 
 button:focus {
-  outline: 2px solid #4338ca;
-  outline-offset: 3px;
+  outline: 3px solid #4338ca; /* Thicker focus outline */
+  outline-offset: 4px;
 }
 
 /* Chart Containers */
 .chart-container {
-  max-width: 500px;
-  margin: 3rem auto 0;
-  padding: 1.5rem 2rem;
-  background: linear-gradient(145deg, #1e293b, #0f172a);
-  border-radius: 20px;
+  max-width: 550px; /* Slightly wider chart container */
+  margin: 3.5rem auto 0; /* More margin */
+  padding: 2rem 2.5rem;
+  background: rgba(30, 41, 59, 0.7); /* Glassmorphism for charts too */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  border-radius: 25px; /* Softer radius */
   box-shadow:
-    0 6px 18px rgba(79, 70, 229, 0.5),
-    inset 0 0 20px #4f46e5;
-  animation: fadeInUp 1s ease forwards;
-  transition: background 0.6s ease, box-shadow 0.6s ease;
+    0 10px 30px rgba(67, 56, 202, 0.4),
+    inset 0 0 25px rgba(79, 70, 229, 0.5);
+  animation: fadeInUp 1.2s ease forwards; /* Slightly slower fade in */
+  transition: background 0.7s ease, box-shadow 0.7s ease, border-color 0.7s ease;
+  position: relative;
+}
+
+.chart-container:hover {
+  background: rgba(30, 41, 59, 0.9);
+  box-shadow:
+    0 15px 40px rgba(67, 56, 202, 0.6),
+    inset 0 0 30px rgba(99, 102, 241, 0.7);
+  border-color: rgba(99, 102, 241, 0.6);
 }
 
 .chart-container h3 {
   color: #a5b4fc;
   font-weight: 700;
-  margin-bottom: 1rem;
-  letter-spacing: 1.1px;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1.2px;
   text-align: center;
-  text-shadow: 0 0 10px #818cf8;
+  text-shadow: 0 0 12px #818cf8, 0 0 3px rgba(165, 180, 252, 0.5);
 }
 
 /* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px); /* More pronounced initial movement */
   }
   to {
     opacity: 1;
@@ -137,82 +235,90 @@ button:focus {
 
 @keyframes pulseGlow {
   0%, 100% {
-    text-shadow: 0 0 10px #818cf8;
+    text-shadow: 0 0 15px #818cf8, 0 0 5px rgba(129, 140, 248, 0.6);
   }
   50% {
-    text-shadow: 0 0 20px #a5b4fc;
+    text-shadow: 0 0 25px #a5b4fc, 0 0 10px rgba(165, 180, 252, 0.8);
   }
 }
 
-/* Responsive Tweaks */
+/* Responsive Tweaks (Adjusted for new values) */
 @media (max-width: 1024px) {
   .analytics-dashboard {
-    padding: 1.5rem 2rem;
+    padding: 2rem 2.5rem;
   }
-
+  .overview-cards {
+    gap: 2rem;
+  }
+  .card {
+    padding: 2rem;
+    min-height: 240px;
+    max-height: 360px;
+  }
   .chart-container {
     max-width: 100%;
+    padding: 1.8rem 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .analytics-dashboard {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 18px;
   }
-
   .overview-cards {
     grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
-
   .card {
-    padding: 1.5rem;
+    padding: 1.8rem;
+    min-height: 220px;
+    max-height: 320px;
+    border-radius: 18px;
   }
-
   .card h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
-
   .number {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
-
   button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
   }
-
   .chart-container {
-    padding: 1.2rem;
+    padding: 1.5rem;
+    border-radius: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .analytics-dashboard {
-    padding: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
   }
-
   .overview-cards {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
-
   .card {
-    padding: 1.2rem;
+    padding: 1.5rem;
+    min-height: 200px;
+    max-height: 300px;
+    border-radius: 16px;
   }
-
   .card h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
-
   .number {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
-
   button {
-    font-size: 0.85rem;
-    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.1rem;
   }
-
   .chart-container {
-    padding: 1rem;
+    padding: 1.2rem;
+    border-radius: 18px;
   }
 }
