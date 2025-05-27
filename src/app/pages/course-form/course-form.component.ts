@@ -55,11 +55,9 @@ export class CourseFormComponent implements OnInit {
       image: [null, Validators.required],
     });
 
-   this.teacherService.getAllTeachers().subscribe((data: any) => {
-  console.log('Teachers fetched:', data);
-  this.teachers = data.items;  // <-- grab the array here
-});
-
+    this.teacherService.getAllTeachers().subscribe((data: User[]) => {
+      this.teachers = data;
+    });
   }
 
   onImageSelected(event: any): void {
@@ -69,8 +67,6 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.courseForm.value);
-
     if (this.courseForm.invalid) {
       this.snackBar.open('❌ Please fill out the form correctly!', 'Close', {
         duration: 3000,
