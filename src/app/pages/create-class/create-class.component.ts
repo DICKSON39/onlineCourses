@@ -26,8 +26,7 @@ export class CreateClassComponent {
 
   constructor(private fb: FormBuilder, private classService: ClassService) {
     this.classForm = this.fb.group({
-      startTime: ['', Validators.required],
-      endTime: ['', Validators.required],
+                       
     });
   }
 
