@@ -5,13 +5,9 @@
   <label>End Time:</label>
   <input type="datetime-local" formControlName="endTime" />
 
-  <label>
-    <input type="checkbox" formControlName="isLive" /> Is Live?
-  </label>
+  
 
-  <label *ngIf="classForm.value.isLive">Meeting Link:</label>
-  <input *ngIf="classForm.value.isLive" type="text" formControlName="meetingLink" />
-
+ 
   <label>Upload Videos:</label>
   <input type="file" (change)="onFileChange($event)" multiple />
 
