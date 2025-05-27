@@ -55,10 +55,11 @@ export class CourseFormComponent implements OnInit {
       image: [null, Validators.required],
     });
 
-    this.teacherService.getAllTeachers().subscribe((data: User[]) => {
-      console.log('Teachers fetched:', data);
-      this.teachers = data;
-    });
+   this.teacherService.getAllTeachers().subscribe((data: any) => {
+  console.log('Teachers fetched:', data);
+  this.teachers = data.items;  // <-- grab the array here
+});
+
   }
 
   onImageSelected(event: any): void {
