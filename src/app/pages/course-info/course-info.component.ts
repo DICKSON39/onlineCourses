@@ -78,7 +78,7 @@ export class CourseInfoComponent implements OnInit {
             title: courseFromBackend.title,
             description: courseFromBackend.description,
             price: courseFromBackend.price,
-            teacherId: courseFromBackend.teacherId,
+            teacherId: courseFromBackend.teacherId ,
             imageUrl:courseFromBackend.imageUrl 
           };
           if (this.course.teacherId) {

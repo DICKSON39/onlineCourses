@@ -40,7 +40,8 @@ export class AdminCoursesComponent {
           description: course.description,
           teacher: `${course.teacherName} `,
 
-          imageFullUrl: this.backendBaseUrl + course.image,
+          imageFullUrl: course.imageUrl,
+          
         }));
       },
       error: (error) => {
