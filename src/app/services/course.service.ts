@@ -8,7 +8,7 @@ interface Course {
   description: string;
   teacherName: string;
   roleName: string;
-  image: string;
+  imageUrl: string;
   price: number;
   teacherId: number;
   // Add other properties as needed
