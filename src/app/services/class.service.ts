@@ -5,10 +5,9 @@ import { Observable } from 'rxjs';
 interface Class {
   id: number;
   course: any;
-  startTime: string;
-  endTime: string;
-  meetingLink?: string;
-  videoPath?: string;
+  Description:string;
+  title:string;
+
 }
 
 interface CreateClassResponse {
