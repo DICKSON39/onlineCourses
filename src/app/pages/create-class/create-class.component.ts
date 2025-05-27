@@ -28,7 +28,6 @@ export class CreateClassComponent {
     this.classForm = this.fb.group({
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      
     });
   }
 
@@ -44,9 +43,8 @@ export class CreateClassComponent {
 
     const formData = new FormData();
     formData.append('courseId', this.courseId.toString());
-    formData.append('startTime', this.classForm.value.startTime);
-    formData.append('endTime', this.classForm.value.endTime);
-   
+    formData.append('Description', this.classForm.value.Description);
+    formData.append('title', this.classForm.value.title);
 
     this.selectedFiles.forEach((file) => {
       formData.append('files', file); // backend expects this as `files`

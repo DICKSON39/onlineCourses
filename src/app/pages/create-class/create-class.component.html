@@ -1,17 +1,21 @@
-<form [formGroup]="classForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-  <label>Start Time:</label>
-  <input type="datetime-local" formControlName="startTime" />
+<form
+  [formGroup]="classForm"
+  (ngSubmit)="onSubmit()"
+  enctype="multipart/form-data"
+>
+  <label>Class Description</label>
+  <input type="text" formControlName="Description" />
 
-  <label>End Time:</label>
-  <input type="datetime-local" formControlName="endTime" />
+  <label>The Class Title</label>
+  <input type="text" formControlName="title" />
 
-  
-
- 
   <label>Upload Videos:</label>
   <input type="file" (change)="onFileChange($event)" multiple />
 
-  <button type="submit" [disabled]="classForm.invalid || selectedFiles.length === 0">
+  <button
+    type="submit"
+    [disabled]="classForm.invalid || selectedFiles.length === 0"
+  >
     Create Class
   </button>
   <button type="button" (click)="onClose()">Cancel</button>
