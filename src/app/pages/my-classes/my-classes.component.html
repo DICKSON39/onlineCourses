@@ -1,33 +1,31 @@
 <div class="teacher-classes">
-  <h2>My Classes</h2>
+  <h2>📚 My Classes</h2>
 
   <div class="classes-grid">
     <div class="class-card" *ngFor="let classItem of classes">
       <h3>{{ classItem.course_name }}</h3>
-      <p><strong>Start:</strong> {{ classItem.startTime | date: "medium" }}</p>
-      <p><strong>End:</strong> {{ classItem.endTime | date: "medium" }}</p>
-      <p><strong>Type:</strong> {{ classItem.isLive ? "Live" : "Recorded" }}</p>
-      <p *ngIf="classItem.meetingLink">
-        <strong>Link:</strong>
-        <a [href]="classItem.meetingLink" target="_blank">{{
-          classItem.meetingLink
-        }}</a>
-      </p>
-      <p *ngIf="!classItem.isLive && classItem.videoPath">
-        <strong>Video:</strong> {{ classItem.videoPath }}
+
+      <p><strong>🕒 Start:</strong> {{ classItem.startTime | date: 'medium' }}</p>
+      <p><strong>⏹ End:</strong> {{ classItem.endTime | date: 'medium' }}</p>
+
+      <p *ngIf="classItem.videoPath">
+        <strong>📼 Video:</strong>
+        <a [href]="classItem.videoPath" target="_blank">
+          {{ classItem.videoPath }}
+        </a>
       </p>
 
-      <button class="edit-btn" (click)="openEditModal(classItem)">Edit</button>
-      <button class="delete-btn" (click)="deleteClass(classItem.id)">
-        Delete
-      </button>
+      <div class="btn-group">
+        <button class="edit-btn" (click)="openEditModal(classItem)">✏️ Edit</button>
+        <button class="delete-btn" (click)="deleteClass(classItem.id)">🗑 Delete</button>
+      </div>
     </div>
   </div>
 
   <!-- Edit Modal -->
   <div class="modal-overlay" *ngIf="showEditModal">
     <div class="modal-content">
-      <h3>Edit Class</h3>
+      <h3>🛠 Edit Class</h3>
       <form (ngSubmit)="updateClass()">
         <label>Start Time:</label>
         <input
@@ -45,35 +43,17 @@
           required
         />
 
-        <label>Meeting Link:</label>
-        <input
-          type="url"
-          [(ngModel)]="selectedClass.meetingLink"
-          name="meetingLink"
-        />
-
-        <label>Video Path (for recorded):</label>
+        <label>Video Path:</label>
         <input
           type="text"
           [(ngModel)]="selectedClass.videoPath"
           name="videoPath"
         />
 
-        <label>Live:</label>
-        <input
-          type="checkbox"
-          [(ngModel)]="selectedClass.isLive"
-          name="isLive"
-        />
-
-        <button type="submit">Update</button>
-        <button
-          class="cancel-btn"
-          type="button"
-          (click)="showEditModal = false"
-        >
-          Cancel
-        </button>
+        <div class="modal-actions">
+          <button type="submit">✅ Update</button>
+          <button type="button" (click)="showEditModal = false">❌ Cancel</button>
+        </div>
       </form>
     </div>
   </div>

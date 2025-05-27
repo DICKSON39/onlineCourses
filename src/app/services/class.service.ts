@@ -36,12 +36,13 @@ export class ClassService {
     });
   }
 
-  getClassesByTeacher(teacherId: string): Observable<any[]> {
-    return this.http.get<any[]>(
-      `${this.apiUrl}/teacher/${teacherId}`,
-      { headers: this.getAuthHeaders() }
-    );
-  }
+getTeacherClasses(): Observable<any[]> {
+  return this.http.get<any[]>(
+    `${this.apiUrl}/get-teacher-classes`,
+    { headers: this.getAuthHeaders() }
+  );
+}
+
 
   deleteClass(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`, {

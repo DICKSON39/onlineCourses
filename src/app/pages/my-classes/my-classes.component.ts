@@ -27,15 +27,7 @@ export class MyClassesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const teacher = this.authService.getUser();
-    const teacherId = teacher?.id; // Assuming the teacher ID is stored in the user object
-
-    if (!teacherId) {
-      console.error('Teacher ID not found');
-      return;
-    }
-
-    this.classService.getClassesByTeacher(teacherId).subscribe({
+    this.classService.getTeacherClasses().subscribe({
       next: (data) => {
         this.classes = data;
       },
@@ -62,16 +54,14 @@ export class MyClassesComponent implements OnInit {
   }
 
   updateClass(): void {
-    this.classService
-      .updateClass(this.selectedClass.id, this.selectedClass)
-      .subscribe({
-        next: () => {
-          this.classes = this.classes.map((cls) =>
-            cls.id === this.selectedClass.id ? this.selectedClass : cls,
-          );
-          this.showEditModal = false;
-        },
-        error: (err) => console.error('Update failed', err),
-      });
+    this.classService.updateClass(this.selectedClass.id, this.selectedClass).subscribe({
+      next: () => {
+        this.classes = this.classes.map((cls) =>
+          cls.id === this.selectedClass.id ? this.selectedClass : cls,
+        );
+        this.showEditModal = false;
+      },
+      error: (err) => console.error('Update failed', err),
+    });
   }
 }
