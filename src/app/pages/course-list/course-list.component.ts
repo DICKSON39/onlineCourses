@@ -40,7 +40,8 @@ export class CourseListComponent implements OnInit {
           title: course.title,
           description: course.description,
           teacher: `${course.teacherName} (${course.roleName})`,
-          imageFullUrl: this.backendBaseUrl + course.image,
+          imageFullUrl: course.imageUrl,
+
 
           // Construct the full URL here
         }));
