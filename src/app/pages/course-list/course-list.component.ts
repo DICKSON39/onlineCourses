@@ -30,6 +30,8 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCourses();
+    
+
   }
 
   loadCourses(): void {
@@ -41,10 +43,12 @@ export class CourseListComponent implements OnInit {
           description: course.description,
           teacher: `${course.teacherName} (${course.roleName})`,
           imageFullUrl: course.imageUrl,
+          
 
 
           // Construct the full URL here
         }));
+        
       },
       error: (error) => {
         this.errorMessage = 'Failed to load courses.';
@@ -52,6 +56,7 @@ export class CourseListComponent implements OnInit {
       },
     });
   }
+  
 
   navigateToCourseDetails(courseId: number): void {
     this.router.navigate(['/courses', courseId]);
