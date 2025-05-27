@@ -78,7 +78,8 @@ export class CourseFormComponent implements OnInit {
     formData.append('title', this.courseForm.get('title')?.value);
     formData.append('description', this.courseForm.get('description')?.value);
     formData.append('price', this.courseForm.get('price')?.value);
-    formData.append('teacherId', this.courseForm.get('teacherId')?.value);
+    formData.append('teacher_id', this.courseForm.get('teacherId')?.value);
+
     formData.append('image', this.courseForm.get('image')?.value);
 
     this.courseService.createCourse(formData).subscribe(
