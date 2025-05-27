@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-create-class',
   templateUrl: './create-class.component.html',
   styleUrls: ['./create-class.component.css'],
-  imports: [FormsModule, ReactiveFormsModule, CommonModule], // Add necessary imports here
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
 })
 export class CreateClassComponent {
   @Input() courseId!: number;
@@ -21,29 +22,39 @@ export class CreateClassComponent {
   @Output() close = new EventEmitter<void>();
 
   classForm: FormGroup;
+  selectedFiles: File[] = [];
 
-  constructor(
-    private fb: FormBuilder,
-    private classService: ClassService,
-  ) {
+  constructor(private fb: FormBuilder, private classService: ClassService) {
     this.classForm = this.fb.group({
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      meetingLink: ['', Validators.required],
       isLive: [false],
-      videoPath: [''],
+      meetingLink: [''], // Optional for recorded classes
     });
   }
 
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input?.files) {
+      this.selectedFiles = Array.from(input.files);
+    }
+  }
+
   onSubmit() {
-    if (this.classForm.invalid) return;
+    if (this.classForm.invalid || this.selectedFiles.length === 0) return;
 
-    const payload = {
-      courseId: this.courseId,
-      ...this.classForm.value,
-    };
+    const formData = new FormData();
+    formData.append('courseId', this.courseId.toString());
+    formData.append('startTime', this.classForm.value.startTime);
+    formData.append('endTime', this.classForm.value.endTime);
+    formData.append('isLive', this.classForm.value.isLive);
+    formData.append('meetingLink', this.classForm.value.meetingLink);
 
-    this.classService.createClass(payload).subscribe({
+    this.selectedFiles.forEach((file) => {
+      formData.append('files', file); // backend expects this as `files`
+    });
+
+    this.classService.createClass(formData).subscribe({
       next: () => {
         this.classCreated.emit();
         this.close.emit();

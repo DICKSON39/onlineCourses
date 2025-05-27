@@ -11,18 +11,11 @@ interface Class {
   videoPath?: string;
 }
 
-interface CreateClassPayload {
-  courseId: number;
-  startTime: string;
-  endTime: string;
-  meetingLink?: string;
-  videoPath?: string;
-}
-
 interface CreateClassResponse {
   message: string;
   class: Class;
 }
+
 @Injectable({
   providedIn: 'root',
 })
@@ -36,30 +29,29 @@ export class ClassService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  createClass(payload: CreateClassPayload): Observable<CreateClassResponse> {
-    return this.http.post<CreateClassResponse>(`${this.apiUrl}`, payload, {
+  // 🔥 Accepts FormData instead of CreateClassPayload
+  createClass(formData: FormData): Observable<CreateClassResponse> {
+    return this.http.post<CreateClassResponse>(`${this.apiUrl}`, formData, {
       headers: this.getAuthHeaders(),
     });
   }
 
   getClassesByTeacher(teacherId: string): Observable<any[]> {
     return this.http.get<any[]>(
-      `https://elearning-f7yg.onrender.com/api/v1/class/teacher/${teacherId}`,
-      { headers: this.getAuthHeaders() },
+      `${this.apiUrl}/teacher/${teacherId}`,
+      { headers: this.getAuthHeaders() }
     );
   }
 
   deleteClass(id: number) {
-    return this.http.delete(`https://elearning-f7yg.onrender.com/api/v1/class/${id}`, {
+    return this.http.delete(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders(),
     });
   }
 
   updateClass(classId: number, data: any) {
-    return this.http.put(
-      `https://elearning-f7yg.onrender.com/api/v1/class/${classId}`,
-      data, // Send the data as the body of the request
-      { headers: this.getAuthHeaders() }, // Attach headers with the token
-    );
+    return this.http.put(`${this.apiUrl}/${classId}`, data, {
+      headers: this.getAuthHeaders(),
+    });
   }
 }

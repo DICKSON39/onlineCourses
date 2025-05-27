@@ -1,26 +1,22 @@
-<div class="modal">
-  <div class="modal-content">
-    <h2>Create Class</h2>
-    <form [formGroup]="classForm" (ngSubmit)="onSubmit()">
-      <label>Start Time:</label>
-      <input type="datetime-local" formControlName="startTime" />
+<form [formGroup]="classForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <label>Start Time:</label>
+  <input type="datetime-local" formControlName="startTime" />
 
-      <label>End Time:</label>
-      <input type="datetime-local" formControlName="endTime" />
+  <label>End Time:</label>
+  <input type="datetime-local" formControlName="endTime" />
 
-      <label>Meeting Link:</label>
-      <input type="url" formControlName="meetingLink" />
+  <label>
+    <input type="checkbox" formControlName="isLive" /> Is Live?
+  </label>
 
-      <label>
-        <input type="checkbox" formControlName="isLive" />
-        Is Live?
-      </label>
+  <label *ngIf="classForm.value.isLive">Meeting Link:</label>
+  <input *ngIf="classForm.value.isLive" type="text" formControlName="meetingLink" />
 
-      <label>Video Path (optional):</label>
-      <input type="text" formControlName="videoPath" />
+  <label>Upload Videos:</label>
+  <input type="file" (change)="onFileChange($event)" multiple />
 
-      <button type="submit" [disabled]="classForm.invalid">Create</button>
-      <button type="button" (click)="onClose()">Cancel</button>
-    </form>
-  </div>
-</div>
+  <button type="submit" [disabled]="classForm.invalid || selectedFiles.length === 0">
+    Create Class
+  </button>
+  <button type="button" (click)="onClose()">Cancel</button>
+</form>
