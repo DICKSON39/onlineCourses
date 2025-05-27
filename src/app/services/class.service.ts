@@ -20,7 +20,7 @@ interface CreateClassResponse {
   providedIn: 'root',
 })
 export class ClassService {
-  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/class`;
+  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/`;
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +31,7 @@ export class ClassService {
 
   // 🔥 Accepts FormData instead of CreateClassPayload
   createClass(formData: FormData): Observable<CreateClassResponse> {
-    return this.http.post<CreateClassResponse>(`${this.apiUrl}`, formData, {
+    return this.http.post<CreateClassResponse>(`https://elearning-f7yg.onrender.com/api/v1/create-class`, formData, {
       headers: this.getAuthHeaders(),
     });
   }
