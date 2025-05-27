@@ -22,53 +22,42 @@ export class CreateClassComponent {
   @Output() close = new EventEmitter<void>();
 
   classForm: FormGroup;
-  selectedFiles: File[] = [];
-  fileTitles: string[] = []; // 👈 Each file’s title goes here
+  selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private classService: ClassService) {
-    this.classForm = this.fb.group({
-      Description: ['', Validators.required],
-    });
-  }
+constructor(private fb: FormBuilder, private classService: ClassService) {
+  this.classForm = this.fb.group({
+    title: ['', Validators.required],
+    Description: ['', Validators.required]
+  });
+}
 
-  onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input?.files) {
-      this.selectedFiles = Array.from(input.files);
-      this.fileTitles = this.selectedFiles.map(() => ''); // Initialize titles
-    }
-  }
-
-  updateTitle(index: number, event: Event) {
+onFileChange(event: Event) {
   const input = event.target as HTMLInputElement;
-  this.fileTitles[index] = input.value;
+  if (input?.files && input.files.length > 0) {
+    this.selectedFile = input.files[0];
+  }
+}
+
+onSubmit() {
+  if (this.classForm.invalid || !this.selectedFile) return;
+
+  const formData = new FormData();
+  formData.append('courseId', this.courseId.toString());
+  formData.append('title', this.classForm.value.title);
+  formData.append('Description', this.classForm.value.Description);
+  formData.append('files', this.selectedFile); // still called `files` for backend consistency
+
+  this.classService.createClass(formData).subscribe({
+    next: () => {
+      this.classCreated.emit();
+      this.close.emit();
+    },
+    error: (err) => {
+      console.error('Class creation error', err);
+    },
+  });
 }
 
 
-  onSubmit() {
-    if (this.classForm.invalid || this.selectedFiles.length === 0) return;
 
-    const formData = new FormData();
-    formData.append('courseId', this.courseId.toString());
-    formData.append('Description', this.classForm.value.Description);
-
-    this.selectedFiles.forEach((file, index) => {
-      formData.append('files', file); // 👈 file blob
-      formData.append('titles', this.fileTitles[index]); // 👈 title string
-    });
-
-    this.classService.createClass(formData).subscribe({
-      next: () => {
-        this.classCreated.emit();
-        this.close.emit();
-      },
-      error: (err) => {
-        console.error('Class creation error', err);
-      },
-    });
-  }
-
-  onClose() {
-    this.close.emit();
-  }
 }

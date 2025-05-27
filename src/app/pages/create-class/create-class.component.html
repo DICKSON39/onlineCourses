@@ -1,31 +1,13 @@
-<form
-  [formGroup]="classForm"
-  (ngSubmit)="onSubmit()"
-  enctype="multipart/form-data"
->
+<form [formGroup]="classForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <label>Class Title</label>
+  <input type="text" formControlName="title" />
+
   <label>Class Description</label>
   <input type="text" formControlName="Description" />
 
-  <label>Upload Videos:</label>
-  <input type="file" (change)="onFileChange($event)" multiple />
+  <label>Upload a Video</label>
+  <input type="file" (change)="onFileChange($event)" accept="video/*" />
 
-  <div *ngFor="let file of selectedFiles; let i = index" class="file-title-group">
-    <p><strong>{{ file.name }}</strong></p>
-    <input
-  type="text"
-  placeholder="Enter title for this video"
-  [value]="fileTitles[i]"
-  (input)="updateTitle(i, $event)"
-  required
-/>
-
-  </div>
-
-  <button
-    type="submit"
-    [disabled]="classForm.invalid || selectedFiles.length === 0 || fileTitles.includes('')"
-  >
-    Create Class
-  </button>
-  <button type="button" (click)="onClose()">Cancel</button>
+  <button type="submit" [disabled]="classForm.invalid || !selectedFile">Create Class</button>
+  
 </form>
