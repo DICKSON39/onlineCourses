@@ -38,7 +38,7 @@ export class ClassService {
 
 getTeacherClasses(): Observable<any[]> {
   return this.http.get<any[]>(
-    `${this.apiUrl}/get-teacher-classes`,
+    `${this.apiUrl}/teacher`,
     { headers: this.getAuthHeaders() }
   );
 }
