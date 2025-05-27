@@ -2,9 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
+  Validators,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { ClassService } from '../../services/class.service';
 import { CommonModule } from '@angular/common';
@@ -23,10 +23,11 @@ export class CreateClassComponent {
 
   classForm: FormGroup;
   selectedFiles: File[] = [];
+  fileTitles: string[] = []; // 👈 Each file’s title goes here
 
   constructor(private fb: FormBuilder, private classService: ClassService) {
     this.classForm = this.fb.group({
-                       
+      Description: ['', Validators.required],
     });
   }
 
@@ -34,8 +35,15 @@ export class CreateClassComponent {
     const input = event.target as HTMLInputElement;
     if (input?.files) {
       this.selectedFiles = Array.from(input.files);
+      this.fileTitles = this.selectedFiles.map(() => ''); // Initialize titles
     }
   }
+
+  updateTitle(index: number, event: Event) {
+  const input = event.target as HTMLInputElement;
+  this.fileTitles[index] = input.value;
+}
+
 
   onSubmit() {
     if (this.classForm.invalid || this.selectedFiles.length === 0) return;
@@ -43,10 +51,10 @@ export class CreateClassComponent {
     const formData = new FormData();
     formData.append('courseId', this.courseId.toString());
     formData.append('Description', this.classForm.value.Description);
-    formData.append('title', this.classForm.value.title);
 
-    this.selectedFiles.forEach((file) => {
-      formData.append('files', file); // backend expects this as `files`
+    this.selectedFiles.forEach((file, index) => {
+      formData.append('files', file); // 👈 file blob
+      formData.append('titles', this.fileTitles[index]); // 👈 title string
     });
 
     this.classService.createClass(formData).subscribe({
