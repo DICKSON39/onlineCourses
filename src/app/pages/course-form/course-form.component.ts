@@ -56,6 +56,7 @@ export class CourseFormComponent implements OnInit {
     });
 
     this.teacherService.getAllTeachers().subscribe((data: User[]) => {
+      console.log('Teachers fetched:', data);
       this.teachers = data;
     });
   }
