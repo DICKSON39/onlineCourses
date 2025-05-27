@@ -20,7 +20,7 @@ interface CreateClassResponse {
   providedIn: 'root',
 })
 export class ClassService {
-  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/`;
+  private apiUrl = `https://elearning-f7yg.onrender.com/api/v1/class`;
 
   constructor(private http: HttpClient) {}
 
