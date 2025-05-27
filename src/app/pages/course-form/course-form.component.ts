@@ -69,6 +69,8 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.courseForm.value);
+
     if (this.courseForm.invalid) {
       this.snackBar.open('❌ Please fill out the form correctly!', 'Close', {
         duration: 3000,

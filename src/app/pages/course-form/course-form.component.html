@@ -10,12 +10,13 @@
     <input type="number" id="price" formControlName="price" />
 
     <label for="teacherId">Teacher</label>
-    <select id="teacherId" formControlName="teacherId">
-      <option value="">-- Select Teacher --</option>
-      <option *ngFor="let teacher of teachers" [value]="teacher.id">
-        {{ teacher.name }}
-      </option>
-    </select>
+   <select id="teacherId" formControlName="teacherId">
+  <option [ngValue]="null">-- Select Teacher --</option>
+  <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">
+    {{ teacher.name }}
+  </option>
+</select>
+
 
     <label for="image">Course Image</label>
     <input type="file" id="image" (change)="onImageSelected($event)" />
