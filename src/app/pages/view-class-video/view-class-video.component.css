@@ -1,27 +1,26 @@
-/* Video Page Container */
 .video-page-container {
   max-width: 900px;
   margin: 40px auto;
   padding: 30px 35px;
-  background-color: #f5f7fa; /* light, soft off-white */
+  background-color: #f5f7fa;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* smoother shadow */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .video-page-container h2 {
   text-align: center;
-  color: #1a237e; /* deep indigo for a strong but chill header */
+  color: #1a237e;
   margin-bottom: 35px;
   font-size: 2.4em;
   font-weight: 700;
-  border-bottom: 3px solid #7986cb; /* subtle indigo underline */
+  border-bottom: 3px solid #7986cb;
   padding-bottom: 18px;
 }
 
 .video-page-container p {
   text-align: center;
-  color: #555e6c; /* cool medium gray */
+  color: #555e6c;
   font-size: 1.15em;
   line-height: 1.6;
   padding: 20px 0;
@@ -30,7 +29,6 @@
   margin-right: auto;
 }
 
-/* Video Card Styling */
 .video-card {
   background-color: #ffffff;
   border: 1px solid #d1d9e6;
@@ -49,7 +47,7 @@
 }
 
 .video-card h4 {
-  color: #283593; /* indigo */
+  color: #283593;
   font-size: 1.75em;
   margin-bottom: 18px;
   border-bottom: 1.5px dashed #e8eaf6;
@@ -57,7 +55,7 @@
   font-weight: 600;
 }
 
-.video-card video {
+video {
   display: block;
   width: 100%;
   height: auto;
@@ -67,7 +65,6 @@
   outline: none;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .video-page-container {
     margin: 25px auto;
