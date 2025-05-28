@@ -30,6 +30,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditAdminComponent } from './pages/edit-admin/edit-admin.component';
 import { TeachersOnlyComponent } from './pages/teachers-only/teachers-only.component';
 import {StudentOnlyComponent} from './pages/student-only/student-only.component';
+import { ViewClassVideoComponent } from './pages/view-class-video/view-class-video.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -159,5 +160,11 @@ export const routes: Routes = [
     component: StudentOnlyComponent,
     canActivate:[AuthGuard],
     data: { roles: [1] },
-  }
+  },
+  {
+    path: 'view-class/:id',
+    component:ViewClassVideoComponent,
+    canActivate:[AuthGuard],
+    data: {roles:[1]},
+  },
 ];
