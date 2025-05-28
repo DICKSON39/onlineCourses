@@ -7,7 +7,14 @@ interface Class {
   course: any;
   Description:string;
   title:string;
+  videos: Video[];
+  course_name: string; 
+}
 
+interface Video {
+  id: number;
+  title: string;
+  url: string;
 }
 
 interface CreateClassResponse {
@@ -35,12 +42,13 @@ export class ClassService {
     });
   }
 
-getTeacherClasses(): Observable<any[]> {
-  return this.http.get<any[]>(
+getTeacherClasses(): Observable<Class[]> {
+  return this.http.get<Class[]>(
     `${this.apiUrl}/teacher`,
     { headers: this.getAuthHeaders() }
   );
 }
+
 
 
   deleteClass(id: number) {

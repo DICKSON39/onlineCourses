@@ -1,60 +1,43 @@
-<div class="teacher-classes">
-  <h2>📚 My Classes</h2>
+<!-- Edit Modal -->
+<div
+  *ngIf="showEditModal"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+>
+  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+    <h3 class="text-xl font-bold mb-4">Edit Class</h3>
 
-  <div class="classes-grid">
-    <div class="class-card" *ngFor="let classItem of classes">
-      <h3>{{ classItem.course_name }}</h3>
-
-      <p><strong>🕒 Start:</strong> {{ classItem.startTime | date: 'medium' }}</p>
-      <p><strong>⏹ End:</strong> {{ classItem.endTime | date: 'medium' }}</p>
-
-      <p *ngIf="classItem.videoPath">
-        <strong>📼 Video:</strong>
-        <a [href]="classItem.videoPath" target="_blank">
-          {{ classItem.videoPath }}
-        </a>
-      </p>
-
-      <div class="btn-group">
-        <button class="edit-btn" (click)="openEditModal(classItem)">✏️ Edit</button>
-        <button class="delete-btn" (click)="deleteClass(classItem.id)">🗑 Delete</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit Modal -->
-  <div class="modal-overlay" *ngIf="showEditModal">
-    <div class="modal-content">
-      <h3>🛠 Edit Class</h3>
-      <form (ngSubmit)="updateClass()">
-        <label>Start Time:</label>
-        <input
-          type="datetime-local"
-          [(ngModel)]="selectedClass.startTime"
-          name="startTime"
-          required
-        />
-
-        <label>End Time:</label>
-        <input
-          type="datetime-local"
-          [(ngModel)]="selectedClass.endTime"
-          name="endTime"
-          required
-        />
-
-        <label>Video Path:</label>
+    <ng-container *ngIf="selectedClass">
+      <label class="block mb-2">
+        Title:
         <input
           type="text"
-          [(ngModel)]="selectedClass.videoPath"
-          name="videoPath"
+          [(ngModel)]="selectedClass.title"
+          class="w-full border p-2 rounded"
         />
+      </label>
 
-        <div class="modal-actions">
-          <button type="submit">✅ Update</button>
-          <button type="button" (click)="showEditModal = false">❌ Cancel</button>
-        </div>
-      </form>
-    </div>
+      <label class="block mb-4">
+        Description:
+        <textarea
+          [(ngModel)]="selectedClass.Description"
+          class="w-full border p-2 rounded"
+        ></textarea>
+      </label>
+
+      <div class="flex justify-end gap-2">
+        <button
+          class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+          (click)="showEditModal = false"
+        >
+          Cancel
+        </button>
+        <button
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+          (click)="updateClass()"
+        >
+          Save
+        </button>
+      </div>
+    </ng-container>
   </div>
 </div>

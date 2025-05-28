@@ -4,8 +4,21 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthServicesService } from '../../services/auth-services.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
 import { TeacherService } from '../../services/teacher.service';
+
+interface Video {
+  id: number;
+  title: string;
+  url: string;
+}
+
+interface ClassItem {
+  id: number;
+  title: string;
+  Description: string;
+  course_name: string;
+  videos: Video[];
+}
 
 @Component({
   selector: 'app-my-classes',
@@ -15,8 +28,8 @@ import { TeacherService } from '../../services/teacher.service';
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
 export class MyClassesComponent implements OnInit {
-  classes: any[] = [];
-  selectedClass: any = null;
+  classes: ClassItem[] = [];
+  selectedClass: ClassItem | null = null;
   showEditModal: boolean = false;
 
   constructor(
@@ -37,7 +50,7 @@ export class MyClassesComponent implements OnInit {
     });
   }
 
-  openEditModal(classItem: any): void {
+  openEditModal(classItem: ClassItem): void {
     this.selectedClass = { ...classItem };
     this.showEditModal = true;
   }
@@ -54,10 +67,12 @@ export class MyClassesComponent implements OnInit {
   }
 
   updateClass(): void {
+    if (!this.selectedClass) return;
+
     this.classService.updateClass(this.selectedClass.id, this.selectedClass).subscribe({
       next: () => {
         this.classes = this.classes.map((cls) =>
-          cls.id === this.selectedClass.id ? this.selectedClass : cls,
+          cls.id === this.selectedClass!.id ? this.selectedClass! : cls
         );
         this.showEditModal = false;
       },
