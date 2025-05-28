@@ -2,85 +2,100 @@
 .video-page-container {
   max-width: 900px;
   margin: 40px auto;
-  padding: 25px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px 35px;
+  background-color: #f5f7fa; /* light, soft off-white */
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* smoother shadow */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .video-page-container h2 {
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 30px;
-  font-size: 2.2em;
-  font-weight: 600;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 15px;
+  color: #1a237e; /* deep indigo for a strong but chill header */
+  margin-bottom: 35px;
+  font-size: 2.4em;
+  font-weight: 700;
+  border-bottom: 3px solid #7986cb; /* subtle indigo underline */
+  padding-bottom: 18px;
 }
 
 .video-page-container p {
   text-align: center;
-  color: #666;
-  font-size: 1.1em;
+  color: #555e6c; /* cool medium gray */
+  font-size: 1.15em;
+  line-height: 1.6;
   padding: 20px 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Video Card Styling */
 .video-card {
-  background-color: #f9f9f9;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  overflow: hidden; /* Ensures video doesn't overflow rounded corners */
+  background-color: #ffffff;
+  border: 1px solid #d1d9e6;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 20px rgba(33, 33, 33, 0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(33, 33, 33, 0.15);
 }
 
 .video-card h4 {
-  color: #34495e;
-  font-size: 1.6em;
-  margin-bottom: 15px;
-  border-bottom: 1px dashed #f0f0f0;
-  padding-bottom: 8px;
+  color: #283593; /* indigo */
+  font-size: 1.75em;
+  margin-bottom: 18px;
+  border-bottom: 1.5px dashed #e8eaf6;
+  padding-bottom: 10px;
+  font-weight: 600;
 }
 
 .video-card video {
-  display: block; /* Removes extra space below video */
+  display: block;
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Slightly rounded corners for the video player */
-  background-color: #000; /* Black background for video player before loading */
+  height: auto;
+  border-radius: 12px;
+  background-color: #000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  outline: none;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .video-page-container {
-    margin: 20px auto;
-    padding: 15px;
+    margin: 25px auto;
+    padding: 20px 25px;
   }
 
   .video-page-container h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
+    font-size: 2em;
+    margin-bottom: 28px;
   }
 
   .video-card {
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 18px 22px;
+    margin-bottom: 22px;
   }
 
   .video-card h4 {
-    font-size: 1.4em;
-    margin-bottom: 10px;
+    font-size: 1.5em;
+    margin-bottom: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .video-page-container h2 {
-    font-size: 1.5em;
+    font-size: 1.7em;
   }
 
   .video-card h4 {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 }
