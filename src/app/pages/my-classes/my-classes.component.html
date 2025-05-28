@@ -1,18 +1,18 @@
 <!-- Edit Modal -->
 <div
   *ngIf="showEditModal"
-  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+  
 >
-  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
-    <h3 class="text-xl font-bold mb-4">Edit Class</h3>
+  <div >
+    <h3 >Edit Class</h3>
 
     <ng-container *ngIf="selectedClass">
-      <label class="block mb-2">
+      <label >
         Title:
         <input
           type="text"
           [(ngModel)]="selectedClass.title"
-          class="w-full border p-2 rounded"
+          
         />
       </label>
 
@@ -20,24 +20,24 @@
         Description:
         <textarea
           [(ngModel)]="selectedClass.Description"
-          class="w-full border p-2 rounded"
+          
         ></textarea>
       </label>
 
-      <div class="flex justify-end gap-2">
+      <div >
         <button
-          class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+          
           (click)="showEditModal = false"
         >
           Cancel
         </button>
         <button
-          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+          
           (click)="updateClass()"
         >
           Save
         </button>
       </div>
     </ng-container>
-  </div>
+  </div> 
 </div>
