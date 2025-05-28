@@ -3,10 +3,7 @@
 
   <div *ngIf="courses.length > 0; else noCourses" class="courses-grid">
     <div *ngFor="let course of courses" class="course-card">
-      <img
-        [src]="'http://localhost:3000' + course.imageUrl"
-        alt="Course Image"
-      />
+      
       <div class="course-info">
         <h3>{{ course.title }}</h3>
         <p>{{ course.description }}</p>
