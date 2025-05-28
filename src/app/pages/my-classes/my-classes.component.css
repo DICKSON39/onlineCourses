@@ -1,124 +1,761 @@
-.teacher-classes {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
+/* General Body and Container Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6; /* Light, subtle background */
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
-.teacher-classes h2 {
+/* Global Container for main content sections */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+h2 {
   text-align: center;
-  margin-bottom: 2rem;
   color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
 }
 
-.classes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
+/* --- My Classes Section --- */
 
+/* Class Card Styling */
 .class-card {
   background-color: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  transition: transform 0.2s ease-in-out;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .class-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .class-card h3 {
   color: #34495e;
-  margin-bottom: 0.5rem;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #f0f0f0;
+  padding-bottom: 8px;
 }
 
 .class-card p {
+  margin-bottom: 8px;
   color: #555;
-  margin: 0.3rem 0;
-  font-size: 0.95rem;
+  font-size: 0.95em;
 }
 
-.edit-btn,
-.delete-btn {
-  padding: 0.5rem 1rem;
+.class-card p strong {
+  color: #2c3e50;
+}
+
+/* Video List within Class Card */
+.class-card h4 {
+  color: #34495e;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.class-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.class-card ul li {
+  margin-bottom: 8px;
+}
+
+.class-card ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.class-card ul li a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.class-card ul > a { /* Styling for the "Watch Videos" link at the bottom of video list */
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #28a745; /* Green color for action */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.class-card ul > a:hover {
+  background-color: #218838;
+}
+
+/* Button Group Styling (Class Card Actions) */
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.button-group button {
+  padding: 10px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-right: 0.5rem;
-  margin-top: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.95em;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
-.edit-btn {
-  background-color: #3498db;
-  color: #fff;
+.button-group button:hover {
+  transform: translateY(-2px);
 }
 
-.edit-btn:hover {
-  background-color: #2980b9;
+.button-group button:active {
+  transform: translateY(0);
 }
 
-.delete-btn {
-  background-color: #e74c3c;
-  color: #fff;
+.button-group button:first-child { /* Edit button */
+  background-color: #007bff;
+  color: white;
 }
 
-.delete-btn:hover {
-  background-color: #c0392b;
+.button-group button:first-child:hover {
+  background-color: #0056b3;
 }
 
-/* Modal Styles */
+.button-group button:last-child { /* Delete button */
+  background-color: #dc3545;
+  color: white;
+}
+
+.button-group button:last-child:hover {
+  background-color: #c82333;
+}
+
+/* --- Edit Modal Styling --- */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  transform: translateY(-20px);
+  animation: slideIn 0.3s ease-out forwards;
 }
 
 .modal-content h3 {
-  margin-bottom: 15px;
-  color: #2c3e50;
+  color: #34495e;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  text-align: center;
 }
 
-.modal-content form {
+.modal-content label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #555;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+  width: calc(100% - 20px);
+  padding: 12px 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.modal-buttons {
+  margin-top: 30px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.modal-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.modal-buttons button:active {
+  transform: translateY(0);
+}
+
+.modal-buttons button:first-child { /* Cancel button */
+  background-color: #6c757d;
+  color: white;
+}
+
+.modal-buttons button:first-child:hover {
+  background-color: #5a6268;
+}
+
+.modal-buttons button:last-child { /* Save button */
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-buttons button:last-child:hover {
+  background-color: #218838;
+}
+
+/* --- Video Page Styling --- */
+.video-page-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.video-page-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+.video-page-container p {
+  text-align: center;
+  color: #666;
+  font-size: 1.1em;
+  padding: 20px 0;
+}
+
+/* Video Card Styling */
+.video-card {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.video-card h4 {
+  color: #34495e;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.video-card video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #000;
+}
+
+/* --- Teacher Courses Section (Grid and Create Form) --- */
+.teacher-courses {
+  padding: 3rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fbfd;
+}
+
+.teacher-courses h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.teacher-courses h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #3498db;
+  border-radius: 2px;
+}
+
+/* Courses Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+  justify-content: center;
+}
+
+/* Course Card */
+.course-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition:
+    transform 0.4s ease-in-out,
+    box-shadow 0.4s ease,
+    background-color 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
-.modal-content input[type="datetime-local"],
-.modal-content input[type="url"],
-.modal-content input[type="text"] {
-  padding: 8px;
-  margin-bottom: 12px;
+.course-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  background-color: #fdfdfd;
+}
+
+.course-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.course-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.course-info h3 {
+  margin-top: 0;
+  color: #34495e;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.course-info p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.price {
+  font-weight: 700;
+  color: #28a745;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  display: inline-block;
+  transition:
+    transform 0.3s ease-in-out,
+    color 0.3s ease;
+}
+
+.course-card:hover .price {
+  transform: scale(1.05);
+  color: #218838;
+}
+
+/* Create Button (for teacher-courses section) */
+.create-btn {
+  display: block;
+  width: fit-content;
+  margin: 2.5rem auto 1rem auto;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition:
+    background 0.3s ease-in-out,
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.create-btn:hover {
+  background: linear-gradient(45deg, #0056b3, #003d80);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+.create-btn:active {
+  transform: translateY(0);
+}
+
+.no-courses-msg {
+  text-align: center;
+  color: #777;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  font-style: italic;
+  padding: 20px;
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  background-color: #fefefe;
+}
+
+
+/* --- Class Form Container --- */
+/* This container is for the form you provided in the last request.
+   Make sure to wrap your form HTML in <div class="class-form-container">...</div> */
+.class-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+/* Form Specific Styles */
+.class-form-container form { /* Target the form within its container */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.class-form-container form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #34495e;
+  font-size: 1.05em;
+}
+
+.class-form-container form input[type="text"],
+.class-form-container form input[type="file"] {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #333;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #fcfcfc;
 }
 
-.modal-content input[type="checkbox"] {
-  margin-bottom: 12px;
+.class-form-container form input[type="text"]:focus,
+.class-form-container form input[type="file"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
 }
 
-.modal-content button[type="submit"] {
-  background-color: #2a68af;
+.class-form-container form button[type="submit"] {
+  padding: 14px 25px;
+  background: linear-gradient(45deg, #28a745, #218838);
   color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 20px;
+  transition:
+    background 0.3s ease-in-out,
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
 }
 
-.cancel-btn {
-  background-color: #ddd;
-  margin-top: 10px;
+.class-form-container form button[type="submit"]:hover:not([disabled]) {
+  background: linear-gradient(45deg, #218838, #1a782e);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+}
+
+.class-form-container form button[type="submit"]:active:not([disabled]) {
+  transform: translateY(0);
+}
+
+.class-form-container form button[type="submit"]:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .teacher-courses h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .video-page-container,
+  .class-form-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  /* My Classes */
+  .class-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .class-card h3 {
+    font-size: 1.6em;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-group button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Modal */
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Video Page */
+  .video-page-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  .video-card {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .video-card h4 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  /* Teacher Courses */
+  .teacher-courses {
+    padding: 2rem 1rem;
+  }
+
+  .teacher-courses h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .course-card img {
+    height: 160px;
+  }
+
+  .course-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+  }
+
+  .create-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Create Form */
+  .class-form-container form label {
+    font-size: 1em;
+  }
+
+  .class-form-container form input[type="text"],
+  .class-form-container form input[type="file"] {
+    padding: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .class-form-container form button[type="submit"] {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5em;
+  }
+
+  /* My Classes */
+  .class-card h3 {
+    font-size: 1.4em;
+  }
+
+  .class-card p {
+    font-size: 0.9em;
+  }
+
+  /* Video Page */
+  .video-card h4 {
+    font-size: 1.2em;
+  }
+
+  /* Teacher Courses */
+  .teacher-courses h2 {
+    font-size: 1.8rem;
+    padding-bottom: 10px;
+  }
+
+  .teacher-courses h2::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .course-card {
+    border-radius: 10px;
+  }
+
+  .course-card img {
+    height: 140px;
+  }
+
+  .course-info {
+    padding: 1rem;
+  }
+
+  .course-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .course-info p {
+    font-size: 0.85rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .create-btn {
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .no-courses-msg {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  /* Create Form */
+  .class-form-container form input[type="text"],
+  .class-form-container form input[type="file"] {
+    font-size: 0.95em;
+  }
+
+  .class-form-container form button[type="submit"] {
+    font-size: 0.95em;
+    padding: 10px 15px;
+  }
 }
