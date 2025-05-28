@@ -14,10 +14,13 @@
         <li *ngFor="let video of classItem.videos">
           <a [href]="video.url" target="_blank">{{ video.title }}</a>
         </li>
+        <a [routerLink]="['/view-class', classItem.id]">Watch Videos</a>
       </ul>
-      <a [routerLink]="['/view-class', classItem.id]">Watch Videos</a>
+      
 
     </div>
+
+    
 
     <!-- Action Buttons -->
     <div class="button-group">

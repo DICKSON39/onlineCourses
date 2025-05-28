@@ -3,7 +3,7 @@ import { ClassService } from '../../services/class.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthServicesService } from '../../services/auth-services.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TeacherService } from '../../services/teacher.service';
 
 interface Video {
@@ -25,7 +25,7 @@ interface ClassItem {
   templateUrl: './my-classes.component.html',
   styleUrls: ['./my-classes.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,RouterLink],
 })
 export class MyClassesComponent implements OnInit {
   classes: ClassItem[] = [];
