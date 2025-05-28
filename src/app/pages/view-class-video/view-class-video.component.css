@@ -1,10 +1,86 @@
+/* Video Page Container */
 .video-page-container {
-  padding: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
+.video-page-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+.video-page-container p {
+  text-align: center;
+  color: #666;
+  font-size: 1.1em;
+  padding: 20px 0;
+}
+
+/* Video Card Styling */
 .video-card {
-  margin-bottom: 24px;
-  border: 1px solid #ddd;
-  padding: 16px;
-  border-radius: 6px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  overflow: hidden; /* Ensures video doesn't overflow rounded corners */
+}
+
+.video-card h4 {
+  color: #34495e;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.video-card video {
+  display: block; /* Removes extra space below video */
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Slightly rounded corners for the video player */
+  background-color: #000; /* Black background for video player before loading */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .video-page-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .video-page-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  .video-card {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .video-card h4 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-page-container h2 {
+    font-size: 1.5em;
+  }
+
+  .video-card h4 {
+    font-size: 1.2em;
+  }
 }
