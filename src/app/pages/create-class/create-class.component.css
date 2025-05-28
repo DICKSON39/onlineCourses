@@ -1,102 +1,123 @@
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
+/* Form Container (assuming it might be wrapped in a div or be a standalone component) */
+.class-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
   border-radius: 12px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  animation: slideUp 0.3s ease-in-out;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.modal-content h3 {
-  margin-bottom: 15px;
-  font-size: 1.25rem;
-  color: #2c3e50;
-}
-
-.modal-content form {
+/* Form Specific Styles */
+form {
   display: flex;
   flex-direction: column;
+  gap: 15px; /* Space between form elements */
 }
 
-.modal-content input[type="datetime-local"],
-.modal-content input[type="url"] {
-  padding: 10px;
-  margin-bottom: 12px;
+form label {
+  display: block; /* Ensure label is on its own line */
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #34495e;
+  font-size: 1.05em;
+}
+
+form input[type="text"],
+form input[type="file"] {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.modal-content input[type="datetime-local"]:focus,
-.modal-content input[type="url"]:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-  outline: none;
-}
-
-.modal-content button {
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  margin-top: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.modal-content button[type="submit"] {
-  background-color: #2a68af;
-  color: white;
-}
-
-.modal-content button[type="submit"]:hover {
-  background-color: #1d4d7f;
-}
-
-.cancel-btn {
-  background-color: #ddd;
-  margin-top: 10px;
-  padding: 10px;
+  border-radius: 8px; /* Slightly more rounded */
+  font-size: 1em;
   color: #333;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #fcfcfc; /* Very light background */
 }
 
-.cancel-btn:hover {
-  background-color: #ccc;
+form input[type="text"]:focus,
+form input[type="file"]:focus {
+  border-color: #007bff; /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle glow */
+  outline: none; /* Remove default outline */
+}
+
+/* File input specific styling (can be tricky to style consistently across browsers) */
+form input[type="file"] {
+  cursor: pointer;
+  /* You might need vendor prefixes or a custom file input solution for advanced styling */
+}
+
+form button[type="submit"] {
+  padding: 14px 25px;
+  background: linear-gradient(45deg, #28a745, #218838); /* Green gradient */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 20px; /* Space above the button */
+  transition:
+    background 0.3s ease-in-out,
+    transform 0.2s ease-in-out,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Subtle shadow */
+}
+
+form button[type="submit"]:hover:not([disabled]) {
+  background: linear-gradient(45deg, #218838, #1a782e); /* Darker green on hover */
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4); /* Enhanced shadow */
+}
+
+form button[type="submit"]:active:not([disabled]) {
+  transform: translateY(0); /* Press down effect */
+}
+
+form button[type="submit"]:disabled {
+  background: #cccccc; /* Greyed out when disabled */
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .class-form-container {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  form label {
+    font-size: 1em;
+  }
+
+  form input[type="text"],
+  form input[type="file"] {
+    padding: 10px;
+    width: calc(100% - 20px);
+  }
+
+  form button[type="submit"] {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .class-form-container {
+    padding: 15px;
+  }
+
+  form input[type="text"],
+  form input[type="file"] {
+    font-size: 0.95em;
+  }
+
+  form button[type="submit"] {
+    font-size: 0.95em;
+    padding: 10px 15px;
+  }
 }
