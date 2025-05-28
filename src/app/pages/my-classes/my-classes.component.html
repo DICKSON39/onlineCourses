@@ -1,43 +1,50 @@
+<div class="container">
+  <h2>My Classes</h2>
+
+  <!-- Loop through teacher's classes -->
+  <div *ngFor="let classItem of classes" class="class-card">
+    <h3>{{ classItem.title }}</h3>
+    <p>{{ classItem.Description }}</p>
+    <p><strong>Course:</strong> {{ classItem.course_name }}</p>
+
+    <!-- Video List -->
+    <div *ngIf="classItem.videos && classItem.videos.length > 0">
+      <h4>Videos:</h4>
+      <ul>
+        <li *ngFor="let video of classItem.videos">
+          <a [href]="video.url" target="_blank">{{ video.title }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button (click)="openEditModal(classItem)">Edit</button>
+      <button (click)="deleteClass(classItem.id)">Delete</button>
+    </div>
+  </div>
+</div>
+
 <!-- Edit Modal -->
-<div
-  *ngIf="showEditModal"
-  
->
-  <div >
-    <h3 >Edit Class</h3>
+<div *ngIf="showEditModal" class="modal-overlay">
+  <div class="modal-content">
+    <h3>Edit Class</h3>
 
     <ng-container *ngIf="selectedClass">
-      <label >
+      <label>
         Title:
-        <input
-          type="text"
-          [(ngModel)]="selectedClass.title"
-          
-        />
+        <input type="text" [(ngModel)]="selectedClass.title" />
       </label>
 
-      <label class="block mb-4">
+      <label>
         Description:
-        <textarea
-          [(ngModel)]="selectedClass.Description"
-          
-        ></textarea>
+        <textarea [(ngModel)]="selectedClass.Description"></textarea>
       </label>
 
-      <div >
-        <button
-          
-          (click)="showEditModal = false"
-        >
-          Cancel
-        </button>
-        <button
-          
-          (click)="updateClass()"
-        >
-          Save
-        </button>
+      <div class="modal-buttons">
+        <button (click)="showEditModal = false">Cancel</button>
+        <button (click)="updateClass()">Save</button>
       </div>
     </ng-container>
-  </div> 
+  </div>
 </div>
