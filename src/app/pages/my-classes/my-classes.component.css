@@ -1,334 +1,124 @@
-/* General Body and Container Styling */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7f6;
-  color: #333;
-  line-height: 1.6;
+.teacher-classes {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-h2 {
+.teacher-classes h2 {
   text-align: center;
+  margin-bottom: 2rem;
   color: #2c3e50;
-  margin-bottom: 30px;
-  font-size: 2.2em;
-  font-weight: 600;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 15px;
 }
 
-/* Class Card Styling */
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
 .class-card {
   background-color: #ffffff;
-  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s ease-in-out;
 }
 
 .class-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .class-card h3 {
   color: #34495e;
-  font-size: 1.8em;
-  margin-bottom: 10px;
-  border-bottom: 1px dashed #f0f0f0;
-  padding-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .class-card p {
-  margin-bottom: 8px;
   color: #555;
-  font-size: 0.95em;
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
 }
 
-.class-card p strong {
-  color: #2c3e50;
-}
-
-/* Video List Styling */
-.class-card h4 {
-  color: #34495e;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 1.3em;
-}
-
-.class-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.class-card ul li {
-  margin-bottom: 8px;
-}
-
-.class-card ul li a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
-}
-
-.class-card ul li a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-.class-card ul > a { /* Styling for the "Watch Videos" link */
-  display: inline-block;
-  margin-top: 15px;
-  padding: 8px 15px;
-  background-color: #28a745; /* Green color for action */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 0.9em;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.class-card ul > a:hover {
-  background-color: #218838;
-}
-
-/* Button Group Styling */
-.button-group {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px; /* Space between buttons */
-  justify-content: flex-end; /* Align buttons to the right */
-}
-
-.button-group button {
-  padding: 10px 20px;
+.edit-btn,
+.delete-btn {
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.95em;
-  font-weight: 600;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
-.button-group button:hover {
-  transform: translateY(-2px);
+.edit-btn {
+  background-color: #3498db;
+  color: #fff;
 }
 
-.button-group button:active {
-  transform: translateY(0);
+.edit-btn:hover {
+  background-color: #2980b9;
 }
 
-.button-group button:first-child { /* Edit button */
-  background-color: #007bff;
-  color: white;
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
 }
 
-.button-group button:first-child:hover {
-  background-color: #0056b3;
+.delete-btn:hover {
+  background-color: #c0392b;
 }
 
-.button-group button:last-child { /* Delete button */
-  background-color: #dc3545;
-  color: white;
-}
-
-.button-group button:last-child:hover {
-  background-color: #c82333;
-}
-
-/* Modal Styling */
+/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-out;
 }
 
 .modal-content {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  max-width: 500px;
-  transform: translateY(-20px);
-  animation: slideIn 0.3s ease-out forwards;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content h3 {
-  color: #34495e;
-  margin-bottom: 25px;
-  font-size: 1.8em;
-  text-align: center;
-}
-
-.modal-content label {
-  display: block;
   margin-bottom: 15px;
-  font-weight: 600;
-  color: #555;
+  color: #2c3e50;
 }
 
-.modal-content input[type="text"],
-.modal-content textarea {
-  width: calc(100% - 20px);
-  padding: 12px 10px;
-  margin-top: 5px;
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content input[type="datetime-local"],
+.modal-content input[type="url"],
+.modal-content input[type="text"] {
+  padding: 8px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1em;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.modal-content input[type="text"]:focus,
-.modal-content textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-  outline: none;
+.modal-content input[type="checkbox"] {
+  margin-bottom: 12px;
 }
 
-.modal-content textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.modal-buttons {
-  margin-top: 30px;
-  text-align: right;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.modal-buttons button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: 600;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-}
-
-.modal-buttons button:hover {
-  transform: translateY(-2px);
-}
-
-.modal-buttons button:active {
-  transform: translateY(0);
-}
-
-.modal-buttons button:first-child { /* Cancel button */
-  background-color: #6c757d;
+.modal-content button[type="submit"] {
+  background-color: #2a68af;
   color: white;
 }
 
-.modal-buttons button:first-child:hover {
-  background-color: #5a6268;
-}
-
-.modal-buttons button:last-child { /* Save button */
-  background-color: #28a745;
-  color: white;
-}
-
-.modal-buttons button:last-child:hover {
-  background-color: #218838;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    margin: 20px auto;
-    padding: 15px;
-  }
-
-  h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-  }
-
-  .class-card {
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .class-card h3 {
-    font-size: 1.6em;
-  }
-
-  .button-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .button-group button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .modal-content {
-    padding: 20px;
-    width: 95%;
-  }
-
-  .modal-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .modal-buttons button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  h2 {
-    font-size: 1.5em;
-  }
-
-  .class-card h3 {
-    font-size: 1.4em;
-  }
-
-  .class-card p {
-    font-size: 0.9em;
-  }
-
-  .modal-content input[type="text"],
-  .modal-content textarea {
-    padding: 10px;
-  }
+.cancel-btn {
+  background-color: #ddd;
+  margin-top: 10px;
 }
