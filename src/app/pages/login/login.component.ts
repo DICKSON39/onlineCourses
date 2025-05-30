@@ -36,7 +36,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          console.log('Full Response:', res);
+         // console.log('Full Response:', res);
 
           const roleId = res.user?.roleId;
 
@@ -66,9 +66,9 @@ export class LoginComponent {
                 return;
             }
 
-            console.log('Redirecting to route:', route);
+            //console.log('Redirecting to route:', route);
             this.router.navigate([route]).then(() => {
-              console.log('Navigation done');
+              //console.log('Navigation done');
             });
           }, 1500);
         },

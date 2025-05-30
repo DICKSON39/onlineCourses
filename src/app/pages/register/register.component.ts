@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+  import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -71,7 +71,7 @@ export class RegisterComponent {
 
       this.authService.register(registrationData).subscribe({
         next: (response) => {
-          console.log('Registration successful', response);
+          //console.log('Registration successful', response);
           this.showSuccessModal = true;
           this.registerForm.reset();
         },

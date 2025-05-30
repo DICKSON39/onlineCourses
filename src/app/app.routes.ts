@@ -165,6 +165,7 @@ export const routes: Routes = [
     path: 'view-class/:id',
     component:ViewClassVideoComponent,
     canActivate:[AuthGuard],
-    data: {roles:[2]},
+    data: {roles:[2,3]},
   },
 ];
+
