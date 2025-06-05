@@ -13,4 +13,8 @@
       <li *ngFor="let video of cls.videos">{{ video.title }} - <a [href]="video.url" target="_blank">Watch</a></li>
     </ul>
   </div>
+  <div *ngFor="let cls of classes" class="mb-10">
+    <app-class-player [classData]="cls"></app-class-player>
+  </div>
+
 </div>

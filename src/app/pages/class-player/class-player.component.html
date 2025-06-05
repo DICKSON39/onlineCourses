@@ -1,0 +1,19 @@
+<div *ngIf="classData">
+  <h2 class="text-xl font-bold mb-2">{{ classData.title }}</h2>
+  <p class="text-gray-600 mb-4">{{ classData.Description }}</p>
+
+  <div class="mb-4">
+    <video *ngIf="selectedVideo" width="100%" height="auto" controls autoplay>
+      <source [src]="selectedVideo.url" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div *ngIf="!selectedVideo" class="text-gray-500">Select a video to play 👇</div>
+  </div>
+
+  <h3 class="font-semibold mb-2">📺 Class Videos:</h3>
+  <ul class="list-disc ml-5 space-y-2">
+    <li *ngFor="let video of classData.videos" (click)="playVideo(video)" class="cursor-pointer hover:underline text-blue-600">
+      ▶ {{ video.title }}
+    </li>
+  </ul>
+</div>

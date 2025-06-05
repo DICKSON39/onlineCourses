@@ -32,6 +32,7 @@ import { TeachersOnlyComponent } from './pages/teachers-only/teachers-only.compo
 import {StudentOnlyComponent} from './pages/student-only/student-only.component';
 import { ViewClassVideoComponent } from './pages/view-class-video/view-class-video.component';
 import {MyPaidClassesComponent} from './pages/my-paid-classes/my-paid-classes.component';
+import {ClassPlayerComponent} from './pages/class-player/class-player.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -175,6 +176,13 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: [3] },
   },
+
+  {
+    path: 'view-class',
+    component: ClassPlayerComponent,
+    canActivate:[AuthGuard],
+    data: { roles: [3] },
+  }
 
 ]
 
