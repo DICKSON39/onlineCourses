@@ -178,7 +178,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'view-class',
+    path: 'view-class/:id',
     component: ClassPlayerComponent,
     canActivate:[AuthGuard],
     data: { roles: [3] },

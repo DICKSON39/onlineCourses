@@ -1,5 +1,3 @@
-<h2 class="heading">📚 Your Paid Classes</h2>
-
 <!-- Skeleton Loader -->
 <div *ngIf="isLoading">
   <div *ngFor="let skeleton of skeletonArray" class="skeleton-card">
@@ -19,7 +17,11 @@
 <div *ngIf="!isLoading && classes.length > 0">
   <div *ngFor="let cls of classes" class="class-card">
     <div class="class-info">
-      <h3 class="class-title">{{ cls.title || 'Untitled Class' }}</h3>
+      <h3 class="class-title">
+        <a [routerLink]="['/my-classes', cls.id]" class="class-link">
+          {{ cls.title || 'Untitled Class' }}
+        </a>
+      </h3>
       <p><strong>Course:</strong> {{ cls.course_name }}</p>
       <p><strong>Description:</strong> {{ cls.Description }}</p>
     </div>
@@ -29,13 +31,9 @@
       <ul>
         <li *ngFor="let video of cls.videos">
           {{ video.title }}
-          <!-- You can add a preview link if needed -->
+          <!-- Optional: Add preview link or small play icon here -->
         </li>
       </ul>
-    </div>
-
-    <div class="class-player">
-      <app-class-player [classData]="cls"></app-class-player>
     </div>
   </div>
 </div>

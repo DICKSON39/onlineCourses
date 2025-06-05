@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-class-player',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './class-player.component.html',
   styleUrl: './class-player.component.css'
 })
