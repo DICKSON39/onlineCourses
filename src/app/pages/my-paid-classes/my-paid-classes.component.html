@@ -1,7 +1,12 @@
 <h2 class="heading">📚 Your Paid Classes</h2>
 
-<div *ngIf="classes.length === 0" class="empty-message">No classes found 💤</div>
+<!-- Loader -->
+<div *ngIf="loading" class="loader">Loading your classes...</div>
 
+<!-- Empty state -->
+<div *ngIf="!loading && classes.length === 0" class="empty-message">No classes found 💤</div>
+
+<!-- Classes list -->
 <div *ngFor="let cls of classes" class="class-card">
   <div class="class-info">
     <h3 class="class-title">{{ cls.title || 'Untitled Class' }}</h3>
@@ -13,8 +18,7 @@
     <h4>🎥 Class Videos:</h4>
     <ul>
       <li *ngFor="let video of cls.videos">
-        {{ video.title }} -
-<!--        <a [href]="video.url" target="_blank">▶ Watch</a>-->
+        {{ video.title }}
       </li>
     </ul>
   </div>
