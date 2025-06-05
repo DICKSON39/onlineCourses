@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ClassService } from '../../services/class.service';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-class-player',
+  standalone: true,
+  imports: [RouterLink, CommonModule],
   templateUrl: './class-player.component.html',
-  imports:[RouterLink,CommonModule],
   styleUrls: ['./class-player.component.css'],
 })
 export class ClassPlayerComponent implements OnInit {
@@ -19,7 +21,6 @@ export class ClassPlayerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Get the class id from route params
     const classId = this.route.snapshot.paramMap.get('id');
     if (classId) {
       this.loadClassById(classId);
@@ -29,8 +30,10 @@ export class ClassPlayerComponent implements OnInit {
   loadClassById(id: string) {
     this.classService.getMyPaidClasses().subscribe({
       next: (res) => {
-        this.classData = res; // adjust depending on your API response
-        if (this.classData.videos?.length > 0) {
+        const classList = res.classes;
+        this.classData = classList.find((cls: any) => cls.id == id);
+
+        if (this.classData?.videos?.length > 0) {
           this.selectedVideo = this.classData.videos[0]; // auto-play first video
         }
       },
