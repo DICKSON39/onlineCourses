@@ -18,7 +18,7 @@
   <div *ngFor="let cls of classes" class="class-card">
     <div class="class-info">
       <h3 class="class-title">
-        <a [routerLink]="['/my-classes', cls.id]" class="class-link">
+        <a [routerLink]="['/view-class', cls.id]" class="class-link">
           {{ cls.title || 'Untitled Class' }}
         </a>
       </h3>
