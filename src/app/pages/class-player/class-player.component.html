@@ -1,5 +1,5 @@
 <div *ngIf="classData" class="class-container">
-  <h2 class="class-title">{{ classData.title }}</h2>
+  <h2 class="class-title">{{ classData.title || 'Untitled Class' }}</h2>
   <p class="class-description">{{ classData.Description }}</p>
 
   <div class="video-wrapper">
