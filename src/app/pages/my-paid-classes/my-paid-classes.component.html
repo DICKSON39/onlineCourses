@@ -1,20 +1,25 @@
-<h2 class="text-xl font-bold mb-4">📚 Your Paid Classes</h2>
+<h2 class="heading">📚 Your Paid Classes</h2>
 
-<div *ngIf="classes.length === 0">No classes found 💤</div>
+<div *ngIf="classes.length === 0" class="empty-message">No classes found 💤</div>
 
-<div *ngFor="let cls of classes" class="mb-6 p-4 border rounded-lg">
-  <h3 class="text-lg font-semibold">{{ cls.title || 'Untitled Class' }}</h3>
-  <p><strong>Course:</strong> {{ cls.course_name }}</p>
-  <p><strong>Description:</strong> {{ cls.Description }}</p>
+<div *ngFor="let cls of classes" class="class-card">
+  <div class="class-info">
+    <h3 class="class-title">{{ cls.title || 'Untitled Class' }}</h3>
+    <p><strong>Course:</strong> {{ cls.course_name }}</p>
+    <p><strong>Description:</strong> {{ cls.Description }}</p>
+  </div>
 
-  <div *ngIf="cls.videos?.length > 0">
-    <h4 class="mt-3 font-medium">🎥 Videos:</h4>
-    <ul class="list-disc ml-5">
-      <li *ngFor="let video of cls.videos">{{ video.title }} - <a [href]="video.url" target="_blank">Watch</a></li>
+  <div *ngIf="cls.videos?.length > 0" class="videos">
+    <h4>🎥 Class Videos:</h4>
+    <ul>
+      <li *ngFor="let video of cls.videos">
+        {{ video.title }} -
+        <a [href]="video.url" target="_blank">▶ Watch</a>
+      </li>
     </ul>
   </div>
-  <div *ngFor="let cls of classes" class="mb-10">
+
+  <div class="class-player">
     <app-class-player [classData]="cls"></app-class-player>
   </div>
-
 </div>
