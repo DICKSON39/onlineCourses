@@ -1,98 +1,87 @@
 .class-container {
-  background-color: #f7f7f7; /* A very light, subtle grey */
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 25px 30px;
-  margin: 20px 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  border: 1px solid #e0e0e0; /* A soft border */
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #10172a;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  color: #f1f5f9;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .class-title {
-  color: #2c3e50; /* Deep blue-grey */
-  font-size: 1.8em;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #e9ecef; /* Subtle underline */
-  padding-bottom: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .class-description {
-  color: #555;
-  font-size: 1.05em;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #cbd5e1;
 }
 
 .video-wrapper {
-  background-color: #e2e6ea; /* Light grey for the video background */
-  border-radius: 8px;
-  overflow: hidden; /* Ensures video corners are rounded */
-  margin-bottom: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 250px; /* **Adjusted for smaller video size** */
-  position: relative; /* For placeholder positioning */
+  margin-bottom: 2rem;
+  position: relative;
+  border: 2px solid #334155;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #1e293b;
 }
 
 .video-player {
-  width: 80%;
-  height: 100%; /* Make video take full height of its wrapper */
-  object-fit: cover; /* Ensures the video covers the area without distortion */
-  border-radius: 8px; /* Match wrapper border-radius */
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
 }
 
 .video-placeholder {
-  color: #6c757d; /* Muted grey for placeholder text */
-  font-size: 1.3em;
   text-align: center;
-  padding: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #64748b;
+  background-color: #1e293b;
 }
 
 .video-list-title {
-  color: #4a698a; /* Muted blue for video list title */
-  font-size: 1.5em;
-  margin-top: 25px;
-  margin-bottom: 15px;
-  padding-left: 5px;
-  border-left: 4px solid #6c7e9a; /* Accent border */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .video-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding-left: 0;
 }
 
 .video-item {
-  background-color: #ffffff; /* White background for individual items */
-  border: 1px solid #e9ecef; /* Light border */
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin-bottom: 10px;
+  padding: 0.75rem 1rem;
+  margin: 0.3rem 0;
+  border-radius: 0.5rem;
+  background-color: #1e293b;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  color: #444; /* Darker text for video titles */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  transition: background-color 0.2s ease;
 }
 
 .video-item:hover {
-  background-color: #eef2f7; /* Lighter background on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #2c3e50; /* Darker text on hover */
+  background-color: #334155;
 }
 
-.video-item::before {
-  content: '▶'; /* Play icon */
-  margin-right: 10px;
-  color: #6c7e9a; /* Muted blue for icon */
-  font-size: 0.9em;
+button[routerLink] {
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+button[routerLink]:hover {
+  background-color: #1d4ed8;
 }
