@@ -8,7 +8,7 @@ interface Class {
   Description:string;
   title:string;
   videos: Video[];
-  course_name: string; 
+  course_name: string;
 }
 
 interface Video {
@@ -61,5 +61,11 @@ getTeacherClasses(): Observable<Class[]> {
     return this.http.put(`${this.apiUrl}/${classId}`, data, {
       headers: this.getAuthHeaders(),
     });
+  }
+
+  getMyPaidClasses():Observable<any>{
+    return this.http.get(`https://elearning-f7yg.onrender.com/api/v1/mypaid-class` , {
+      headers: this.getAuthHeaders(),
+    })
   }
 }
