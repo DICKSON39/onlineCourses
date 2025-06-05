@@ -12,20 +12,21 @@ import {ClassPlayerComponent} from '../class-player/class-player.component';
 })
 export class MyPaidClassesComponent  implements OnInit {
   classes: any[] = [];
-  loading:boolean = false;
+ isLoading = true;
+  skeletonArray = Array(3);
   constructor( private  classService : ClassService ) {
   }
 
     ngOnInit(): void {
-      this.loading = true;
+
     this.classService.getMyPaidClasses().subscribe({
       next: (res)=> {
         this.classes = res.classes;
-        this.loading = false;
+        this.isLoading = false;
       },
       error: (err)=> {
         console.error('Error', err)
-        this.loading = false;
+        this.isLoading = false;
       }
     })
 

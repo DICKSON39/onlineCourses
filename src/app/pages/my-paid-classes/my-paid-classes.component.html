@@ -1,29 +1,41 @@
 <h2 class="heading">📚 Your Paid Classes</h2>
 
-<!-- Loader -->
-<div *ngIf="loading" class="loader">Loading your classes...</div>
-
-<!-- Empty state -->
-<div *ngIf="!loading && classes.length === 0" class="empty-message">No classes found 💤</div>
-
-<!-- Classes list -->
-<div *ngFor="let cls of classes" class="class-card">
-  <div class="class-info">
-    <h3 class="class-title">{{ cls.title || 'Untitled Class' }}</h3>
-    <p><strong>Course:</strong> {{ cls.course_name }}</p>
-    <p><strong>Description:</strong> {{ cls.Description }}</p>
+<!-- Skeleton Loader -->
+<div *ngIf="isLoading">
+  <div *ngFor="let skeleton of skeletonArray" class="skeleton-card">
+    <div class="skeleton-title shimmer"></div>
+    <div class="skeleton-text shimmer"></div>
+    <div class="skeleton-text shimmer"></div>
+    <div class="skeleton-video shimmer"></div>
   </div>
+</div>
 
-  <div *ngIf="cls.videos?.length > 0" class="videos">
-    <h4>🎥 Class Videos:</h4>
-    <ul>
-      <li *ngFor="let video of cls.videos">
-        {{ video.title }}
-      </li>
-    </ul>
-  </div>
+<!-- No Classes Message -->
+<div *ngIf="!isLoading && classes.length === 0" class="empty-message">
+  No classes found 💤
+</div>
 
-  <div class="class-player">
-    <app-class-player [classData]="cls"></app-class-player>
+<!-- Paid Classes Display -->
+<div *ngIf="!isLoading && classes.length > 0">
+  <div *ngFor="let cls of classes" class="class-card">
+    <div class="class-info">
+      <h3 class="class-title">{{ cls.title || 'Untitled Class' }}</h3>
+      <p><strong>Course:</strong> {{ cls.course_name }}</p>
+      <p><strong>Description:</strong> {{ cls.Description }}</p>
+    </div>
+
+    <div *ngIf="cls.videos?.length > 0" class="videos">
+      <h4>🎥 Class Videos:</h4>
+      <ul>
+        <li *ngFor="let video of cls.videos">
+          {{ video.title }}
+          <!-- You can add a preview link if needed -->
+        </li>
+      </ul>
+    </div>
+
+    <div class="class-player">
+      <app-class-player [classData]="cls"></app-class-player>
+    </div>
   </div>
 </div>
