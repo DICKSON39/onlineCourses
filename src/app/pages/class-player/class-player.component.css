@@ -1,69 +1,98 @@
 .class-container {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  border: 1px solid #ddd;
+  background-color: #f7f7f7; /* A very light, subtle grey */
   border-radius: 12px;
-  background: #f9f9f9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 25px 30px;
+  margin: 20px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  border: 1px solid #e0e0e0; /* A soft border */
 }
 
 .class-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  color: #2c3e50; /* Deep blue-grey */
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e9ecef; /* Subtle underline */
+  padding-bottom: 10px;
 }
 
 .class-description {
   color: #555;
-  margin-bottom: 1rem;
+  font-size: 1.05em;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 ratio */
-  background: #000;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 1rem;
+  background-color: #e2e6ea; /* Light grey for the video background */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures video corners are rounded */
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px; /* **Adjusted for smaller video size** */
+  position: relative; /* For placeholder positioning */
 }
 
 .video-player {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  border: none;
+  height: 100%; /* Make video take full height of its wrapper */
+  object-fit: cover; /* Ensures the video covers the area without distortion */
+  border-radius: 8px; /* Match wrapper border-radius */
 }
 
 .video-placeholder {
+  color: #6c757d; /* Muted grey for placeholder text */
+  font-size: 1.3em;
+  text-align: center;
+  padding: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #ccc;
-  font-size: 1rem;
-  text-align: center;
 }
 
 .video-list-title {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  color: #4a698a; /* Muted blue for video list title */
+  font-size: 1.5em;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  padding-left: 5px;
+  border-left: 4px solid #6c7e9a; /* Accent border */
 }
 
 .video-list {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .video-item {
+  background-color: #ffffff; /* White background for individual items */
+  border: 1px solid #e9ecef; /* Light border */
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 10px;
   cursor: pointer;
-  color: #1e40af;
-  margin-bottom: 0.5rem;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  color: #444; /* Darker text for video titles */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
 }
 
 .video-item:hover {
-  color: #0e7490;
-  text-decoration: underline;
+  background-color: #eef2f7; /* Lighter background on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #2c3e50; /* Darker text on hover */
+}
+
+.video-item::before {
+  content: '▶'; /* Play icon */
+  margin-right: 10px;
+  color: #6c7e9a; /* Muted blue for icon */
+  font-size: 0.9em;
 }
